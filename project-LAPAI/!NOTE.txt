@@ -39,4 +39,4 @@ LAPAI_Learn_core_Experimental.py
 
 and done, have fun, klick Run.Bat for run the model and Learn.bat for Learn.
 
-go experiment with AI on your own device freely!
+go experiment with AI on your own device freely! 

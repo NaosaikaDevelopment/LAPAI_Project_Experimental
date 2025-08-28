@@ -6,7 +6,9 @@ Keep in mind this project is Experimental
 
 This project was running and developed with Spec Ryzen AI 7 350 equipped with ram 24gig, in laptop (IGPU) 
 
-
+If you wanna using Learn, You need talk with AI from this script until AI summary, AI would make question for learning it self and you can run learn
+(how about online mode?)
+online mode its just searching for context, so your AI more adaptive to new information, and you can add question to file question AI make. open LAPAI_Learn_Core_Experimental.py for more detail editing.
 
 
 

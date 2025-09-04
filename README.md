@@ -35,7 +35,7 @@ Run bat file name ```RUN.bat``` to run model and chit chat, or Run bat file name
        ↓
 [ DB Updates: short-term memory, questions list ]
           ↘
-     [ Online: Google → Summarize → Learning DB ]
+     [Summarize → Memory DB ]
 ```
 
 ### LAPAI Learn Core [Experimental]

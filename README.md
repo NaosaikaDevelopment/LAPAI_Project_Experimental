@@ -47,7 +47,7 @@ If online: these questions are answered through Google Search + summarized by th
 
 If offline: the questions remain stored waiting for internet, or can be processed manually.
 
-#License
+# License
 This project using MIT license and Apache 2.0 from LemonadeServer
 
 # Note

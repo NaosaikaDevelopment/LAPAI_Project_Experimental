@@ -2,6 +2,9 @@
 ## What is LAPAI?
 Local Agent Personal Artificial Artificial Intelligence, a project based fondation from Lemonade Server, that work as script to give AI Feature that can have memorial and learning ability.
 Go check their website to learn more! ```https://lemonade-server.ai```
+
+Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.
+And this project is can run entirely offline that work in your own device.
 ## Instalation
 1. you need install [LemonadeServer](https://lemonade-server.ai/docs/server/) and download the model at least 2 [model](https://lemonade-server.ai/docs/server/server_models/) to run this project.
 
@@ -21,15 +24,19 @@ Run bat file name ```RUN.bat``` to run model and chit chat, or Run bat file name
 ## How exactly this script run?
 
 ### LAPAI Core
-User talks → input enters.
-
-System pulls old memory + related knowledge.
-
-Main model answers.
-
-System summarizes long interactions → creates new questions → stores in question list (self-learning material).
-
-This process repeats, so the agent has short-term memory, long-term knowledge, and a reflective question list that can be used for the next learning.
+```
+[ User Input ]
+       ↓
+[ Recall Memory + Knowledge ]
+       ↓
+[ Main Model Response ]
+       ↓
+[ Summarization + Question Generation ]
+       ↓
+[ DB Updates: short-term memory, questions list ]
+          ↘
+     [ Online: Google → Summarize → Learning DB ]
+```
 
 ### LAPAI Learn Core
 ```

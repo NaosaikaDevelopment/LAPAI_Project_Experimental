@@ -40,7 +40,7 @@ Run bat file name ```RUN.bat``` to run model and chit chat, or Run bat file name
 
 ### LAPAI Learn Core [Experimental]
 ```
-Chat history → Extract keywords → Recall related memory
+         Question DB
             ↓
          Prompt To main model
             ↓

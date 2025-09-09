@@ -5,6 +5,8 @@ Go check their website to learn more! ```https://lemonade-server.ai```
 
 Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.
 And this project is can run entirely offline that work in your own device.
+
+Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it
 ## Instalation
 1. you need install [LemonadeServer](https://lemonade-server.ai/docs/server/) and download the model at least 2 [model](https://lemonade-server.ai/docs/server/server_models/) to run this project.
 
@@ -21,7 +23,6 @@ After all set now you are ready to start
 
 ## How to Run it?
 Run bat file name ```RUN.bat``` to run model and chit chat, or Run bat file name ```Learn.py``` to start learning
-
 
 ## How exactly this script run?
 

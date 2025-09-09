@@ -14,7 +14,7 @@ from openai import OpenAI
 
 LEMONADE_BASE_URL = "http://localhost:8000/api/v1"
 LEMONADE_API_KEY = "lemonade"
-MODEL_NAME = "DeepSeek-R1-Distill-Llama-8B-NPU" #<-- model you can change (in this case im using Lemonade server)
+MODEL_NAME = "YourModel See at Terminal using 'Lemonade-server list' and copy it here" #<-- model you can change (in this case im using Lemonade server)
 Sum_model = "Qwen2.5-0.5B-Instruct-CPU"
 CHAT_DIR = "chats"
 DB_FILE = "memory.db"

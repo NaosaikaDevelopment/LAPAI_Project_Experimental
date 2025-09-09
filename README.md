@@ -15,6 +15,8 @@ And this project is can run entirely offline that work in your own device.
 4. Set Your model that you download from LemonadeServer, you can see from Terminal using this code ```lemonade-server list```, and change name model at **LAPAI_Core.py** and **LAPAI_Learn_Core.py**,
    ```MODEL_NAME="..."``` and ```Sum_model="..."```
 
+5. Set Your Lemonade-server location at script ```RunAI.py``` in ```asls = r".../Lemonade-Location/Lemonade-server.vbs"``` 
+
 After all set now you are ready to start
 
 ## How to Run it?

@@ -19,7 +19,8 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 
 5. Set Your Lemonade-server location at script ```RunAI.py``` in ```asls = r".../Lemonade-Location/Lemonade-server.vbs"``` 
 
-The Installation will change according to the update and will be stated in the update description
+The Installation will change according to the update and will be stated in the update description.
+
 After all set now you are ready to start
 
 ## How to Run it?

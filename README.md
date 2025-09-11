@@ -57,8 +57,20 @@ If online: these questions are answered through Google Search + summarized by th
 
 If offline: the questions remain stored waiting for internet, or can be processed manually.
 
-# License
-This project using MIT license and Apache 2.0 from LemonadeServer
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Third-party components
+This project uses several open-source components:
+
+- SentenceTransformers (Apache 2.0)
+- FAISS (MIT License)
+- ONNXRuntime (MIT License)
+- HuggingFace Transformers (Apache 2.0)
+- HuggingFace model `all-mpnet-base-v2` (Apache 2.0)
+
+All third-party components remain under their original licenses.
+
 
 # Note
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)

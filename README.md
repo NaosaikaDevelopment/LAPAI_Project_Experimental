@@ -13,28 +13,28 @@ this script isn’t just a regular script for chatbot , it’s a self-learning, 
 
 ## System Advantage for tiny model running at offline mode
 
-### Hybrid memory system:
+### 1. Hybrid memory system:
 It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This means it can recall information both through keyword matching (exact recall) and semantic similarity (contextual recall).
 
-### Persistent sessions:
+### 2. Persistent sessions:
 Conversations are saved in JSON and databases, so the assistant can resume past dialogues and maintain continuity.
 
-### Embedding flexibility:
+### 3. Embedding flexibility:
 It uses an ONNX model (all-mpnet-base-v2) for efficient embeddings with GPU/DirectML support, making it lighter and portable across hardware.
 
-### Summarization and compression:
+### 4. Summarization and compression:
 Long sessions are summarized automatically using a secondary model, preventing memory bloat while keeping important facts.
 
-### Knowledge learning mode:
+### 5. Knowledge learning mode:
 A separate learning database lets the system extract insights, form new knowledge entries, and store them for reuse—giving it a "growing memory."
 
-### Personal data extraction & storage: <---in progress for making AI can remember more special info from user
+### 6. Personal data extraction & storage: <---in progress for making AI can remember more special info from user
 With simple classification, it detects if user input contains personal information, extracts it, and stores it in a personal file.
 
-### Custom persona support:
+### 7. Custom persona support:
 It loads personality instructions from PersonaAI.txt, so users can shape the assistant’s behavior without modifying the code.
 
-### Streaming-like output animation:
+### 8. Streaming-like output animation:
 Simulates real-time typing to give a more natural conversational feel.
 
 ## Use Cases

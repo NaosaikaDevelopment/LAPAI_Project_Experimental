@@ -28,7 +28,7 @@ Long sessions are summarized automatically using a secondary model, preventing m
 ### Knowledge learning mode:
 A separate learning database lets the system extract insights, form new knowledge entries, and store them for reuse—giving it a "growing memory."
 
-### Personal data extraction & storage:
+### Personal data extraction & storage: <---in progress for making AI can change behavior respons base from user talking with AI
 With simple classification, it detects if user input contains personal information, extracts it, and stores it in a personal file.
 
 ### Custom persona support:

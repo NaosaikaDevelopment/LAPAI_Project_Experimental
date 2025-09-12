@@ -75,7 +75,7 @@ Run bat file name ```RUN.bat``` to run model and chit chat, or Run bat file name
 
 ## How exactly this script run?
 
-### LAPAI Core
+### LAPAI Core v1.0
 ```
 [ User Input ]
        ↓

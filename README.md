@@ -1,6 +1,6 @@
 # LAPAI [experimental]
 ## What is LAPAI?
-Local Agent Personal Artificial Intelligence, a project based fondation from Lemonade Server, that work as script to give AI Feature that can have memorial and learning ability.
+Local Agent Personal Artificial Intelligence, a project based fondation from [Lemonade Server](https://lemonade-server.ai/docs/server/), this is work as script to give AI Feature that can have memorial and learning ability.
 Go check their website to learn more! ```https://lemonade-server.ai```
 
 Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.

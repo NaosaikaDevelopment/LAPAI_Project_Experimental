@@ -8,7 +8,7 @@ And this project is can run entirely offline that work in your own device. dual 
 
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it
 
-this script isn’t just a regular chatbot , it’s a self-learning, memory-based AI framework that blends keyword search, semantic recall, and summarization into one system. It’s especially strong for experiments in long-term memory AI, personalized assistants, and lightweight hybrid LLM deployments.
+this script isn’t just a regular script for chatbot , it’s a self-learning, memory-based AI framework that blends keyword search, semantic recall, and summarization into one system. It’s especially strong for experiments in long-term memory AI, personalized assistants, and lightweight hybrid LLM deployments.
 
 
 ## System Advantage for tiny model running at offline mode

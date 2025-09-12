@@ -59,12 +59,15 @@ By separating personal data into its own text file, it makes compliance with pri
 
 2. Install Python 3.10/3.11 (If you using windows, install it from Microsoft store).
 
-3. Install Another requirment from script **Auto_Installing_Env.bat**.
+3. Install Another requirment from script **InstallingRequirment.bat**.
 
-4. Set Your model that you download from LemonadeServer, you can see from Terminal using this code ```lemonade-server list```, and change name model at **LAPAI_Core.py** and **LAPAI_Learn_Core.py**,
+4. Run this on CMD: ```pip install faiss-cpu numpy onnxruntime transformers openai fastapi uvicorn pydantic```
+and run ```EmbeddingModelAutoDownload.bat``` to download embedding model
+
+5. Set Your model that you download from LemonadeServer, you can see from Terminal using this code ```lemonade-server list```, and change name model at **LAPAI_Core.py** and **LAPAI_Learn_Core.py**,
    ```MODEL_NAME="..."``` and ```Sum_model="..."```
 
-5. Set Your Lemonade-server location at script ```RunAI.py``` in ```asls = r".../Lemonade-Location/Lemonade-server.vbs"``` 
+6. Set Your Lemonade-server location at script ```RunAI.py``` in ```asls = r".../Lemonade-Location/Lemonade-server.vbs"``` 
 
 The Installation will change according to the update and will be stated in the update description.
 

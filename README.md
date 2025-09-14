@@ -87,7 +87,19 @@ The Installation will change according to the update and will be stated in the u
 After all set now you are ready to start
 
 ## How to Run it?
-Run bat file name ```Run.bat``` to run model and chit chat
+Run bat file name ```Run.bat``` to run model and chit chat,
+
+How to get API from self hosted based from this script project?
+
+in here you can use ```RunAPI-G.bat``` for start, but what the different wihh D and G, 
+
+Well G its build from main core function that focused for FP(Fast Response) but the trade off your model its not learning from experience, but this function still equipped with basic enhance ability, so it still have memorial ability and kind stuff like that, but not with learning so its base from your model with this project system memory.
+
+D its build for Development and here script is use for you want to experiment with main core function, so on this function is totally run every function, but the trade off its take time to give output, you need wait extra 10-30s based on your device perfomance and model paramater.
+
+but if you want to have FP and have main function does, you can make your own script by using ```RunAI.py``` script as refrence, on there im using modular function, so its run on FP with call the modular function that i make on core. 
+
+note from me, good luck and have fun to experiment with it.
 
 ## How exactly this script run?
 

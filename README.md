@@ -77,8 +77,7 @@ but at all its based on your model, even if you dont have powerfull gpu, you at 
 
 4. Run ```EmbeddingModelAutoDownload.bat``` to download embedding model
 
-5. Set Your model that you download from LemonadeServer, You can use ```ModelChecker.bat``` or, you can see from Terminal using this code ```lemonade-server list```, and change name model at **LAPAI_Core.py** and **LAPAI_Learn_Core.py**, and set it at
-   ```core\Settings\1MainNameModel.txt``` and ```1SumNameModel.txt```
+5. Set Your model that you download from LemonadeServer, You can use ```ModelChecker.bat``` or, you can see from Terminal using this code ```lemonade-server list```, and change name model at ```core\Settings\1MainNameModel.txt``` and ```1SumNameModel.txt```
 
 6. Set Your Lemonade-server location at ```core\Settings\YourLemonade-ServerLocation.txt```
 

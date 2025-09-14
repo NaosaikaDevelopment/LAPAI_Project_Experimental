@@ -1,0 +1,5 @@
+openai
+requests
+python-dotenv
+beautifulsoup4
+lxml

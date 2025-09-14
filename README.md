@@ -56,7 +56,16 @@ Since it integrates OpenAI-like APIs and local ONNX embeddings, it’s a good pl
 ### Privacy-aware applications:
 By separating personal data into its own text file, it makes compliance with privacy rules more manageable.
 
+## Hardware min Recommendation:
+NOTE: its based on your model parameter
 
+Ram min 24gig or more for play and run AI smoothly. 
+
+CPU I5 gen 8 or Ryzen 5 3500U, that is mandatory or at least better above that specification.
+
+GPU or IGPU Ryzen AI (7000 series) / Intel core ultra (Meteor Lake) / RTX 2000
+
+but at all its based on your model, even if you dont have powerfull gpu, you at least can use CPU
 
 
 ## Instalation

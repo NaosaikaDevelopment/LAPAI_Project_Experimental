@@ -5,7 +5,6 @@ beautifulsoup4
 lxml
 faiss-cpu
 numpy
-onnxruntime
 transformers
 openai
 fastapi
@@ -24,4 +23,5 @@ torchaudio
 tensorflow
 flax
 torch-directml
+
 onnxruntime-directml

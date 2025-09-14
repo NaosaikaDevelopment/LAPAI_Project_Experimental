@@ -8,6 +8,13 @@ from LAPAI_Core import *
 import LAPAI_Core  
 app = FastAPI()
 
+
+
+if "Server is not running" in hasil.stdout:
+    print("error; server Offline, start automatic!") 
+    condition = False
+    asls = r"..\lemonade-server\location\bin\lemonade_server.vbs" #<----- ATTENTION set your lemonade server location
+    subprocess.run(asls, shell=True)
 print("ATTENTION making memory files, for first start maybe its take a little time")
 init_db()
 init_learning_db()
@@ -68,3 +75,4 @@ def chat_completion(request: ChatRequest):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
+

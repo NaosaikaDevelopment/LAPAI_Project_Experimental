@@ -14,7 +14,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 this script isn’t just a regular script for chatbot , it’s a self-learning, memory-based AI framework that blends keyword search, semantic recall, and summarization into one system. It’s especially strong for experiments in long-term memory AI, personalized assistants, and lightweight hybrid LLM deployments.
 
 #### update v1.3
-from here you can using API from this project, to AI development in your project without think about memory management or anything about AI management,
+from here you can using self host and get API from this project, to AI development in your project without think about memory management or anything about AI management,
 just paste your API you got from this project script and done, you can play or development wiht AI in your device without network or data go to cloud.
 
 ## System Advantage for tiny model running at offline mode

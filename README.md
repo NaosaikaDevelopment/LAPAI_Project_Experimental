@@ -1,15 +1,20 @@
 # LAPAI [experimental]
 ## What is LAPAI?
+<img width="1366" height="768" alt="L (1)" src="https://github.com/user-attachments/assets/ece679bf-463d-4021-b20e-a7c7ecbdc934" />
+
 Local Agent Personal Artificial Intelligence, a project based fondation from [Lemonade Server](https://lemonade-server.ai/docs/server/), this is work as script to give AI Feature that can have memorial and learning ability.
 Go check their website to learn more! ```https://lemonade-server.ai```
 
 Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.
-And this project is can run entirely offline that work in your own device. dual model learning its not that special, its more like offline mode and online mode
+And this project is can run entirely offline that work in your own device. dual model learning its not that special, its more like offline mode and online mode but this still in experimental.
 
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it
 
 this script isn’t just a regular script for chatbot , it’s a self-learning, memory-based AI framework that blends keyword search, semantic recall, and summarization into one system. It’s especially strong for experiments in long-term memory AI, personalized assistants, and lightweight hybrid LLM deployments.
 
+#### update v1.3
+from here you can using API from this project, to AI development in your project without think about memory management or anything about it
+just paste yout api and done, you can play wiht your AI in your device without network or data go to cloud.
 
 ## System Advantage for tiny model running at offline mode
 
@@ -127,3 +132,7 @@ All third-party components remain under their original licenses.
 # Note
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)
 
+## How to use API to game development? v1.3
+on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.
+to use it on C# you can paste my program template for AI on file named ```Template_Program_AIResponsForGameEngine.cs```
+and you can see the detail on ```ImplementationGameDevelopment.mp4```

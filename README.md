@@ -2,11 +2,12 @@
 ## What is LAPAI?
 <img width="1366" height="768" alt="L (1)" src="https://github.com/user-attachments/assets/ece679bf-463d-4021-b20e-a7c7ecbdc934" />
 
-Local Agent Personal Artificial Intelligence, a project based fondation from [Lemonade Server](https://lemonade-server.ai/docs/server/), this is work as script to give AI Feature that can have memorial and learning ability.
-Go check their website to learn more! ```https://lemonade-server.ai```
+Local Agent Personal Artificial Intelligence, a project based fondation from [Lemonade Server](https://lemonade-server.ai/docs/server/),Go check their website to learn more! ```https://lemonade-server.ai```, this is work as script to give AI Feature that can have memorial and learning ability. and completely offline or we can say self-hosted
+
 
 Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.
 And this project is can run entirely offline that work in your own device. dual model learning its not that special, its more like offline mode and online mode but this still in experimental.
+in v1.3 self learning has been added to main core, so its actually learning from experience.
 
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it
 

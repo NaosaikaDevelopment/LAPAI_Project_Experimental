@@ -81,7 +81,7 @@ and run ```EmbeddingModelAutoDownload.bat``` to download embedding model
 5. Set Your model that you download from LemonadeServer, you can see from Terminal using this code ```lemonade-server list```, and change name model at **LAPAI_Core.py** and **LAPAI_Learn_Core.py**,
    ```MODEL_NAME="..."``` and ```Sum_model="..."```
 
-6. Set Your Lemonade-server location at script ```RunAI.py, LAPAI_Run_as_API-G.py, LAPAI_Run_as_API-D.py``` in ```asls = r".../Lemonade-Location/Lemonade-server.vbs"``` 
+6. Set Your Lemonade-server location at ```core\Settings\YourLemonade-ServerLocation.txt```
 
 The Installation will change according to the update and will be stated in the update description.
 

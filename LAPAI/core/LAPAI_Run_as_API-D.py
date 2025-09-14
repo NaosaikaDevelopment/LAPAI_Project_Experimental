@@ -13,7 +13,9 @@ app = FastAPI()
 if "Server is not running" in hasil.stdout:
     print("error; server Offline, start automatic!") 
     condition = False
-    asls = r"Settings\YourLemonade-ServerLocation.txt" #<----- ATTENTION set your lemonade server location
+    if os.path.exists("Settings\YourLemonade-ServerLocation.txt"):
+        with open("Settings\YourLemonade-ServerLocation.txt", "r", encoding="utf-8") as f:
+            asls = f.read().strip() #<----- ATTENTION set your lemonade server location
     subprocess.run(asls, shell=True)
 print("ATTENTION making memory files, for first start maybe its take a little time")
 init_db()
@@ -75,5 +77,6 @@ def chat_completion(request: ChatRequest):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
+
 
 

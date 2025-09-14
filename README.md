@@ -6,7 +6,7 @@ Local Agent Personal Artificial Intelligence, a project based fondation from [Le
 Go check their website to learn more! ```https://lemonade-server.ai```
 
 Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.
-And this project is can run entirely offline that work in your own device. dual model learning its not that special, its more like offline mode and online mode
+And this project is can run entirely offline that work in your own device. dual model learning its not that special, its more like offline mode and online mode but this still in experimental.
 
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it
 

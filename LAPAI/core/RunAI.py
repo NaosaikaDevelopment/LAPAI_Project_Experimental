@@ -10,7 +10,7 @@ hasil = subprocess.run(clss, capture_output=True, text=True, shell=True)
 if "Server is not running" in hasil.stdout:
     print("error; server Offline, start automatic!")
     condition = False
-    asls = r"D:\ND\bin\lemonade_server.vbs"
+    asls = r"..\lemonade-server\location\bin\lemonade_server.vbs"
     subprocess.run(asls, shell=True)
 
 #_________________MAIN SYSTEM FROM MAIN CORE___________________
@@ -50,3 +50,4 @@ while condition:
     print()
 
 subprocess.run("lemonade-server stop", shell=True)
+

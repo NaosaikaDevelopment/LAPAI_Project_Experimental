@@ -75,8 +75,7 @@ but at all its based on your model, even if you dont have powerfull gpu, you at 
 
 3. Install Another requirment from script **InstallingRequirment.bat**.
 
-4. Run this on CMD: ```pip install faiss-cpu numpy onnxruntime transformers openai fastapi uvicorn pydantic```
-and run ```EmbeddingModelAutoDownload.bat``` to download embedding model
+4. Run ```EmbeddingModelAutoDownload.bat``` to download embedding model
 
 5. Set Your model that you download from LemonadeServer, you can see from Terminal using this code ```lemonade-server list```, and change name model at **LAPAI_Core.py** and **LAPAI_Learn_Core.py**,
    ```MODEL_NAME="..."``` and ```Sum_model="..."```

@@ -1,5 +1,5 @@
 import LAPAI_Core
-from LAPAI_Core import *
+from core/LAPAI_Core import *
 import subprocess
 condition = True
 
@@ -48,4 +48,5 @@ while condition:
         print(ch, end="", flush=True)
         time.sleep(0.02)
     print()
+
 subprocess.run("lemonade-server stop", shell=True)

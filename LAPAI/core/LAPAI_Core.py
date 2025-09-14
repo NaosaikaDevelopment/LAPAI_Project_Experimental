@@ -23,8 +23,15 @@ from transformers import AutoTokenizer
 LEMONADE_BASE_URL = "http://localhost:8000/api/v1"
 LEMONADE_API_KEY = "lemonade"
 
-MODEL_NAME = "Llama-3.1-8B-Instruct-Hybrid" #<-- model you can change (in this case im using Lemonade server)
-Sum_model = "Llama-3.2-3B-Instruct-Hybrid"
+#MAIN MODEL
+if os.path.exists("Settings/1MainNameModel.txt"):
+    with open("Settings/1MainNameModel.txt", "r", encoding="utf-8") as f:
+        MODEL_NAME = f.read().strip()
+
+#Sum_model
+if os.path.exists("Settings/1SumNameModel.txt"):
+    with open("Settings/1SumNameModel.txt", "r", encoding="utf-8") as f:
+        Sum_model = f.read().strip()
 
 CHAT_DIR = "chats"
 DB_FILE = "Raw_Memory.db"
@@ -36,11 +43,12 @@ os.makedirs(CHAT_DIR, exist_ok=True)
 model_path = "../all-mpnet-base-v2/onnx/model.onnx"
 Learning_DB = os.path.join("Learning", "Learning.db")
 tokenizer = AutoTokenizer.from_pretrained("../all-mpnet-base-v2")
+client = OpenAI(base_url=LEMONADE_BASE_URL, api_key=LEMONADE_API_KEY)
 session = ort.InferenceSession(model_path, providers=["DmlExecutionProvider"])
-
 EMBED_DIM = 768 #<--- ATTENTION Embbeding dimension if you wanna change embedding model
 faiss_index = None
 id_map = {}
+prompt =[]
 
 
 
@@ -51,7 +59,24 @@ id_map = {}
 
 
 
-#---------------------------------MAIN FUNCTION-------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#__________________________________________MAINFUNCTION______________________________________________
+#_____________________INIT FUNCTION________________
 def init_faiss():
     global faiss_index, id_map
     if os.path.exists(FAISS_INDEX):
@@ -101,17 +126,94 @@ def init_db():
     conn.commit()
     conn.close()
 
-def extract_keywords(text):
-    words = re.findall(r"\w+", text.lower())
-    return [w for w in words if len(w) > 3]
+def init_learning_db():
+    os.makedirs(Learning_Dir, exist_ok=True)
+    conn = sqlite3.connect(Learning_DB)
+    c = conn.cursor()
 
-def parse_yesno(user_it: str):
-    match = re.search(r"\b(yes|no)\b", user_it, re.IGNORECASE)
-    if match:
-        return match.group(1).capitalize()
-    return "No"
+
+    c.execute("""
+    CREATE VIRTUAL TABLE IF NOT EXISTS knowledge USING fts5(
+        topic,
+        content,
+        source,
+        created_at
+    )
+    """)
+
+
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS sessions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        json_file TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS messages (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        session_id INTEGER,
+        role TEXT,
+        content TEXT,
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(session_id) REFERENCES sessions(id)
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-#memory management
+#____________________________________________MEMORY SECTION__________________________________________
 def create_session(title):
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
@@ -129,28 +231,6 @@ def create_session(title):
             json.dump([], f, indent=2)
 
     return sid, json_file
-
-def append_message(session_id, json_file, role, content):
-    history = []
-    global faiss_index, id_map
-    if os.path.exists(json_file):
-        with open(json_file, "r", encoding="utf-8") as f:
-            history = json.load(f)
-
-    history.append({"role": role, "content": content})
-    with open(json_file, "w", encoding="utf-8") as f:
-        json.dump(history, f, indent=2, ensure_ascii=False)
-
-    conn = sqlite3.connect(DB_FILE)
-    c = conn.cursor()
-    c.execute("INSERT INTO messages (session_id, role, content) VALUES (?, ?, ?)", (session_id, role, content))
-    conn.commit()
-    conn.close()
-
-    #Extended FAISS Function
-    vector = generate_embedding(content)
-    add_to_faiss(faiss_index, id_map, content, f"{session_id}:{role}:{len(content)}")
-
 
 def search_memory(query, limit=5):
     conn = sqlite3.connect(DB_FILE)
@@ -184,13 +264,30 @@ def recall_relevant_memory(user_input, limit=5, threshold=0.6):
 
     return LOTM + semantic_mem
 
-def load_history(json_file):
-    if not os.path.exists(json_file):
-        return []
-    with open(json_file, "r", encoding="utf-8") as f:
-        return json.load(f)
+def append_message(session_id, json_file, role, content):
+    history = []
+    global faiss_index, id_map
+    if os.path.exists(json_file):
+        with open(json_file, "r", encoding="utf-8") as f:
+            history = json.load(f)
 
-#FAISS Function
+    history.append({"role": role, "content": content})
+    with open(json_file, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("INSERT INTO messages (session_id, role, content) VALUES (?, ?, ?)", (session_id, role, content))
+    conn.commit()
+    conn.close()
+
+    #Extended FAISS Function
+    vector = generate_embedding(content)
+    add_to_faiss(faiss_index, id_map, content, f"{session_id}:{role}:{len(content)}")
+
+
+
+#__________________________FAISS FUNCTION___________________________
 def recall_from_faiss(query_vector, topk=5, threshold=0.4):
     global faiss_index, id_map
 
@@ -213,7 +310,6 @@ def recall_from_faiss(query_vector, topk=5, threshold=0.4):
                     "content": id_map[uid]["content"],
                     "score": float(similarity)
                 })
-    # urutkan berdasarkan skor
     results.sort(key=lambda x: x["score"], reverse=True)
     return results
 
@@ -260,141 +356,43 @@ def add_to_faiss(index, id_map, text, uid):
     return index, id_map
 
     
-#Efesiensi Sumerize
-def summarize_session(client, model, session_id, session_file, max_tokens=500):
-    history = load_history(session_file)
-
-    if len(history) < 15:
-        return None
-
-    text_blocks = []
-    for msg in history:
-        role = msg["role"]
-        content = msg["content"]
-        text_blocks.append(f"{role.upper()}: {content}")
-
-    joined_text = "\n".join(text_blocks)
-
-    if len(joined_text.split()) > 1000:
-        joined_text = " ".join(joined_text.split()[-1000:])
-
-    completion = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": "You are a summarizer AI. Summarize this chat history in a concise way, keep facts, remove filler."},
-            {"role": "user", "content": joined_text}
-        ],
-        max_tokens=max_tokens
-    )
-
-    summary = completion.choices[0].message.content.strip()
-
-    with open(session_file, "w", encoding="utf-8") as f:
-        new_data = [{"role": "summary", "content": summary}]
-    if history:
-        new_data.append(history[-1])
-    with open(session_file, "w", encoding="utf-8") as f:
-        json.dump(new_data, f, indent=2, ensure_ascii=False)
-
-    return summary
-
-#Learning feature in memory management
-def generate_question(client, model, text):
-    prompt = f"Create a brief question about something odd or needing investigation from the following text: {text}\n\n"
-    resp = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=150
-    )
-    return resp.choices[0].message.content.strip()
-def add_question(question):
-    questions = load_json(QUESTIONS_FILE, [])
-    if any(q["question"] == question for q in questions):
-       return
-    questions.append({
-        "question": question,
-        "answered": False,
-        "timestamp": datetime.now().isoformat(),
-        "answer": []
-    })
-    save_json(QUESTIONS_FILE, questions)
-def load_json(path, default=[]):
-    if not os.path.exists(path):
-        return default if default is not None else []
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-def save_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
-#Guard Scan
-def estimate_tokens(messages):
-    total = 0
-    for m in messages:
-        if isinstance(m, dict) and "content" in m:
-            total += len(m["content"].split())
-        elif isinstance(m, str):
-            total += len(m.split())
-    return total
-
-#animtion
-done = False  
-def animate():
-    for c in itertools.cycle(['|', '/', '-', '\\']):
-        if done:
-            break
-        sys.stdout.write('\rStartup ' + c)
-        sys.stdout.flush()
-        time.sleep(0.1)
-    sys.stdout.write('\r                                                     \n') #ah dont mention it :V
 
 
-#----------------------------------LEARNING FUNCTION-----------------------------------------
-
-#Function
-
-def init_learning_db():
-    os.makedirs(Learning_Dir, exist_ok=True)
-    conn = sqlite3.connect(Learning_DB)
-    c = conn.cursor()
 
 
-    c.execute("""
-    CREATE VIRTUAL TABLE IF NOT EXISTS knowledge USING fts5(
-        topic,
-        content,
-        source,
-        created_at
-    )
-    """)
 
 
-    c.execute("""
-    CREATE TABLE IF NOT EXISTS sessions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT,
-        json_file TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    """)
 
 
-    c.execute("""
-    CREATE TABLE IF NOT EXISTS messages (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        session_id INTEGER,
-        role TEXT,
-        content TEXT,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY(session_id) REFERENCES sessions(id)
-    )
-    """)
-
-    conn.commit()
-    conn.close()
 
 
+                                              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#________________________________________LEARNING SECTION_______________________________________
 
 def create_session_Learning(title):
     conn = sqlite3.connect(Learning_DB)
@@ -414,7 +412,12 @@ def create_session_Learning(title):
 
     return sid, json_file
 
-#knowledge management
+def load_knowledge(json_file):
+    if not os.path.exists(json_file):
+        return []
+    with open(json_file, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 def search_knowledge(query, limit=5):
     conn = sqlite3.connect(Learning_DB)
     c = conn.cursor()
@@ -433,12 +436,6 @@ def search_knowledge(query, limit=5):
         {"topic": r[0], "content": r[1], "source": r[2], "created_at": r[3], "score": r[4]}
         for r in rows
     ]
-
-def load_knowledge(json_file):
-    if not os.path.exists(json_file):
-        return []
-    with open(json_file, "r", encoding="utf-8") as f:
-        return json.load(f)
 
 def recall_knowledge(user_input, limit=5, threshold=0.6):
     keywords = extract_keywords(user_input)
@@ -484,7 +481,154 @@ def start_learning(client, model, data_input, context):
 
 
 
-#--------------------------------Personal Function Information saver------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#______________________________________Add on Function________________________________________
+
+#Efesiensi Sumerize
+def summarize_session(client, model, session_id, session_file, max_tokens=500):
+    history = load_history(session_file)
+
+    if len(history) < 15:
+        return None
+
+    text_blocks = []
+    for msg in history:
+        role = msg["role"]
+        content = msg["content"]
+        text_blocks.append(f"{role.upper()}: {content}")
+
+    joined_text = "\n".join(text_blocks)
+
+    if len(joined_text.split()) > 1000:
+        joined_text = " ".join(joined_text.split()[-1000:])
+
+    completion = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": "You are a summarizer AI. Summarize this chat history in a concise way, keep facts, remove filler."},
+            {"role": "user", "content": joined_text}
+        ],
+        max_tokens=max_tokens
+    )
+
+    summary = completion.choices[0].message.content.strip()
+
+    with open(session_file, "w", encoding="utf-8") as f:
+        new_data = [{"role": "summary", "content": summary}]
+    if history:
+        new_data.append(history[-1])
+    with open(session_file, "w", encoding="utf-8") as f:
+        json.dump(new_data, f, indent=2, ensure_ascii=False)
+
+    return summary
+
+def extract_keywords(text):
+    words = re.findall(r"\w+", text.lower())
+    return [w for w in words if len(w) > 3]
+
+def parse_yesno(user_it: str):
+    match = re.search(r"\b(yes|no)\b", user_it, re.IGNORECASE)
+    if match:
+        return match.group(1).capitalize()
+    return "No"
+
+def generate_question(client, model, text):
+    prompt = f"Create a brief question about something odd or needing investigation from the following text: {text}\n\n"
+    resp = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=150
+    )
+    return resp.choices[0].message.content.strip()
+
+def add_question(question):
+    questions = load_json(QUESTIONS_FILE, [])
+    if any(q["question"] == question for q in questions):
+       return
+    questions.append({
+        "question": question,
+        "answered": False,
+        "timestamp": datetime.now().isoformat(),
+        "answer": []
+    })
+    save_json(QUESTIONS_FILE, questions)
+
+def load_json(path, default=[]):
+    if not os.path.exists(path):
+        return default if default is not None else []
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_json(path, data):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+def load_history(json_file):
+    if not os.path.exists(json_file):
+        return []
+    with open(json_file, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+#Guard Scan
+def estimate_tokens(messages):
+    total = 0
+    for m in messages:
+        if isinstance(m, dict) and "content" in m:
+            total += len(m["content"].split())
+        elif isinstance(m, str):
+            total += len(m.split())
+    return total
+
+
+
+
+
+
+
+
+
+
+
+
+
+#--------------------------------Personal Function Information saver------------------------------ #still no recall function yet (INPROGRESS)
 persnoal_file = "PersonalData.txt"
 def init_personal_DB():
     if not os.path.exists(persnoal_file):
@@ -504,11 +648,46 @@ def read_txt():
 
 
 
-#----------------------------------------------Oprational-----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#____________________________________________________________________OPRATIONAL SECTION___________________________________________________________________________
 """
 Explanation about this Oprational:
 
-Main_Core_Function() its about self learing automation that learn from user and can provide an anser personal output
+Main_Core_Function() its about self learing automation that learn from user and can provide an answer personal output
 but the price for this function is kinda take a time, to decrease time to process from my suggestion by using hybrid model that provided by lemonade-server
 
 Main_Core_FP_Function() its focused to FastResponse but keep the main thing like memory ability, knowledge recall, filtering, and kinda a lot thing that in there
@@ -521,14 +700,8 @@ Good luck and Have fun to experiment with it!
 """
 def Main_Core_Function(user_msg, faiss_index, id_map, title_hint, title_learn, session_id, session_file, seid, jsfile):
     client = OpenAI(base_url=LEMONADE_BASE_URL, api_key=LEMONADE_API_KEY)
-    done = False
-
-
-    t = threading.Thread(target=animate)
-    t.start()
-
+    global prompt
     append_message(session_id, session_file, "user", user_msg)
-
     prompt =[]
     knowledge = []
     related_history = []
@@ -557,12 +730,14 @@ def Main_Core_Function(user_msg, faiss_index, id_map, title_hint, title_learn, s
     prompt.extend(new_items)
 
     #Persona
-    persona = ""
-    if os.path.exists("PersonaAI.txt"):
-        with open("PersonaAI.txt", "r", encoding="utf-8") as f:
+    persona = None
+    if os.path.exists("Settings/PersonaAI.txt"):
+        with open("Settings/PersonaAI.txt", "r", encoding="utf-8") as f:
             persona = f.read().strip()
-    if persona:
-        prompt.append({"role": "system", "content": persona})
+            if persona == "":
+                pass
+            else:
+                prompt.append({"role": "system", "content": persona})
 
     #Output
     try:  #<---Main model loading
@@ -572,36 +747,16 @@ def Main_Core_Function(user_msg, faiss_index, id_map, title_hint, title_learn, s
             messages=prompt
         )
         reply = completion.choices[0].message.content
-        done = True
-        t.join()
     except Exception as e:
         print("[ERROR] When Main Model loading:", str(e))
     
     try:
-        completion = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=[{"role":"system", "content": f"just Answer Yes or No. Is there any Personal Information in this input text: {user_msg}"}]
-        )
-        Decision = parse_yesno(completion.choices[0].message.content)
-        if "Yes" in Decision:
-            completion = client.chat.completions.create(
-                model=MODEL_NAME,
-                messages=[{"role":"system", "content":f"just Answer short as possible, take the personal info from this input text: {user_msg}"}]
-            )
-            reject = ["No","no","No.","no.","NO","NO."]
-            if any(q in completion.choices[0].message.content for q in reject):
-                pass
-            else:
-                append_txt(completion.choices[0].message.content)
+       #decsn(user_msg) #(INPROGRESS)
+       pass
     except Exception as e:
         print(f"[ERROR]: When try extract personal information: {e}")
-    completion = client.chat.completions.create(
-        model=Sum_model,
-        messages=[{"role":"system", "content":f"Just answer what is actually meant by this user input: '{user_msg}'"}],
-        max_tokens = 10
-    )
-    Thought = completion.choices[0].message.content
-    append_Learning(seid, jsfile, "thought", Thought)
+    thought = thoughtm(user_msg)
+    append_Learning(seid, jsfile, "thought", thought)
     append_message(session_id, session_file, "assistant", reply)
     summary = summarize_session(client, Sum_model, session_id, session_file)
     if summary:
@@ -615,13 +770,24 @@ def Main_Core_Function(user_msg, faiss_index, id_map, title_hint, title_learn, s
         print("Deleted Prompt")
         del prompt
     return reply
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#__________Second Function_________
 def Main_Core_FP_Function(user_msg, faiss_index, id_map, title_hint, title_learn, session_id, session_file, seid, jsfile):
     client = OpenAI(base_url=LEMONADE_BASE_URL, api_key=LEMONADE_API_KEY)
-    done = False
-    user_msg = msg
-    t = threading.Thread(target=animate)
-    t.start()
+    global prompt
     append_message(session_id, session_file, "user", user_msg)
     prompt =[]
     knowledge = []
@@ -649,12 +815,14 @@ def Main_Core_FP_Function(user_msg, faiss_index, id_map, title_hint, title_learn
     prompt.extend(new_items)
 
     #Persona
-    persona = ""
-    if os.path.exists("PersonaAI.txt"):
-        with open("PersonaAI.txt", "r", encoding="utf-8") as f:
+    persona = None
+    if os.path.exists("Settings/PersonaAI.txt"):
+        with open("Settings/PersonaAI.txt", "r", encoding="utf-8") as f:
             persona = f.read().strip()
-    if persona:
-        prompt.append({"role": "system", "content": persona})
+            if persona == "":
+                pass
+            else:
+                prompt.append({"role": "system", "content": persona})
 
     #Output
     try:  #<---Main model loading
@@ -664,10 +832,10 @@ def Main_Core_FP_Function(user_msg, faiss_index, id_map, title_hint, title_learn
             messages=prompt
         )
         reply = completion.choices[0].message.content
-        done = True
-        t.join()
     except Exception as e:
-        print("[ERROR] When Main Model loading:", str(e))
+        reply = f"[ERROR] When Main Model loading: {e}"
+        print(f"[ERROR]When loading model in core:{e}")
+        return reply
     
     append_message(session_id, session_file, "assistant", reply)
     summary = summarize_session(client, Sum_model, session_id, session_file)
@@ -678,3 +846,31 @@ def Main_Core_FP_Function(user_msg, faiss_index, id_map, title_hint, title_learn
         print("Deleted Prompt")
         del prompt
     return reply
+
+
+
+
+#____________MODULAR FUNCTION____________ #This function that can work outside script, so you can adding this after adding Main Core FP Function at another script, check RunAI.py For example use
+def decsn(user_msg):
+    completion = client.chat.completions.create(
+        model=Sum_model,
+        messages=[{"role":"system", "content": f"just Answer Yes or No. Is there any Personal Information in this input text: {user_msg}"}]
+    )
+    Decision = parse_yesno(completion.choices[0].message.content)
+    if "Yes" in Decision:
+        completion = client.chat.completions.create(
+            model=Sum_model,
+            messages=[{"role":"system", "content":f"just Answer short as possible, take the personal info from this input text: {user_msg}"}]
+        )
+        reject = ["No","no","No.","no.","NO","NO."]
+        if any(q in completion.choices[0].message.content for q in reject):
+            pass
+        else:
+            append_txt(completion.choices[0].message.content)
+def thoughtm(user_msg):
+    completion = client.chat.completions.create(
+        model=Sum_model,
+        messages=[{"role":"system", "content":f"Just answer what is actually meant by this user input: '{user_msg}'"}],
+        max_tokens = 10
+    )
+    return completion.choices[0].message.content

@@ -138,6 +138,8 @@ All third-party components remain under their original licenses.
 
 # Note
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)
+in choosing model, as i reccomend is model parameter 8B for standart use, but if you have model that trained for instruct, then you can use that model.
+but incase you want my recommendation, use Llama-8B-Instruct-Hybrid for main model and Llama-3B-Instruct-Hybrid for Sum model.
 
 ## How to use API to game development? v1.3
 on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.

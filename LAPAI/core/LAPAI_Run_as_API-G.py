@@ -9,9 +9,9 @@ import LAPAI_Core
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # atau spesifik "http://localhost:5500"
+    allow_origins=["*"], 
     allow_credentials=True,
-    allow_methods=["*"],  # termasuk OPTIONS
+    allow_methods=["*"],  
     allow_headers=["*"],
 )
 clss = ["lemonade-server","status"]
@@ -94,6 +94,7 @@ if __name__ == "__main__":
     append_message(session_id, session_file, "SYSTEM", "[INFO] User Offline.")
     append_message(session_id, session_file, "SYSTEM", "System Offline.")
     
+
 
 
 

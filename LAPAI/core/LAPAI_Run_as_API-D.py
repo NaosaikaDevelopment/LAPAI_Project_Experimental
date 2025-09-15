@@ -3,11 +3,17 @@ from pydantic import BaseModel
 from typing import List, Dict, Optional
 import time
 import uvicorn
-
+from fastapi.middleware.cors import CORSMiddleware
 from LAPAI_Core import *
 import LAPAI_Core  
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],
+)
 
 
 if "Server is not running" in hasil.stdout:
@@ -77,6 +83,7 @@ def chat_completion(request: ChatRequest):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
+
 
 
 

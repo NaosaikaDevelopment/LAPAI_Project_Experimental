@@ -3,11 +3,17 @@ from pydantic import BaseModel
 from typing import List, Dict, Optional
 import time
 import uvicorn
-
+from fastapi.middleware.cors import CORSMiddleware
 from LAPAI_Core import *
 import LAPAI_Core  
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # atau spesifik "http://localhost:5500"
+    allow_credentials=True,
+    allow_methods=["*"],  # termasuk OPTIONS
+    allow_headers=["*"],
+)
 clss = ["lemonade-server","status"]
 print(clss)
 hasil = subprocess.run(clss, capture_output=True, text=True, shell=True)
@@ -88,6 +94,7 @@ if __name__ == "__main__":
     append_message(session_id, session_file, "SYSTEM", "[INFO] User Offline.")
     append_message(session_id, session_file, "SYSTEM", "System Offline.")
     
+
 
 
 

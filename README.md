@@ -66,7 +66,7 @@ By separating personal data into its own text file, it makes compliance with pri
 
 https://github.com/user-attachments/assets/486d2def-e81b-45ea-bcca-2236af8183dd
 
-- Unity Engine AI offline Deployment:
+- Unity Engine AI offline Deployment (Detail in the end):
 
 https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
 

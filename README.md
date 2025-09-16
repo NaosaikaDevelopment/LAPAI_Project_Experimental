@@ -17,6 +17,9 @@ this script isn’t just a regular script for chatbot , it’s a self-learning, 
 from here you can using self host and get API from this project, to AI development in your project without think about memory management or anything about AI management,
 just paste your API you got from this project script and done, you can play or development wiht AI in your device without network or data go to cloud.
 
+#### Update Adding UI
+UI its ready and has been added to new Repo, go Check [LAPAI UI](https://github.com/NaosaikaDevelopment/UI-LAPAI), im adding new feature, adding AI to get info about current time.
+
 ## System Advantage for tiny model running at offline mode
 
 ### 1. Hybrid memory system:

@@ -78,6 +78,8 @@ https://github.com/user-attachments/assets/0d3f242f-4518-4eec-b344-8422af5a620e
 
 
 
+And Many more, all for support your idea to make project with AI!
+
 ## Hardware min Recommendation:
 NOTE: its based on your model parameter
 

@@ -60,6 +60,24 @@ Since it integrates OpenAI-like APIs and local ONNX embeddings, it’s a good pl
 ### Privacy-aware applications:
 By separating personal data into its own text file, it makes compliance with privacy rules more manageable.
 
+
+## Deployment Preview:
+- Minecraft using mod Touhou Little Maid by TartaricAcid:
+
+https://github.com/user-attachments/assets/486d2def-e81b-45ea-bcca-2236af8183dd
+
+- Unity Engine AI offline Deployment:
+
+https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
+
+- AI Assitance (in this case im using [LAPAI UI](https://github.com/NaosaikaDevelopment/UI-LAPAI))
+  
+
+
+https://github.com/user-attachments/assets/0d3f242f-4518-4eec-b344-8422af5a620e
+
+
+
 ## Hardware min Recommendation:
 NOTE: its based on your model parameter
 

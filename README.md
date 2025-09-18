@@ -15,7 +15,7 @@ this script isn’t just a regular script for chatbot , it’s a self-learning, 
 
 #### update v1.3
 from here you can using self host and get API from this project, to AI development in your project without think about memory management or anything about AI management,
-just paste your API you got from this project script and done, you can play or development wiht AI in your device without network or data go to cloud.
+just paste your API you got from this project script and done, you can play or development with AI in your device without network or data go to cloud. for this have a guide check release page v1.3
 
 #### update 1.3.1
 Adding ability to command game, from this update now AI can give input for Game Development, and entirely offline, so from input user AI would decide what what user want AI todo on the game, for example here im going to debugging AI input as command:

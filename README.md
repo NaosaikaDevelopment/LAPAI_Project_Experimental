@@ -210,6 +210,8 @@ for those who really like modify thing, here you can use mine to learn, experime
 
 what i wanna say here, go make your project become real.
 
+" This project is not the end, it’s just a start. What you build from it is the real story "
+
 ## How to use API to game development? v1.3
 on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.
 to use it on C# you can paste my program template for AI on file named ```Template_Program_AIResponsForGameEngine.cs```

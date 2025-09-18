@@ -20,12 +20,15 @@ app.add_middleware(
 )
 
 # ====== Cek server eksternal (lemonade) ======
-clss = ["lemonade-server", "status"]
+clss = ["lemonade-server","status"]
+print(clss)
 hasil = subprocess.run(clss, capture_output=True, text=True, shell=True)
 if "Server is not running" in hasil.stdout:
     print("error; server Offline, start automatic!")
     condition = False
-    asls = r"D:\ND\bin\lemonade_server.vbs"
+    if os.path.exists("Settings\YourLemonade-ServerLocation.txt"):
+        with open("Settings\YourLemonade-ServerLocation.txt", "r", encoding="utf-8") as f:
+            asls = f.read().strip() #<--- Lset your lemonade server location
     subprocess.run(asls, shell=True)
 
 # Inisialisasi client
@@ -122,3 +125,4 @@ if __name__ == "__main__":
     uvicorn.run(app, host=Main_host, port=Main_port)
 
     subprocess.run("lemonade-server stop", shell=True)
+

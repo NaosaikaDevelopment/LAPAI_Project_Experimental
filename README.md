@@ -17,6 +17,29 @@ this script isn’t just a regular script for chatbot , it’s a self-learning, 
 from here you can using self host and get API from this project, to AI development in your project without think about memory management or anything about AI management,
 just paste your API you got from this project script and done, you can play or development wiht AI in your device without network or data go to cloud.
 
+#### update 1.3.1
+Adding ability to command game, from this update now AI can give input for Game Development, and entirely offline, so from input user AI would decide what what user want AI todo on the game, for example here im going to debugging AI input as command:
+here by using Template on Core folder, file named ```GameDevelopmentCommandAITemplate.cs``` on unity.
+
+https://github.com/user-attachments/assets/05099062-a69d-4b0d-9cc8-1a4d58dafeba
+
+Okay let me explain how to use: this is work as API from py i build, you can run ```GDAPIND.py``` for start API, (Note from me: Better learn how to run python automaticly when you run program from Program Language you use, tips: use and make .vbs to run without trace) 
+Here how it work: 
+```
+[Input unity]
+      ↓
+Get API and send input to main API on GDAPIND.py
+      ↓
+AI processing on there using Llama-3.2-3B-Instruct-Hybrid (info you can change model as you want but model must be "Instruct")
+      ↓
+Answer return as json fill with Command, Execute, Reason. AI will decide that.
+      ↓
+On my program template for game development that will auto take command, execute, reason, and you can add command on there almost anythin you want
+      ↓
+return on unity as action.
+
+```
+
 #### Update Adding UI
 UI its ready and has been added to new Repo, go Check [LAPAI UI](https://github.com/NaosaikaDevelopment/UI-LAPAI), im adding new feature, adding AI to get info about current time.
 

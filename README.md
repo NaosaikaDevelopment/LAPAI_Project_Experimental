@@ -202,6 +202,14 @@ but incase you want my recommendation, use Llama-8B-Instruct-Hybrid for main mod
 
 This Project was worked on Laptop Ryzen AI 7 350 with ram 24gig using IGPU.
 
+
+## MY HOPE TO SOMEONE FIND THIS PROJECT
+I really hope and wait for someone modify, make, and develop a project\software\mod\anything from this project, for they who gave up about develop or intergrate AI to their Game Development please dont give up, here i make a chance to give hope again, i once gave up to make it, but i shall make sure to not make someone gave up against their dream to make Game\software\project\mod\anything from AI and need entirely offline.
+
+for those who really like modify thing, here you can use mine to learn, experiment, making anything from AI become real.
+
+what i wanna say here, go make your project become real.
+
 ## How to use API to game development? v1.3
 on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.
 to use it on C# you can paste my program template for AI on file named ```Template_Program_AIResponsForGameEngine.cs```

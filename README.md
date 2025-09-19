@@ -49,7 +49,7 @@ This is an Side_Project for LAPAI Prototype, Its a functional software for LAPAI
 
 https://github.com/user-attachments/assets/c44a3d92-a36a-41eb-b271-80c9015d4153
 
-
+Download on Release Page.
 
 ## System Advantage for tiny model running at offline mode
 

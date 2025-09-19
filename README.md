@@ -43,6 +43,14 @@ return on unity as action.
 #### Update Adding UI
 UI its ready and has been added to new Repo, go Check [LAPAI UI](https://github.com/NaosaikaDevelopment/UI-LAPAI), im adding new feature, adding AI to get info about current time.
 
+#### Software Release MyCompanion
+This is an Side_Project for LAPAI Prototype, Its a functional software for LAPAI and LAPAI UI. this is running entirely offline, and might i say easy to install.
+
+
+https://github.com/user-attachments/assets/c44a3d92-a36a-41eb-b271-80c9015d4153
+
+
+
 ## System Advantage for tiny model running at offline mode
 
 ### 1. Hybrid memory system:

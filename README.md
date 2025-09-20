@@ -4,6 +4,8 @@
 
 Local Agent Personal Artificial Intelligence, a project based fondation from [Lemonade Server](https://lemonade-server.ai/docs/server/),Go check their website to learn more! ```https://lemonade-server.ai```, this is work as script to give AI Feature that can have memorial and learning ability. and completely offline or we can say self-hosted
 
+**Note: this is not AI platformer, this is special for AI Integrator**
+Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yer still powerful
 
 Local Agent LA-PAI is an experimental personal AI that reflects on its own conversations using self-questioning and dual-mode learning—entirely on your device.
 And this project is can run entirely offline that work in your own device. dual model learning its not that special, its more like offline mode and online mode but this still in experimental.

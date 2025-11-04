@@ -230,4 +230,4 @@ and you can see the detail on ```ImplementationGameDevelopment.mp4```
 
 
 
-##Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung
+## Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung

@@ -226,3 +226,8 @@ what i wanna say here, go make your project become real.
 on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.
 to use it on C# you can paste my program template for AI on file named ```Template_Program_AIResponsForGameEngine.cs```
 and you can see the detail on ```ImplementationGameDevelopment.mp4```
+
+
+
+
+##Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung

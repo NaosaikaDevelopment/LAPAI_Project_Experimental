@@ -41,7 +41,6 @@ On my program template for game development that will auto take command, execute
 return on unity as action.
 
 ```
-
 #### Update Adding UI
 UI its ready and has been added to new Repo, go Check [LAPAI UI](https://github.com/NaosaikaDevelopment/UI-LAPAI), im adding new feature, adding AI to get info about current time.
 
@@ -52,6 +51,20 @@ This is an Side_Project for LAPAI Prototype, Its a functional software from LAPA
 https://github.com/user-attachments/assets/c44a3d92-a36a-41eb-b271-80c9015d4153
 
 Download on Release Page.
+
+
+#### Update 1.3.2
+Finally i have a little time to adding thing, here some new feature to use this AI.
+
+This update adding new template program to use this AI in Arduino, and able to give command, output, and control.
+
+Preview:
+
+
+
+
+https://github.com/user-attachments/assets/cc090dc9-c6d0-49f2-b061-7fa49c607303
+
 
 ## System Advantage for tiny model running at offline mode
 

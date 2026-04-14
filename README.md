@@ -66,6 +66,12 @@ Preview:
 https://github.com/user-attachments/assets/cc090dc9-c6d0-49f2-b061-7fa49c607303
 
 
+
+
+#### Update 1.4
+fixing and improving memory, adding ui Settings, and XTTS support
+make the Installation more simple
+
 ## System Advantage for tiny model running at offline mode
 
 ### 1. Hybrid memory system:
@@ -112,7 +118,12 @@ By separating personal data into its own text file, it makes compliance with pri
 
 https://github.com/user-attachments/assets/486d2def-e81b-45ea-bcca-2236af8183dd
 
-- Unity Engine AI offline Deployment (Detail in the end):
+- Unity Engine AI offline Deployment:
+```
+  on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.
+to use it on C# you can paste my program template for AI on file named ```Template_Program_AIResponsForGameEngine.cs```
+and you can see the detail on ```ImplementationGameDevelopment.mp4``` 
+```
 
 https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
 
@@ -138,37 +149,27 @@ GPU or IGPU Ryzen AI (7000 series) / Intel core ultra (Meteor Lake) / RTX 2000
 but at all its based on your model, even if you dont have powerfull gpu, you at least can use CPU
 
 
-## Instalation
-1. This AI engine  you can use LemonadeServer for Ryzen AI 300+ and Ollama for regular use and download the model at least 2 to run this project, one for the Main Model and second for Summarymodel .
+## Instalation 1.4
 
-2. Install Python 3.10 (If you using windows, install it from Microsoft store).
+https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 
-3. Install Another requirment from script **InstallingRequirment.bat** or using my Environtment in core LAPAI/Scripts/Activate.
+1. Install Pyton3.10
+2. Run ```AutoDownloadALL.bat```
+3. Wait until done, and you all set
 
-4. Run ```EmbeddingModelAutoDownload.bat``` to download embedding model
 
-5. Set Your model at ```core\Settings\1MainNameModel.txt``` and ```1SumNameModel.txt```
-
-6. Set Your Lemonade or Ollama start code in ```RunAI.py``` to run automaticly or you can turn it on by yourself.
-
-The Installation will change according to the update and will be stated in the update description.
-
-After all set now you are ready to start
 
 ## How to Run it?
-Run bat file name ```Run.bat``` to run model and chit chat,
 
-How to get API from self hosted based from this script project?
+https://github.com/user-attachments/assets/159a85ae-cf9c-47be-8a89-c3c2cfcc27c6
 
-in here you can use ```RunAPI-G.bat``` for start, but what the different wihh D and G, 
 
-Well G its build from main core function that focused for FP(Fast Response) but the trade off your model its not learning from experience, but this function still equipped with basic enhance ability, so it still have memorial ability and kind stuff like that, but not with learning so its base from your model with this project system memory.
+1. Run ```RunTTS.bat``` to turn on XTTS
+2. go to core/app-settings/dist/win-unpacked and make shortcut for ```LAPAI Settings editor.exe``` and cut it to core
+3. run LAPAI Settings editor and set your model and persona (OLLAMA / LemonadeServer)
+4. Run ```Run.bat``` to run it in Terminal to test it, and Run ```RunAPI-G.bat``` to run the API or ```RunAPI-G_WithoutTrace.vbs``` to run it without tracer
 
-D its build for Development and here script is use for you want to experiment with main core function, so on this function is totally run every function, but the trade off its take time to give output, you need wait extra 10-30s based on your device perfomance and model paramater.
-
-but if you want to have FP and have main function does, you can make your own script by using ```RunAI.py``` script as refrence, on there im using modular function, so its run on FP with call the modular function that i make on core. 
-
-note from me, good luck and have fun to experiment with it.
+   
 
 ## How exactly this script run?
 
@@ -199,7 +200,7 @@ note from me, good luck and have fun to experiment with it.
             ↓
 Summarize → Generate question → save to Question DB
 ```
-If online: these questions are answered through Google Search + summarized by the model. [Experimental]
+If online: these questions are answered through Google Search + summarized by the model. [Experimental] <--- Still Progress
 
 If offline: the questions remain stored waiting for internet, or can be processed manually.
 
@@ -221,14 +222,11 @@ All third-party components remain under their original licenses.
 # Note
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)
 in choosing model, as i reccomend is model parameter 8B for standart use, but if you have model that trained for instruct, then you can use that model.
-but incase you want my recommendation, use Llama-8B-Instruct-Hybrid for main model and Llama-3B-Instruct-Hybrid for Sum model.
 
 This Project was worked on Laptop Ryzen AI 7 350 with ram 24gig using IGPU.
 
 ## How to use API to game development? v1.3
-on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.
-to use it on C# you can paste my program template for AI on file named ```Template_Program_AIResponsForGameEngine.cs```
-and you can see the detail on ```ImplementationGameDevelopment.mp4```
+
 
 
 

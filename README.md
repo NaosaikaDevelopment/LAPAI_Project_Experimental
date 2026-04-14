@@ -2,7 +2,7 @@
 ## What is LAPAI?
 <img width="1366" height="768" alt="L (1)" src="https://github.com/user-attachments/assets/ece679bf-463d-4021-b20e-a7c7ecbdc934" />
 
-Local Agent Personal Artificial Intelligence, a project based fondation from [Lemonade Server](https://lemonade-server.ai/docs/server/),Go check their website to learn more! ```https://lemonade-server.ai```, this is work as script to give AI Feature that can have memorial and learning ability. and completely offline or we can say self-hosted
+Local Agent Personal Artificial Intelligence, a project for AI Engine Enchantment, this is work as script to give AI Feature that can have memorial and learning ability. and completely offline or we can say self-hosted
 
 **Note: this is not AI platformer, this is special for AI Integrator**.
 Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful
@@ -139,17 +139,17 @@ but at all its based on your model, even if you dont have powerfull gpu, you at 
 
 
 ## Instalation
-1. you need install [LemonadeServer](https://lemonade-server.ai/docs/server/) and download the model at least 2 [model](https://lemonade-server.ai/docs/server/server_models/) to run this project.
+1. This AI engine  you can use LemonadeServer for Ryzen AI 300+ and Ollama for regular use and download the model at least 2 to run this project, one for the Main Model and second for Summarymodel .
 
-2. Install Python 3.10/3.11 (If you using windows, install it from Microsoft store).
+2. Install Python 3.10 (If you using windows, install it from Microsoft store).
 
-3. Install Another requirment from script **InstallingRequirment.bat**.
+3. Install Another requirment from script **InstallingRequirment.bat** or using my Environtment in core LAPAI/Scripts/Activate.
 
 4. Run ```EmbeddingModelAutoDownload.bat``` to download embedding model
 
-5. Set Your model that you download from LemonadeServer, You can use ```ModelChecker.bat``` or, you can see from Terminal using this code ```lemonade-server list```, and change name model at ```core\Settings\1MainNameModel.txt``` and ```1SumNameModel.txt```
+5. Set Your model at ```core\Settings\1MainNameModel.txt``` and ```1SumNameModel.txt```
 
-6. Set Your Lemonade-server location at ```core\Settings\YourLemonade-ServerLocation.txt```
+6. Set Your Lemonade or Ollama start code in ```RunAI.py``` to run automaticly or you can turn it on by yourself.
 
 The Installation will change according to the update and will be stated in the update description.
 
@@ -224,16 +224,6 @@ in choosing model, as i reccomend is model parameter 8B for standart use, but if
 but incase you want my recommendation, use Llama-8B-Instruct-Hybrid for main model and Llama-3B-Instruct-Hybrid for Sum model.
 
 This Project was worked on Laptop Ryzen AI 7 350 with ram 24gig using IGPU.
-
-
-## MY HOPE TO SOMEONE FIND THIS PROJECT
-I really hope and wait for someone modify, make, and develop a project\software\mod\anything from this project, for they who gave up about develop or intergrate AI to their Game Development please dont give up, here i make a chance to give hope again, i once gave up to make it, but i shall make sure to not make someone gave up against their dream to make Game\software\project\mod\anything from AI and need entirely offline.
-
-for those who really like modify thing, here you can use mine to learn, experiment, making anything from AI become real.
-
-what i wanna say here, go make your project become real.
-
-" This project is not the end, it’s just a start. What you build from it is the real story "
 
 ## How to use API to game development? v1.3
 on this case im gonna using unity engine to demonstrate how to implementation AI to Game development.

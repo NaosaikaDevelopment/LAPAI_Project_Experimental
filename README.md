@@ -2,7 +2,7 @@
 ## What is LAPAI?
 <img width="1366" height="768" alt="L (1)" src="https://github.com/user-attachments/assets/ece679bf-463d-4021-b20e-a7c7ecbdc934" />
 
-Local Agent Personal Artificial Intelligence, a project for AI Engine Enchantment, this is work as script to give AI Feature that can have memorial and learning ability. and completely offline or we can say self-hosted
+Local Agent Personal Artificial Intelligence, a project for AI Engine Enchantment, this is work as script to give AI Feature that can have memorial and learning ability. and completely offline, with backend LemonadeServer for Ryzen and Ollama for non Ryzen.
 
 **Note: this is not AI platformer, this is special for AI Integrator**.
 Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful

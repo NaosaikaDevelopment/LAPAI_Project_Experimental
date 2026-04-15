@@ -75,7 +75,7 @@ make the Installation more simple
 ## System Advantage for tiny model running at offline mode
 
 ### 1. Hybrid memory system:
-It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This means it can recall information both through keyword matching (exact recall) and semantic similarity (contextual recall).
+It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This means it can recall information both through keyword matching (exact recall) and semantic similarity (contextual recall). with ranking system at 1.4
 
 ### 2. Persistent sessions:
 Conversations are saved in JSON and databases, so the assistant can resume past dialogues and maintain continuity.

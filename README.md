@@ -149,9 +149,11 @@ GPU or IGPU Ryzen AI (7000 series) / Intel core ultra (Meteor Lake) / RTX 2000
 but at all its based on your model, even if you dont have powerfull gpu, you at least can use CPU
 
 
-## Instalation 1.4
+## Installation 1.4
 
+before to installation make sure you have the Runtime Backend provider (LemonadeServer / Ollama)
 
+https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 
 1. Install Pyton3.10
 2. Run ```AutoDownloadALL.bat```

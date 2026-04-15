@@ -142,11 +142,12 @@ NOTE: its based on your model parameter
 
 Ram min 24gig or more for play and run AI smoothly. 
 
-CPU I5 gen 8 or Ryzen 5 3500U, that is mandatory or at least better above that specification.
+CPU/APU AI series Ryzen AI (7000 series)/Intel Ultra or I5-12th/I7 series/Ryzen7/9 (The more Core its more recomended), 
+that is mandatory or if you dont have powerfull cpu, atleast have Powerfull GPU.
 
-GPU or IGPU Ryzen AI (7000 series) / Intel core ultra (Meteor Lake) / RTX 2000
+GPU : RTX 2060/3000+ / IGPU  from Ryzen AI/Intel Ultra (Vram 6-8gigs)
 
-but at all its based on your model, even if you dont have powerfull gpu, you at least can use CPU
+but at all its based on your model, even if you dont have powerfull gpu, you at least can use APU from AI series
 
 
 ## Installation 1.4

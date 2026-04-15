@@ -163,7 +163,7 @@ https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 
 ## How to Run it?
 
-https://github.com/user-attachments/assets/159a85ae-cf9c-47be-8a89-c3c2cfcc27c6
+https://github.com/user-attachments/assets/0a183efe-94d2-4406-9f47-676e60770dcf
 
 
 1. Run ```RunTTS.bat``` to turn on XTTS

@@ -151,7 +151,7 @@ but at all its based on your model, even if you dont have powerfull gpu, you at 
 
 ## Instalation 1.4
 
-https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
+
 
 1. Install Pyton3.10
 2. Run ```AutoDownloadALL.bat```

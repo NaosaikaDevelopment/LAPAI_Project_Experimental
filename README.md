@@ -228,10 +228,5 @@ in choosing model, as i reccomend is model parameter 8B for standart use, but if
 
 This Project was worked on Laptop Ryzen AI 7 350 with ram 24gig using IGPU.
 
-## How to use API to game development? v1.3
-
-
-
-
 
 ## Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung

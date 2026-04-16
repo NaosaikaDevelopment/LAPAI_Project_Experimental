@@ -69,7 +69,7 @@ https://github.com/user-attachments/assets/cc090dc9-c6d0-49f2-b061-7fa49c607303
 
 
 #### Update 1.4
-fixing and improving memory, adding ui Settings, and XTTS support
+fixing and improving memory, adding ui Settings, and XTTS support,
 make the Installation more simple
 
 ## System Advantage for tiny model running at offline mode

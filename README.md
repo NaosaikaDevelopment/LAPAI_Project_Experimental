@@ -1,18 +1,21 @@
-<img width="1366" height="768" alt="L (1)" src="https://github.com/user-attachments/assets/ece679bf-463d-4021-b20e-a7c7ecbdc934" />
-
 # LAPAI Local Agent Personal Artificial Intellegence [experimental]
-### What is LAPAI?
 
-LAPAI Project is a project for Local AI Runtime, this is work as script to give AI Feature that can have memorial and learning ability. all completely offline, with backend LemonadeServer for Ryzen and Ollama for non Ryzen. It for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
+<img width="1920" height="1080" alt="Start" src="https://github.com/user-attachments/assets/a836bfa6-a69e-4053-8b0b-770c1a2c09ea" />
 
-**Note: this is not AI platformer, this is special for AI Integrator**.
-This project work for them seeking AI with API Open AI style and work for its own project sake.
-And for them who want mod, create, learn, project, game to using AI locally.
+
+
+### What is LAPAI? 📋
+
+LAPAI Project is a project for Local AI Runtime, this is work as Runtime to give AI Feature that can have memorial and learning ability. all completely offline, with backend LemonadeServer for Ryzen and Ollama for non Ryzen. It for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
+
+**Note: this is not AI platformer, this is special for AI Integrator** (ᵕ—ᴗ—).
+This project work for them seeking AI with API Open AI style and work for its own project sake,
+and for them who want mod, create, learn, project, game to using AI locally (  ≧ᗜ≦).
 Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful.
-Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it
+Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it (˶ᵔ ᵕ ᵔ˶).
 
 
-## This system project equipped with:
+## ✅This system project equipped with:
 - Memorial System:
   - FTS5
   - FAISS integration
@@ -28,28 +31,28 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 - local TTS runtime
 - OpenAI-compatible API layer
 
-### 1. Hybrid memory system:
+### 🎖️1. Hybrid memory system:
 It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This means it can recall information both through keyword matching (exact recall) and semantic similarity (contextual recall). with ranking system at 1.4
 
-### 2. Persistent sessions:
+### 📘2. Persistent sessions:
 Conversations are saved in JSON and databases, so the assistant can resume past dialogues and maintain continuity.
 
-### 3. Embedding flexibility:
+### 🔧3. Embedding flexibility:
 It uses an ONNX model (all-mpnet-base-v2) for efficient embeddings with GPU/DirectML support, making it lighter and portable across hardware.
 
-### 4. Summarization and compression:
+### 📝4. Summarization and compression:
 Long sessions are summarized automatically using a secondary model, preventing memory bloat while keeping important facts.
 
-### 5. Knowledge learning mode:
+### 📜5. Knowledge learning mode:
 A separate learning database lets the system extract insights, form new knowledge entries, and store them for reuse—giving it a "growing memory."
 
-### 6. Personal data extraction & storage: <---in progress for making AI can remember more special info from user 
+### ❗6. Personal data extraction & storage: <---in progress for making AI can remember more special info from user 
 With simple classification, it detects if user input contains personal information, extracts it, and stores it in a personal file.
 
-### 7. Custom persona support:
+### 🗣️7. Custom persona support:
 It loads personality instructions from PersonaAI.txt, so users can shape the assistant’s behavior without modifying the code.
 
-## Use Cases
+# 🟢Use Cases
 
 ### Personal AI assistant:
 Tracks conversations, remembers context, and adapts responses over time.
@@ -64,7 +67,7 @@ Since it integrates OpenAI-like APIs and local ONNX embeddings, it’s a good pl
 By separating personal data into its own text file, it makes compliance with privacy rules more manageable.
 
 
-## Deployment Preview:
+# ⚡Deployment Preview🎮:
 - Minecraft using mod Touhou Little Maid by TartaricAcid:
 
 https://github.com/user-attachments/assets/486d2def-e81b-45ea-bcca-2236af8183dd
@@ -87,7 +90,7 @@ https://github.com/user-attachments/assets/0d3f242f-4518-4eec-b344-8422af5a620e
 
 And Many more, all for support your idea to make project with AI!
 
-## Hardware min Recommendation:
+# ⚠️Hardware min Recommendation:
 NOTE: its based on your model parameter
 
 Ram min 24gig or more for play and run AI smoothly. 
@@ -98,7 +101,7 @@ that is mandatory or if you dont have powerfull cpu, atleast have Powerfull GPU.
 GPU : RTX 2060/3000+ / IGPU  from IGPU: Ryzen AI/Intel Ultra (Vram 6-8gigs)
 
 
-## Getting Started
+# 🚀Getting Started
 ### To install
 before to installation make sure you have the Runtime Backend provider (LemonadeServer / Ollama)
 1. Install Pyton3.10
@@ -111,8 +114,8 @@ https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 
 
 
-## To Use 
-### 1. Basic run test
+### To Use 
+#### 🍿1. Basic run test
 1. Run ```RunTTS.bat``` to turn on XTTS
 2. go to core/app-settings/dist/win-unpacked and make shortcut for ```LAPAI Settings editor.exe``` it for settings from model name you use to persona you want
 3. run LAPAI Settings editor and set your model and persona (OLLAMA / LemonadeServer)
@@ -120,7 +123,7 @@ https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
    
 https://github.com/user-attachments/assets/0a183efe-94d2-4406-9f47-676e60770dcf
 
-### 2. API using - advance customize
+#### 🔮2. API using - advance customize
 
 make sure backend Lemonade or Ollama its activate or running
 
@@ -417,8 +420,8 @@ void setup()
 }
 void loop() {
     if (Serial.available()) {
+<img width="1920" height="1080" alt="Hijau dan Putih Modern Prompt AI Populer Presentasi" src="https://github.com/user-attachments/assets/54de4897-61fd-42e5-a922-0983ae15c295" />
 
-        // 1. Baca perintah LED dulu
         String ledcmd = Serial.readStringUntil('\n');
         ledcmd.trim();
 
@@ -427,7 +430,6 @@ void loop() {
         else if (ledcmd == "LED_B_ON") digitalWrite(3, HIGH);
         else if (ledcmd == "LED_B_OFF") digitalWrite(3, LOW);
 
-        // 2. Baca pesan utama
         String oledMsg = Serial.readStringUntil('\n');
         oledMsg.trim();
         display.clearDisplay();

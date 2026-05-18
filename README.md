@@ -419,7 +419,6 @@ public class AIRespons : MonoBehaviour
     public Button sendButton;               // drag from Inspector
 
     [Header("Server Settings")]
-    private string apiUrl = "Place-your-Url-here";
     private string modelName = "Place-your-main-model-here"; 
 
     string persona = ""; // here if you wanna set persona but make sure PersonaAI on settings ist empty
@@ -442,7 +441,6 @@ public class AIRespons : MonoBehaviour
     private IEnumerator SendToLocalAI(string userInput)
     {
         string jsonData = @"{
-            ""model"": """ + modelName + @""",
             ""messages"": [
                 { ""role"": ""system"", ""content"": """ + persona + @""" },
                 { ""role"": ""user"", ""content"": """ + userInput + @""" }

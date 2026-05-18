@@ -1,10 +1,19 @@
-# LAPAI Local Agent Personal Artificial Intellegence [experimental]
+# LAPAI [Experimental]
 
+<p align="center">
+  <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
+  <img src="https://img.shields.io/badge/Version-1.4-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
+  <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-blue.svg">
+  <img src="https://img.shields.io/badge/license-MIT-green">
+</p>
 <img width="1920" height="1080" alt="Start" src="https://github.com/user-attachments/assets/a836bfa6-a69e-4053-8b0b-770c1a2c09ea" />
 
 
 
 ### What is LAPAI? 📋
+
+> Local Agent Personal Artificial Intellegence
 
 LAPAI Project is a project for Local AI Runtime, this is work as Runtime to give AI Feature that can have memorial and learning ability. This local AI runtime can use any backend provider, but this project develop under LemonadeServer(Ryzen) and slightly with Ollama(non-Ryzen) all because my currently device using Ryzen AI and i am working this project alone. This project for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
 
@@ -14,12 +23,9 @@ and for them who want mod, create, learn, project, game to using AI locally (  �
 Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful.
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it (˶ᵔ ᵕ ᵔ˶).
 
-
-![MadeBy](https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg)
-![Version](https://img.shields.io/badge/Version-1.4-brightgreen.svg)
-![Develop](https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg)
-![AI](https://img.shields.io/badge/AI-%20RuntimeLocal-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+<p align="center">
+  
+</p>
 
 ## ✅This system project equipped with:
 - Memorial System:
@@ -41,11 +47,12 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 
 - [Features](##features)
 - [Usage](#usage)
+- [Preview](#deployment)
 - [Installation](#installation)
 - [License](#license)
 
 
-## Features🧩
+# Features🧩
 ### 🎖️1. Hybrid memory system:
 It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This means it can recall information both through keyword matching (exact recall) and semantic similarity (contextual recall). with ranking system at 1.4
 

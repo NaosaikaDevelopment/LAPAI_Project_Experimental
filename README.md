@@ -241,7 +241,9 @@ if __name__ == "__main__":
 
  ```
 
-**To use in unity**
+**To use in unity** 
+
+--for action command--
 
 1. Prompt in Runtime you make paste this:
 ```
@@ -260,7 +262,147 @@ prompt = [
 ```
 3. Run the API runtime you make in Terminal tab with LAPAI env in then type: ```py your-file-location/your-runtime-filename.py```
 
-4. you can use template from ```Template_Program_AIResponsForGameEngine.cs``` or copy -
+4. you can use template from ```GameDevelopmentCommandAITemplate.cs``` or copy - 
+```
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections;
+using UnityEngine.Networking;
+using System.Text;
+using System.Diagnostics;
+
+public class AIchatRespons : MonoBehaviour
+{
+    [Header("UI References")]
+    //optional - Set as you want, modify as you want
+    public TMP_InputField userInputField;   // drag from Inspector
+    public TMP_Text aiResponseText;         // drag from Inspector
+    public Button sendButton;               // drag from Inspector
+
+    [Header("Server Settings")]
+    private string apiUrl = "http://localhost:3440/v1/chat/completions";
+    private string modelName = "Llama-3.2-3B-Instruct-Hybrid"; //Model name you use, you can change as you want
+
+
+    private void Start()
+    {
+        sendButton.onClick.AddListener(OnSendClicked);
+    }
+
+    private void OnSendClicked()
+    {
+        string userInput = userInputField.text;
+        if (!string.IsNullOrEmpty(userInput))
+        {
+            StartCoroutine(SendToLocalAI(userInput));
+            userInputField.text = "";
+        }
+    }
+
+    private IEnumerator SendToLocalAI(string userInput)
+    {
+        string jsonData = @"{
+            ""model"": """ + modelName + @""",
+            ""messages"": [
+                { ""role"": ""user"", ""content"": """ + userInput + @""" }
+            ]
+        }";
+
+        using (UnityWebRequest request = new UnityWebRequest(apiUrl, "POST"))
+        {
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            var apiKey = "lemonade"; //its actually optional but better than nothing
+            request.SetRequestHeader("Authorization", "Bearer " + apiKey);
+
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string json = request.downloadHandler.text;
+                UnityEngine.Debug.Log("Raw Response: " + json);
+
+                // Parse response JSON
+                LocalAIResponse parsed = JsonUtility.FromJson<LocalAIResponse>(json);
+
+                if (parsed != null && parsed.choices != null && parsed.choices.Length > 0)
+                {
+                    ActionMessage msg = parsed.choices[0].message;
+
+                    // Command AI to action
+                    if (msg.execute)
+                    {
+                        //For example:
+                        if (msg.command == "walk")
+                        {
+                            UnityEngine.Debug.Log("AI says: WALK");
+                            // GetComponent<CharacterController>().Move(Vector3.forward * Time.deltaTime * 5f);
+                        }
+                        else if (msg.command == "jump")
+                        {
+                            UnityEngine.Debug.Log("AI says: JUMP");
+                            // GetComponent<Animator>().SetTrigger("Jump");
+                        }
+                        // add anything you wat here, base from your command to AI, AI would automatic set as you order, if shoot AI will shoot, if walk AI will walk, anything
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("AI decided not to execute command: " + msg.reason);
+                    }
+                }
+                else
+                {
+                    aiResponseText.text = "No response";
+                }
+
+            }
+            else
+            {
+                aiResponseText.text = "Error: " + request.error;
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class ActionMessage
+    {
+        public string command;
+        public bool execute;
+        public string reason;
+    }
+
+    [System.Serializable]
+    public class Choice
+    {
+        public int index;
+        public ActionMessage message;
+        public string finish_reason;
+    }
+
+    [System.Serializable]
+    public class LocalAIResponse
+    {
+        public string id;
+        public string @object;
+        public Choice[] choices;
+    }
+
+
+}
+
+```
+this example for the template to using AI responses and inject it in Unity as action, so be creative ദ്ദി ˉ͈̀꒳ˉ͈́ )✧
+
+https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
+
+--AI Responses--
+
+1. no need prompt, you can use from ```RunAPI-G.bat```
+2. you can use template from ```Template_Program_AIResponsForGameEngine.cs``` or copy -
 ```
 using UnityEngine;
 using UnityEngine.UI;
@@ -277,10 +419,10 @@ public class AIRespons : MonoBehaviour
     public Button sendButton;               // drag from Inspector
 
     [Header("Server Settings")]
-    private string apiUrl = "Place-your-Url-API-here";
-    private string modelName = "Place-your-main-model-here"; //from setting 1MainModelName.txt as you follow the guide; LAPAI_Guide_v1.3.pptx
+    private string apiUrl = "Place-your-Url-here";
+    private string modelName = "Place-your-main-model-here"; 
 
-    string persona = ""; // here if you wanna set persona but make sure PersonaAI.txt on Settings folder its empty
+    string persona = ""; // here if you wanna set persona but make sure PersonaAI on settings ist empty
 
     private void Start()
     {
@@ -342,6 +484,7 @@ public class AIRespons : MonoBehaviour
         }
     }
 
+
     [System.Serializable]
     public class LocalAIResponse
     {
@@ -361,8 +504,12 @@ public class AIRespons : MonoBehaviour
         public string content;
     }
 }
- ```
-this example for the template to using AI responses and inject it in Unity UI text and the action in same time, so be creative ദ്ദി ˉ͈̀꒳ˉ͈́ )✧
+
+```
+Then from here you able to command AI to unity (  ≧ᗜ≦).
+
+https://github.com/user-attachments/assets/05099062-a69d-4b0d-9cc8-1a4d58dafeba
+
 
 **Arduino use**
 

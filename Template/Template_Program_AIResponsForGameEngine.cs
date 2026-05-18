@@ -14,9 +14,9 @@ public class AIRespons : MonoBehaviour
 
     [Header("Server Settings")]
     private string apiUrl = "Place-your-Url-here";
-    private string modelName = "Place-your-main-model-here"; //from setting 1MainModelName.txt as you follow the guide; LAPAI_Guide_v1.3.pptx
+    private string modelName = "Place-your-main-model-here"; 
 
-    string persona = ""; // here if you wanna set persona but make sure PersonaAI.txt on Settings folder its empty
+    string persona = ""; // here if you wanna set persona but make sure PersonaAI on settings ist empty
 
     private void Start()
     {
@@ -78,7 +78,7 @@ public class AIRespons : MonoBehaviour
         }
     }
 
-    // ==== Data classes for parsing JSON ====
+
     [System.Serializable]
     public class LocalAIResponse
     {

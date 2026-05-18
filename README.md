@@ -45,7 +45,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 
 ## Contents🗺️
 
-- [Features](##features)
+- [Features](#features)
 - [Usage](#use-cases)
 - [Preview](#deployment-preview)
 - [Installation](#getting-started)
@@ -615,7 +615,7 @@ maybe you would be need some extension from ardn like Adafruit_GFX and Adafruit_
 
 this example using it to control LED and show output in LED or Screen OLED or what it is ( ദ്ദി ˙ᗜ˙ ).
 
-## _Note to experiment with it_
+## _🚨Note to experiment with it_
 Some code you check maybe had error because the "Location not found" or something like that.
 im really sorry, sometime i make testing and forgot to clear/change it.
 
@@ -643,6 +643,8 @@ except Exception as e:
     print("Lemonade Server not installed")
 ```
 and some note too, if you want to use template, you can download in this repo in "Template" folder, have fun! ٩(ˊᗜˋ*)و ♡
+
+[Back to top](#LAPAI-[Experimental])
 
 
 # Changelog📰

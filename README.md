@@ -160,7 +160,7 @@ Then run LAPAI environment ```This-project-located\LAPAIv1.4\MainCore\core\LAPAI
 The Terminal you using now using LAPAI environment
 
 Make your runtime here with python:
-```
+```python
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Optional
@@ -271,7 +271,7 @@ if __name__ == "__main__":
 --for action command--
 
 1. Prompt in Runtime you make paste this:
-```
+```python
 prompt = [
         {
             "role": "system",
@@ -288,7 +288,7 @@ prompt = [
 3. Run the API runtime you make in Terminal tab with LAPAI env in then type: ```py your-file-location/your-runtime-filename.py```
 
 4. you can use template from ```GameDevelopmentCommandAITemplate.cs``` or copy - 
-```
+```C#
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -428,7 +428,7 @@ https://github.com/user-attachments/assets/05099062-a69d-4b0d-9cc8-1a4d58dafeba
 
 1. no need prompt, you can use from ```RunAPI-G.bat```
 2. you can use template from ```Template_Program_AIResponsForGameEngine.cs``` or copy -
-```
+```C#
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; 
@@ -537,7 +537,7 @@ https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
 **Arduino use**
 
 1. you can add your instruction in prompt all you want, for example like this:
-```
+```python
 prompt = [
         {
             "role": "system",
@@ -553,7 +553,7 @@ prompt = [
     ]
 ```
 2. and your arduino code should be like this:
-```
+```ino
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -614,6 +614,36 @@ void loop() {
 maybe you would be need some extension from ardn like Adafruit_GFX and Adafruit_SSD1306, to handle the screen.
 
 this example using it to control LED and show output in LED or Screen OLED or what it is ( ദ്ദി ˙ᗜ˙ ).
+
+## _Note to experiment with it_
+Some code you check maybe had error because the "Location not found" or something like that.
+im really sorry, sometime i make testing and forgot to clear/change it.
+
+if you open some python file in core folder (For you wanna to experiment or learn from it) in this:
+
+```python
+clss = ["lemonade-server", "status"]
+hasil = subprocess.run(clss, capture_output=True, text=True, shell=True)
+if "Server is not running" in hasil.stdout:
+    print("error; server Offline, start automatic!")
+    condition = False
+    asls = r"D:\ND\bin\lemonade_server.vbs"
+    subprocess.run(asls, shell=True)
+```
+you can change to:
+```python
+try:
+    clss = ["lemonade-server","status"]
+    hasil = subprocess.run(clss, capture_output=True, text=True, shell=True)
+    if "Server is not running" in hasil.stdout:
+        print("error; server Offline, start automatic!")
+        condition = False
+        subprocess.run("lemonadeServer.exe", shell=True)
+except Exception as e:
+    print("Lemonade Server not installed")
+```
+and some note too, if you want to use template, you can download in my repo in "Template" folder, have fun! ٩(ˊᗜˋ*)و ♡
+
 
 # Changelog📰
 #### update v1.3

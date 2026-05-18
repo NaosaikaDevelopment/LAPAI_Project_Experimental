@@ -6,7 +6,7 @@
 
 ### What is LAPAI? 📋
 
-LAPAI Project is a project for Local AI Runtime, this is work as Runtime to give AI Feature that can have memorial and learning ability. all completely offline, with backend LemonadeServer for Ryzen and Ollama for non Ryzen. It for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
+LAPAI Project is a project for Local AI Runtime, this is work as Runtime to give AI Feature that can have memorial and learning ability. This local AI runtime can use any backend provider, but this project develop under LemonadeServer(Ryzen) and slightly with Ollama(non-Ryzen) all because my currently device using Ryzen AI and i am working this project alone. This project for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
 
 **Note: this is not AI platformer, this is special for AI Integrator** (ᵕ—ᴗ—).
 This project work for them seeking AI with API Open AI style and work for its own project sake,
@@ -88,7 +88,7 @@ https://github.com/user-attachments/assets/0d3f242f-4518-4eec-b344-8422af5a620e
 
 
 
-And Many more, all for support your idea to make project with AI!
+And Many more, all for support your idea to make project with AI! ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧
 
 # ⚠️Hardware min Recommendation:
 NOTE: its based on your model parameter
@@ -678,6 +678,7 @@ under their own respective licenses:
 - all-mpnet-base-v2 (Apache 2.0)
 - SentenceTransformers (Apache 2.0)
 - HuggingFace Transformers (Apache 2.0)
+- Every Component in this project with its own license
 
 LAPAI does not redistribute third-party model weights.
 Models are downloaded or installed separately by users.

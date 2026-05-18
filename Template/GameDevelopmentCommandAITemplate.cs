@@ -16,7 +16,7 @@ public class AIchatRespons : MonoBehaviour
 
     [Header("Server Settings")]
     private string apiUrl = "http://localhost:3440/v1/chat/completions";
-    private string modelName = "Llama-3.2-3B-Instruct-Hybrid"; //from setting 1MainModelName.txt as you follow the guide; LAPAI_Guide_v1.3.pptx
+    private string modelName = "Llama-3.2-3B-Instruct-Hybrid"; //Model name you use, you can change as you want
 
 
     private void Start()
@@ -101,7 +101,6 @@ public class AIchatRespons : MonoBehaviour
         }
     }
 
-    // ==== Data classes for parsing JSON ====
     [System.Serializable]
     public class ActionMessage
     {

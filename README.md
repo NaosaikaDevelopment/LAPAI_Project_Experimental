@@ -662,7 +662,12 @@ make the Installation more simple
 ## License
 LAPAI source code is licensed under the MIT License. - see the [LICENSE](LICENSE) file for details.
 
+
 ### Third-party components
+
+
+LAPAI is a local AI runtime/framework that can work
+with multiple backends and third-party AI providers.
 
 Third-party components and AI models are licensed
 under their own respective licenses:
@@ -677,8 +682,14 @@ under their own respective licenses:
 LAPAI does not redistribute third-party model weights.
 Models are downloaded or installed separately by users.
 
+Backend services, AI models, and runtimes remain
+under their own respective licenses and terms.
+
 Users are responsible for complying with the licenses
 of all third-party components and models.
+
+
+
 
 
 # Note

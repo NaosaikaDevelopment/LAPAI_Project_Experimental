@@ -46,7 +46,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 ## Contents🗺️
 
 - [Features](##features)
-- [Usage](#use)
+- [Usage](#use_case)
 - [Preview](#deployment)
 - [Installation](#getting)
 - [License](#license)
@@ -74,7 +74,7 @@ With simple classification, it detects if user input contains personal informati
 ### 🗣️7. Custom persona support:
 It loads personality instructions from PersonaAI.txt, so users can shape the assistant’s behavior without modifying the code.
 
-# 🟢Use Cases
+# Use Cases🟢
 
 ### Personal AI assistant:
 Tracks conversations, remembers context, and adapts responses over time.

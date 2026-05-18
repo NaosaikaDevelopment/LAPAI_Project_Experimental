@@ -642,7 +642,7 @@ try:
 except Exception as e:
     print("Lemonade Server not installed")
 ```
-and some note too, if you want to use template, you can download in my repo in "Template" folder, have fun! ٩(ˊᗜˋ*)و ♡
+and some note too, if you want to use template, you can download in this repo in "Template" folder, have fun! ٩(ˊᗜˋ*)و ♡
 
 
 # Changelog📰

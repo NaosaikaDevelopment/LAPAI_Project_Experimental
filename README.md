@@ -397,7 +397,7 @@ public class AIchatRespons : MonoBehaviour
 ```
 this example for the template to using AI responses and inject it in Unity as action, so be creative ദ്ദി ˉ͈̀꒳ˉ͈́ )✧
 
-https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
+https://github.com/user-attachments/assets/05099062-a69d-4b0d-9cc8-1a4d58dafeba
 
 --AI Responses--
 
@@ -508,8 +508,8 @@ public class AIRespons : MonoBehaviour
 ```
 Then from here you able to command AI to unity (  ≧ᗜ≦).
 
-https://github.com/user-attachments/assets/05099062-a69d-4b0d-9cc8-1a4d58dafeba
 
+https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
 
 **Arduino use**
 

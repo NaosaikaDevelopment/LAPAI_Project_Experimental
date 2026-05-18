@@ -670,6 +670,7 @@ This project uses several open-source components:
 - ONNXRuntime (MIT License)
 - HuggingFace Transformers (Apache 2.0)
 - HuggingFace model `all-mpnet-base-v2` (Apache 2.0)
+- Coqui XTTS-v2 (CPML)
 
 All third-party components remain under their original licenses.
 

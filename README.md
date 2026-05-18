@@ -747,7 +747,9 @@ Users are responsible for complying with the licenses
 of all third-party components and models.
 
 
-
+<p align="center">
+  <img width="851" height="315" alt="Lapai-Development_20260519_024330_0000 (1)" src="https://github.com/user-attachments/assets/ed3e5918-7b24-467d-bf51-ed42e1d0431b" />
+</p>
 
 
 # Note
@@ -760,3 +762,4 @@ of all third-party components and models.
 
 
 ## Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung
+

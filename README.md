@@ -754,7 +754,7 @@ of all third-party components and models.
 - Adding Learning from Online
 - Can gather information from online
 
-### this project leading to AI assistant offline/online
+### this project leading to AI integrator, for simplified project AI development 
 
 
 ## Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung

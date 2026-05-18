@@ -419,7 +419,7 @@ public class AIRespons : MonoBehaviour
     public Button sendButton;               // drag from Inspector
 
     [Header("Server Settings")]
-    private string modelName = "Place-your-main-model-here"; 
+    private string apiUrl = "Place-your-Url-here";
 
     string persona = ""; // here if you wanna set persona but make sure PersonaAI on settings ist empty
 

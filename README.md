@@ -660,26 +660,25 @@ make the Installation more simple
 
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-The LAPAI source code is licensed under MIT.
+LAPAI source code is licensed under the MIT License. - see the [LICENSE](LICENSE) file for details.
 
 ### Third-party components
-This project uses several open-source components:
 
-- FAISS (MIT License)
+Third-party components and AI models are licensed
+under their own respective licenses:
+
+- FAISS (MIT)
+- ONNXRuntime (MIT)
 - Coqui XTTS-v2 (CPML)
-- ONNXRuntime (MIT License)
+- all-mpnet-base-v2 (Apache 2.0)
 - SentenceTransformers (Apache 2.0)
 - HuggingFace Transformers (Apache 2.0)
-- HuggingFace model `all-mpnet-base-v2` (Apache 2.0)
 
-AI models, weights, and third-party runtimes
-remain under their original licenses.
+LAPAI does not redistribute third-party model weights.
+Models are downloaded or installed separately by users.
 
-All third-party components remain under their original licenses.
-
-Users are responsible for complying with the licenses of all third-party components.
+Users are responsible for complying with the licenses
+of all third-party components and models.
 
 
 # Note

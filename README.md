@@ -506,7 +506,7 @@ public class AIRespons : MonoBehaviour
 }
 
 ```
-Then from here you able to command AI to unity (  ≧ᗜ≦).
+Then from here you able to talk with AI, perfect for talkable npc, because of the tiny parameter model we can use (  ≧ᗜ≦).
 
 
 https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b

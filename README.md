@@ -590,7 +590,7 @@ maybe you would be need some extension from ardn like Adafruit_GFX and Adafruit_
 
 this example using it to control LED and show output in LED or Screen OLED or what it is ( ദ്ദി ˙ᗜ˙ ).
 
-## Changelog
+# Changelog📰
 #### update v1.3
 from here you can using self host and get API from this project, to AI development in your project without think about memory management or anything about AI management,
 just paste your API you got from this project script and done, you can play or development with AI in your device without network or data go to cloud. for this have a guide check release page v1.3

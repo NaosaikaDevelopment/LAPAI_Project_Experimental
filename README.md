@@ -74,6 +74,9 @@ With simple classification, it detects if user input contains personal informati
 ### 🗣️7. Custom persona support:
 It loads personality instructions from PersonaAI.txt, so users can shape the assistant’s behavior without modifying the code.
 
+### ♾️8. API connector:
+With simple API made, to connecting two diffrent program/project or even game, make this more fun to experiment with.
+
 # Use Cases🟢
 
 ### Personal AI assistant:

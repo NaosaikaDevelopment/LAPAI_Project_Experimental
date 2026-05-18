@@ -7,9 +7,7 @@
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-blue.svg">
   <img src="https://img.shields.io/badge/license-MIT-green">
 </p>
-<p align="center">
-  <img width="851" height="315" alt="Lapai-Development_20260519_024330_0000 (1)" src="https://github.com/user-attachments/assets/ed3e5918-7b24-467d-bf51-ed42e1d0431b" />
-</p>
+
 <img width="1920" height="1080" alt="Start" src="https://github.com/user-attachments/assets/a836bfa6-a69e-4053-8b0b-770c1a2c09ea" />
 
 

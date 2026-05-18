@@ -116,7 +116,7 @@ https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 
 ### To Use 
 #### 🍿1. Basic run test
-1. Run ```RunTTS.bat``` to turn on XTTS
+1. Run ```RunTTS.bat``` to turn on XTTS (optional)
 2. go to core/app-settings/dist/win-unpacked and make shortcut for ```LAPAI Settings editor.exe``` it for settings from model name you use to persona you want
 3. run LAPAI Settings editor and set your model and persona (OLLAMA / LemonadeServer)
 4. Run ```Run.bat``` to run it in Terminal to test it, then to test API from the project Run ```RunAPI-G.bat``` or ```RunAPI-G_WithoutTrace.vbs``` to run it without tracer this one for you want to use it in another project or game or development

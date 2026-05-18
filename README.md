@@ -24,7 +24,7 @@ Build light as possible with enhance abilty for tiny model so that can work with
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it (˶ᵔ ᵕ ᵔ˶).
 
 <p align="center">
-  
+  --==-- -Development- --==--
 </p>
 
 ## ✅This system project equipped with:

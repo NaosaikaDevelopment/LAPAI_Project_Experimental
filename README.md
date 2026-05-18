@@ -46,7 +46,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 ## Contents🗺️
 
 - [Features](##features)
-- [Usage](#use_case)
+- [Usage](#use//case)
 - [Preview](#deployment)
 - [Installation](#getting)
 - [License](#license)

@@ -96,15 +96,14 @@ By separating personal data into its own text file, it makes compliance with pri
 
 
 
-# ⚠️Hardware min Recommendation:
+# ⚠️Hardware Tested on:
 NOTE: its based on your model parameter
 
-Ram min 24gig or more for play and run AI smoothly. 
+Ram 24gigs 
 
-CPU/APU AI series Ryzen AI (7000 series)/Intel Ultra or I5-12th/I7 series/Ryzen7/9 (The more Core its more recomended), 
-that is mandatory or if you dont have powerfull cpu, atleast have Powerfull GPU.
+RyzenAI 7 350
 
-GPU : RTX 2060/3000+ / IGPU  from IGPU: Ryzen AI/Intel Ultra (Vram 6-8gigs)
+GPU : Radeon 860M
 
 
 # 🚀Getting Started

@@ -1,3 +1,7 @@
+- [To Use (Basic Test)](#To-use)
+- [Multiple Backend](#use-cases)
+
+
 ### To Use 
 #### 🍿1. Basic run test
 1. Run ```RunTTS.bat``` to turn on XTTS (optional)
@@ -502,3 +506,15 @@ except Exception as e:
     print("Lemonade Server not installed")
 ```
 and some note too, if you want to use template, you can download in this repo in "Template" folder, have fun! ٩(ˊᗜˋ*)و ♡
+
+
+
+
+# To use with another backend
+
+Not to worries if you want to use it with another backend, and all you need to do just change the API in *LAPAI_Core.py*
+<img width="1337" height="991" alt="image" src="https://github.com/user-attachments/assets/c258a680-8fb4-47a6-8f95-678c1f0730b6" />
+
+Here *LEMONADE_BASE_URL* and change the url with what you want.
+Currently it not change because im still using it till now to developing this
+

@@ -48,7 +48,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 
 - [Features](#features)
 - [Usage](#use-cases)
-- [Preview](#deployment-preview)
+- [Preview](Changelog&Preview)
 - [Installation](#getting-started)
 - [License](#license)
 
@@ -94,28 +94,7 @@ By separating personal data into its own text file, it makes compliance with pri
 
 
 
-# ⚡Deployment Preview🎮:
-- Minecraft using mod Touhou Little Maid by TartaricAcid:
 
-https://github.com/user-attachments/assets/486d2def-e81b-45ea-bcca-2236af8183dd
-
-
-
-
-
-- Unity Engine AI offline Deployment:
-
-https://github.com/user-attachments/assets/dc69ca07-ecb3-476d-947e-b610915ea08b
-
-- AI Assitance (in this case im using [LAPAI UI](https://github.com/NaosaikaDevelopment/UI-LAPAI))
-  
-
-
-https://github.com/user-attachments/assets/0d3f242f-4518-4eec-b344-8422af5a620e
-
-
-
-And Many more, all for support your idea to make project with AI! ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧
 
 # ⚠️Hardware min Recommendation:
 NOTE: its based on your model parameter

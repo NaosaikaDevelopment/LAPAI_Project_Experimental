@@ -453,7 +453,6 @@ void setup()
 }
 void loop() {
     if (Serial.available()) {
-<img width="1920" height="1080" alt="Hijau dan Putih Modern Prompt AI Populer Presentasi" src="https://github.com/user-attachments/assets/54de4897-61fd-42e5-a922-0983ae15c295" />
 
         String ledcmd = Serial.readStringUntil('\n');
         ledcmd.trim();

@@ -28,7 +28,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
   --==-- -Development- --==--
 </p>
 
-## ✅This system project equipped with:
+## This system project equipped with:
 - Memorial System:
   - FTS5
   - FAISS integration
@@ -44,7 +44,7 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 - local TTS runtime
 - OpenAI-compatible API layer
 
-## Contents🗺️
+## Contents
 
 - [Features](#features)
 - [Usage](HowToUseIt.md)

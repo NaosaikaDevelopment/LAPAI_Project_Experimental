@@ -12,17 +12,17 @@
 
 
 
-### What is LAPAI? 📋
+### What is LAPAI?
 
 > Local Agent Personal Artificial Intellegence
 
-LAPAI Project is a project for Local AI Runtime, this is work as Runtime to give AI Feature that can have memorial and learning ability. This local AI runtime can use any backend provider, therefore this project develop under LemonadeServer(Ryzen) and slightly with Ollama(non-Ryzen and basiclly it can run all backend that work with OpenAI-Style API. This project for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project its for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
+LAPAI Project is a project for Local AI Runtime, this is work as Runtime to give AI Feature that can have memorial and learning ability. This local AI runtime can use any backend provider, therefore this project develop under LemonadeServer(Ryzen) and slightly with Ollama(non-Ryzen) and basiclly it can run all backend that work with OpenAI-Style API. This project for people want to have its own AI without the heavy wraper that can bleeding the pc resource for its own project. This project its for those who want to have its own AI local but didn't want to using heavy AI, at the same time want to using light AI but didn't want to make the complex system so it can peform better and the most important Work Locally or Offline.
 
-> **Note: this is not AI platformer, this is special for AI Integrator** (ᵕ—ᴗ—).
+> **Note: this is not AI platformer, this is special for AI Integrator**.
 This project work for them seeking AI with API Open AI style and work for its own project sake,
-and for them who want mod, create, learn, project, game to using AI locally (  ≧ᗜ≦).
+and for them who want mod, create, learn, project, game to using AI locally.
 Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful.
-Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, have fun experiment with it (˶ᵔ ᵕ ᵔ˶).
+Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, feel free to experiment with it.
 
 <p align="center">
   --==-- -Development- --==--

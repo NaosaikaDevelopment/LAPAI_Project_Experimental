@@ -426,6 +426,8 @@ of all third-party components and models.
 ### Future plan:
 - Adding Learning from Online
 - Can gather information from online
+### In case you want to contact me
+- Discord : Naosaika#9386
 
 ### this project leading to AI integrator, for simplified project AI development 
 

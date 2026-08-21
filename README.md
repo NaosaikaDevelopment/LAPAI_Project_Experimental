@@ -266,7 +266,7 @@ while condition:
 append_message(session_id, session_file, "SYSTEM", "[INFO] User Offline.")
 append_message(session_id, session_file, "SYSTEM", "System Offline.")
 ```
-some code customization so that you can get the faster way the output, in here too is where trigger down the learning independently. and some progress feature that maybe i should delete it?
+some code is customized so that you can get the faster way the output, in here too is where trigger down the learning independently. and some progress feature that maybe i should delete it?
 this is not really different with the core, just calling function. 
 
 ### To using API of this project to another program or project

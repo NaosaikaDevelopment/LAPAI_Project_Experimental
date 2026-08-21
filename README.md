@@ -375,6 +375,15 @@ https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 [Back to top](#LAPAI-[Experimental])
 
 
+## Contribute
+Contributions to LAPAI are welcome and appreciated! If you'd like to improve this project, please consider:
+
+  - Submitting bug reports with detailed information
+  - Documenting additional configurations or solutions
+  - Creating pull requests with code improvements or new features
+  - Sharing your experience using LAPAI on different distributions
+
+
 
 ## License
 LAPAI source code is licensed under the MIT License. - see the [LICENSE](LICENSE) file for details.

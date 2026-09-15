@@ -429,6 +429,8 @@ of all third-party components and models.
 Some bug fixing and intergrate modular System one by one function, and mostly the hardcoded gonna be change to dynamic. and some optimization, please if you have some tips let me know.
 
 # Note
+
+Be advised, This project is still hardcoded.
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)
 ### Future plan:
 - Adding Learning from Online

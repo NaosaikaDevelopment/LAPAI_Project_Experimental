@@ -25,7 +25,7 @@ when i want to make project about AI i see all the starter so fricking complicat
 > **Note: this is not AI platformer, this is special for AI Integrator**.
 This project work for them seeking AI with API Open AI style and work for its own project sake,
 and for them who want mod, create, learn, project, game to using AI locally.
-Build light as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful.
+Build simple as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful.
 Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, feel free to experiment with it.
 
 <p align="center">

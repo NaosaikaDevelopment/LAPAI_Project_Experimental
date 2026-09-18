@@ -1,1 +1,0 @@
-..\LemonadeServer\Location\bin\lemonade_server.vbs

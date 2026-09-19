@@ -60,7 +60,244 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 - [License](#license)
 
 
-# Features🧩
+# How this new modular system work and how can i use it?
+>Please make sure you using **python 3.10** and set the settings in **folder Settings**, model, sumModel, and Baseurl(your backend provider)(**OpenAI Style**), Persona
+
+On new modular System you can navigate to LAPAIv1.5 and see `MainCore` there you would see 
+```
+{MainCore}
+    |>>> core
+    |>>> runcorefp.py
+    |>>> runcoremain.py
+    |>>> ...(etc)
+```
+Here as you can ` runcorefp.py` and `runcoremain.py` this core had 2 different purpose.
+
+the "FP" is work as FastResponse and "CoreMain" as full sweep search memory and AI Base Decision use as you like, in here i will explain the "FP" cause i developing focused on it. 
+
+
+So when you open it you will found:
+```py
+from .core import *
+```
+that is the main core of LAPAI, and some function migrate to this fpcore while for compability reason. So now how can you use it? it is very simple actually.
+
+
+first of all this project will installed with its own end or known as ` LAPAI-env `
+please make sure to use the env or you can add by yourself with install the `requirement.txt`
+to turn on the env console had different way in different OS
+
+### Linux
+```sh
+source LAPAI-env/bin/Activate
+```
+
+### Windows
+```batch
+call LAPAI-env/Scripts/Activate
+```
+
+Than to use it:
+```py
+from MainCore.core import *
+from MainCore.runcorefp import *
+# import module
+
+initialize_core()
+# initial the core for all memory system DB
+
+msg = "Hello Naove!"
+# Input
+
+reply = Main_Core_FP_Function(msg)
+print(replay)
+#Output
+```
+and just like that! you can made your own project. but this case is integrate LAPAI system directly.
+how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere
+
+**To Use it**
+Require OpenAI library to accsess the API and make sure your project or another program Language is installed
+```py
+#PYTHON
+from openai import OpenAI
+#Using OpenAI
+
+client = OpenAI(base_url="http://localhost:SEE_FROM_QAPI_GUIDER/v1", api_key="Dummy" )
+#get the url localhost
+
+msg = "hallo"
+#msg
+
+reply = client.chat.completions.create(
+    model="",
+    messages=[{"role":"user","content": msg}]
+)
+#Make sure output like this client.chat.completion.create(...same as on up there) because the API litening on V1/chat/completion
+
+print(reply.choices[0].message.content)
+#make sure the replay had the "choices[0].message.content" to get the content
+
+```
+
+And all you set. to another language program you can see the template and [How to use it?](HowToUseIt.md).
+
+
+
+### You want to modify the core? No worry
+in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` and modify by yourself, but what the mean each function that have uniq name? aight i got you:
+
+## 📚 Function Reference
+
+Quick overview of all functions, grouped by module.
+
+**Contents**
+
+1. [Initialization & Sessions](#1-initialization--sessions)
+2. [Memory Management & Retrieval](#2-memory-management--retrieval)
+3. [Vector Search (FAISS)](#3-vector-search-faiss)
+4. [Learning System](#4-learning-system)
+5. [Memory Compaction](#5-memory-compaction)
+6. [Utilities & Scoring](#6-utilities--scoring)
+7. [Personal Data](#7-personal-data)
+8. [Context & Prompt Building](#8-context--prompt-building)
+9. [Main Pipelines](#9-main-pipelines)
+10. [Input Analysis](#10-input-analysis)
+
+---
+
+### 1. Initialization & Sessions
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 1 | `init_faiss()` | — | `index`, `id_map` | Initializes FAISS: loads an existing index or creates a new one, and checks embedding dimensions and map consistency. |
+| 2 | `init_memory_state()` | — | — | Creates the `memory_state` table that stores summaries and the position of already-summarized memory. |
+| 3 | `init_db()` | — | — | Sets up the main `Raw_Memory.db` database, including the session table, the messages FTS5 table, and `memory_state`. |
+| 4 | `init_learning_db()` | — | — | Sets up the learning database: `knowledge`, `sessions`, and `messages`. |
+| 5 | `initialize_core()` | — | `faiss_index`, `id_map` | Orchestrator that initializes all storage, personal data, and FAISS. |
+| 6 | `create_session(title)` | `title` | `sid`, `json_file` | Creates a new chat session in SQLite along with a JSON history file. |
+
+---
+
+### 2. Memory Management & Retrieval
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 7 | `get_memory_state(session_id)` | `session_id` | `dict` | Fetches the summary, checkpoint timestamp, and the `rowid` of the last processed memory. |
+| 8 | `save_memory_state(...)` | session + state | — | Saves or updates the memory state using `ON CONFLICT`. |
+| 9 | `search_memory(query, limit=5)` | `query` | rows | Lexical memory search using SQLite FTS5 + BM25. |
+| 10 | `recall_recent_memory(session_id, minutes=5)` | session, time window | `list` | Retrieves the most recent conversation within a given session. |
+| 11 | `should_recall(user_msg)` | `user_msg` | `bool` | Asks a small model whether the input requires older memory. |
+| 12 | `_sqlite_timestamp_to_epoch(timestamp_text)` | timestamp | epoch | Converts a SQLite timestamp to a Unix timestamp. |
+| 13 | `recall_relevant_memory(...)` | input, limit, threshold | `list` | Main retrieval system: FTS + FAISS + importance + recency + role weighting. |
+| 14 | `append_message(...)` | session, role, content | — | Saves a message to JSON and SQLite, then adds it to FAISS. |
+
+---
+
+### 3. Vector Search (FAISS)
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 16 | `recall_from_faiss(...)` | vector | `list` | Finds the most similar vectors using FAISS and a similarity threshold. |
+| 17 | `generate_embedding(...)` | text, type | vector | Converts text into an embedding using the ONNX `multilingual-e5-small` model. |
+| 18 | `add_to_faiss(...)` | index, text, metadata | updated index/map | Creates an embedding, inserts it into FAISS, and stores the metadata in the JSON map. |
+| 19 | `normalize_embedding(vector)` | vector | vector | Normalizes a vector to unit length (1). |
+
+---
+
+### 4. Learning System
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 20 | `create_session_Learning(title)` | `title` | `sid`, `json_file` | Creates a dedicated learning session. |
+| 21 | `load_knowledge(json_file)` | path | `list` | Loads knowledge from a JSON file. |
+| 22 | `search_knowledge(query, limit=5)` | `query` | rows | Searches knowledge using FTS5. |
+| 23 | `recall_knowledge(...)` | user input | `list` | Extracts keywords → searches knowledge → filters results by score. |
+| 24 | `append_Learning(...)` | session, role, content | — | Saves learning results to JSON and SQLite. |
+| 25 | `start_learning(...)` | client, model, input, context | text | Asks the model to generate learnable information from the user's input. |
+
+---
+
+### 5. Memory Compaction
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 26 | `compact_old_memory(...)` | session + time | summary / `None` | Fetches old memory that has passed the time window and builds a persistent summary. |
+| 27 | `summarize_session(...)` | session | summary | Compatibility wrapper that now calls `compact_old_memory()`. |
+
+---
+
+### 6. Utilities & Scoring
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 28 | `extract_keywords(text)` | text | `list[str]` | Extracts tokens/words from text. |
+| 29 | `parse_yesno(user_it)` | text | `"Yes"` / `"No"` | Extracts a yes/no decision from model output. |
+| 30 | `generate_question(client, model, text)` | client, model, text | question | Generates an investigative question from a piece of text. |
+| 31 | `add_question(question)` | `question` | — | Adds a question to `questions.json`, avoiding duplicates. |
+| 32 | `load_json(path, default=[])` | path | object | JSON reading utility. |
+| 33 | `save_json(path, data)` | path, data | — | JSON writing utility. |
+| 34 | `estimate_tokens(messages)` | `messages` | `int` | Counts tokens using the actual tokenizer. |
+| 35 | `compute_importance(text)` | text | `float` | Determines importance based on text length. |
+| 36 | `normalize_fts(bm25_score)` | BM25 score | `float` | Converts a BM25 score into a value that can be combined with other scores. |
+| 37 | `normalize_faiss(dist)` | distance | `float` | Converts a distance into a similarity-like value. |
+| 38 | `compute_recency(timestamp)` | timestamp | `float` | Computes a recency value with daily decay. |
+
+---
+
+### 7. Personal Data
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 39 | `init_personal_DB()` | — | — | Creates `PersonalData.txt` if it doesn't exist. |
+| 40 | `append_txt(items)` | data | — | Appends personal information to the file. |
+| 41 | `read_txt()` | — | `list` | Reads all personal information from the file. |
+
+---
+
+### 8. Context & Prompt Building
+
+| # | Function | Input | Output | Description |
+|--:|----------|-------|--------|-------------|
+| 42 | `calculate_context_budget(...)` | limit, reserved, used | `int` | Calculates how many tokens remain available for context. |
+| 43 | `trim_prompt(...)` | prompt + memory | prompt | Emergency fallback that removes context when the token limit is exceeded. |
+| 44 | `load_persona()` | — | `str` / `None` | Loads the AI persona from `Settings/PersonaAI.txt`. |
+| 45 | `build_memory_prompt(...)` | summary, memory, knowledge, user msg | `list` | Combines all context sources into the API message format. |
+
+---
+
+### 9. Main Pipelines
+
+| # | Function | Main Input | Output | Description |
+|--:|----------|------------|--------|-------------|
+| 46 | `Main_Core_Function(...)` | user message + session info | reply | Main pipeline: memory compaction, knowledge recall, relevant memory, persona, LLM response, and learning. |
+| 47 | `format_items(items)` | `list` | `str` | Formats memory results into a bullet-point string. |
+| 48 | `get_current_time_context()` | — | `str` | Builds the current date, time, and day-of-week context. |
+| 49 | `Main_Core_FP_Function(...)` | user message + session info | reply | Fast-processing version of the main pipeline, built on the memory + knowledge + persona principle. |
+
+---
+
+### 10. Input Analysis
+
+| # | Function | Main Input | Output | Description |
+|--:|----------|------------|--------|-------------|
+| 50 | `decsn(user_msg)` | `user_msg` | — | Detects whether the input contains personal information and saves it if detected. |
+| 51 | `thoughtm(user_msg)` | `user_msg` | text | Asks a small model to explain the user's actual intent behind the input. |
+
+
+
+
+<p align="center">
+  --==-- -Hopefully this gonna be helpful- --==--
+</p>
+
+
+
+
+
+
+
+# Features
 ### 🎖️1. Hybrid memory system:
 It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This means it can recall information both through keyword matching (exact recall) and semantic similarity (contextual recall). with ranking system at 1.4
 
@@ -70,22 +307,22 @@ Conversations are saved in JSON and databases, so the assistant can resume past 
 ### 🔧3. Embedding flexibility:
 It uses an ONNX model (all-mpnet-base-v2) for efficient embeddings with GPU/DirectML support, making it lighter and portable across hardware.
 
-### 📝4. Summarization and compression:
+### 4. Summarization and compression:
 Long sessions are summarized automatically using a secondary model, preventing memory bloat while keeping important facts.
 
-### 📜5. Knowledge learning mode:
+### 5. Knowledge learning mode:
 A separate learning database lets the system extract insights, form new knowledge entries, and store them for reuse—giving it a "growing memory."
 
-### ❗6. Personal data extraction & storage: <---in progress for making AI can remember more special info from user 
+### 6. Personal data extraction & storage: <---in progress for making AI can remember more special info from user 
 With simple classification, it detects if user input contains personal information, extracts it, and stores it in a personal file.
 
-### 🗣️7. Custom persona support:
+### 7. Custom persona support:
 It loads personality instructions from PersonaAI.txt, so users can shape the assistant’s behavior without modifying the code.
 
-### ♾️8. API connector:
+### 8. API connector:
 With simple API made, to connecting two diffrent program/project or even game, make this more fun to experiment with.
 
-# Use Cases🟢
+# Use Cases
 
 ### Personal AI assistant:
 Tracks conversations, remembers context, and adapts responses over time.
@@ -121,6 +358,7 @@ before to installation make sure you have the Runtime Backend provider (Lemonade
 3. Wait until done, and you all set
 
 https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
+
 
 [Back to top](#LAPAI-[Experimental])
 
@@ -188,4 +426,3 @@ Be advised, This project is still hardcoded.
 
 
 ## Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung
-

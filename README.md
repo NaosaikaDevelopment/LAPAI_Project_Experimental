@@ -119,7 +119,9 @@ and just like that! you can made your own project. but this case is integrate LA
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere
 
 **To Use it**
-Require OpenAI library to accsess the API and make sure your project or another program Language is installed
+Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
+
+in this case i will make it simple with using python as the receiver 
 ```py
 #PYTHON
 from openai import OpenAI

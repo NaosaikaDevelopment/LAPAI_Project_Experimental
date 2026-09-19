@@ -421,7 +421,7 @@ of all third-party components and models.
 
 # Note
 
-Be advised, This project is still hardcoded.
+Be advised, This project is still experimental.
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)
 ### Future plan:
 - Adding Learning from Online

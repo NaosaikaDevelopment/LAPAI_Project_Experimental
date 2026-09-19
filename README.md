@@ -309,7 +309,7 @@ It combines SQLite (FTS5 full-text search) with FAISS vector embeddings. This me
 Conversations are saved in JSON and databases, so the assistant can resume past dialogues and maintain continuity.
 
 ### 🔧3. Embedding flexibility:
-It uses an ONNX model (all-mpnet-base-v2) for efficient embeddings with GPU/DirectML support, making it lighter and portable across hardware.
+It uses an ONNX model (all-mpnet-base-v2) and intfloat/multilingual-e5-small for 1.5 and below for efficient embeddings with GPU/DirectML support, making it lighter and portable across hardware.
 
 ### 4. Summarization and compression:
 Long sessions are summarized automatically using a secondary model, preventing memory bloat while keeping important facts.
@@ -400,6 +400,7 @@ under their own respective licenses:
 - ONNXRuntime (MIT)
 - Coqui XTTS-v2 (CPML)
 - all-mpnet-base-v2 (Apache 2.0)
+- intfloat/multilingual-e5-small(MIT)
 - SentenceTransformers (Apache 2.0)
 - HuggingFace Transformers (Apache 2.0)
 - Every Component in this project with its own license

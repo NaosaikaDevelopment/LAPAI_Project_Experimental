@@ -359,11 +359,11 @@ OS:Windows and Linux
 before to installation make sure you have the Runtime Backend provider (LemonadeServer / Ollama)
 1. Install Pyton3.10
    
-2. Run ```AutoDownloadALL.bat``` **WINDOWS**
+2.0 Run ```AutoDownloadALL.bat``` **WINDOWS**
    
 2.1 Run ```AutoDownloadALL.sh``` **LINUX**
 
-4. Wait until done, and you all set
+3. Wait until done, and you all set
 
 https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 

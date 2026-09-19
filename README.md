@@ -60,8 +60,10 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 - [License](#license)
 
 
-# How this new modular system work and how can i use it?
->Please make sure you using **python 3.10** and set the settings in **folder Settings**, model, sumModel, and Baseurl(your backend provider)(**OpenAI Style**), Persona
+# How this new modular system work and how can i use it? 1.5
+
+> Please make sure you using **python 3.10** and set the settings in **folder Settings**, model, sumModel, and Baseurl(your backend provider)(**OpenAI Style**), Persona
+Finally this update support linux and windows (fyi this version build on bazzite distro known as immutable distro)
 
 On new modular System you can navigate to LAPAIv1.5 and see `MainCore` there you would see 
 ```
@@ -349,6 +351,8 @@ RyzenAI 7 350
 
 GPU : Radeon 860M
 
+
+OS:Windows and Linux
 
 # 🚀Getting Started
 ### To install

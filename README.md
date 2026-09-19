@@ -85,7 +85,7 @@ from .core import *
 that is the main core of LAPAI, and some function migrate to this fpcore while for compability reason. So now how can you use it? it is very simple actually.
 
 
-first of all this project will installed with its own end or known as ` LAPAI-env `
+first of all this project will installed with its own env or known as ` LAPAI-env `
 please make sure to use the env or you can add by yourself with install the `requirement.txt`
 to turn on the env console had different way in different OS
 

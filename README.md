@@ -408,10 +408,6 @@ of all third-party components and models.
   <img width="851" height="315" alt="Lapai-Development_20260519_024330_0000 (1)" src="https://github.com/user-attachments/assets/ed3e5918-7b24-467d-bf51-ed42e1d0431b" />
 </p>
 
-# Inprogress next update
-
-Some bug fixing and intergrate modular System one by one function, and mostly the hardcoded gonna be change to dynamic. and some optimization, please if you have some tips let me know.
-
 # Note
 
 Be advised, This project is still hardcoded.

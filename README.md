@@ -472,9 +472,9 @@ OS:Windows and Linux
 before to installation make sure you have the Runtime Backend provider (LemonadeServer / Ollama)
 1. Install Pyton3.10
    
-2.0 Run ```AutoDownloadALL.bat``` **WINDOWS**
+2.0 Run ```autod.bat``` **WINDOWS**
    
-2.1 Run ```AutoDownloadALL.sh``` **LINUX**
+2.1 Run ```./autod.sh``` **LINUX** <--In console
 
 3. Wait until done, and you all set
 

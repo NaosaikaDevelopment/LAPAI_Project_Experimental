@@ -193,7 +193,7 @@ Quick Note: You need use LAPAI-env to use this project at  another directory!
 ## You want to modify the core? No worry
 quick explanation on new 1.5.1 core:
 
-newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc, if you want to make your own, here simple guide:
+newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc
 
 **YourOwnRunCore.py**
 ```python

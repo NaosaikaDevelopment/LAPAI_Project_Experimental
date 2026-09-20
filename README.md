@@ -230,8 +230,37 @@ to run function just recall it by `yournamefunction()` or `yourcosruncore.yourna
 
 in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, then here quick explanation any function available on this project:
 
-## to use Ollama API:
-by change basurl to ollama api listing in conf.json 
+## to use Ollama API and different endpoint:
+by change basurl to ollama api in conf.json
+
+then for different endpoint case, it is easy, for example we had API work with another endpoint **http://localhost:13305/random/chat/v1/completion or something uniq** 
+
+1. add new variable with this url value on conf.json with jsonEd or manually add it, for example **"http://localhost:13305/random"** as newurl
+2. make program either directly or another directory, up to you
+you can use this:
+```python
+from MainCore.statecore import *
+reply = OpenAI(base_url=cache.conf.get('newurl'),api_key="dummy").chat.v1.completion.create(
+    
+    model=cache.model_name,
+    messages=[{"role":"user", "content":"Hello"}]
+)
+print(reply.choices[0].message.content)
+```
+done, it is possible because cache system. But at this point, I more recommend to apply change directly to runcore module or make your own core, so then you can use:
+
+(for example im useing default runcorefp)
+```python
+from MainCore import runcorefp as c
+c.initialize_core()
+print(c.Main_Core_FP_Function('Hello'))
+
+
+```
+
+so you decide to make your own core, and want to know the function can you use?
+
+then here quick explanation of any function available on this project:
 
 ### Function Reference
 

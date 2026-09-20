@@ -60,12 +60,13 @@ Every Memory and knowledge its save Externally, so even you change model, AI mem
 - [License](#license)
 
 
-# How this new modular system work and how can i use it? 1.5
+# How this new modular system work and how can i use it? 1.5.1
 
-> Please make sure you using **python 3.10** and set the settings in **folder Settings**, model, sumModel, and Baseurl(your backend provider)(**OpenAI Style**), Persona
+> Please make sure you using **python 3.10** and set the settings in **folder Settings**, conf.json in 1.5.1 you can use jsonEd to edit json file, it is just simple Json Editor with simple GUI, then dont forget to set persona on settings folder too
+
 Finally this update support linux and windows (fyi this version build on bazzite distro known as immutable distro)
 
-On new modular System you can navigate to LAPAIv1.5 and see `MainCore` there you would see 
+On new modular System you can navigate to LAPAIv1.5.1 and see `MainCore` there you would see 
 ```
 {MainCore}
     |>>> core
@@ -87,19 +88,16 @@ that is the main core of LAPAI, and some function migrate to this fpcore while f
 
 first of all this project will installed with its own env or known as ` LAPAI-env `
 please make sure to use the env or you can add by yourself with install the `requirement.txt`
-to turn on the env console had different way in different OS
 
-### Linux
-```sh
-source LAPAI-env/bin/Activate
+
+to turn on the env you can simply run on console: 
 ```
-
-### Windows
-```batch
-call LAPAI-env/Scripts/Activate
+nd
 ```
+here it will automaticly turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
-Than to use it:
+
+### Directly use on LAPAI directory (1.5):
 ```py
 from MainCore.core import *
 from MainCore.runcorefp import *
@@ -115,14 +113,15 @@ reply = Main_Core_FP_Function(msg)
 print(replay)
 #Output
 ```
-and just like that! you can made your own project. but this case is integrate LAPAI system directly.
+and just like that! you can made your own project. **but** this case is integrate LAPAI system directly and muss on LAPAI directory(1.5).
+
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere
 
-**To Use it**
+### API use
 Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
 
 in this case i will make it simple with using python as the receiver 
-```py
+```python
 #PYTHON
 from openai import OpenAI
 #Using OpenAI
@@ -146,12 +145,96 @@ print(reply.choices[0].message.content)
 
 And all you set. to another language program you can see the template and [How to use it?](HowToUseIt.md).
 
+## FINALLY on 1.5.1 simplifier Update
+### 1. To use
+this update simplified developer to using this project, after installation, no need copy LAPAI to every project, just one installation and can use it anywhere (still need LAPAI-env to useit)
+
+Simple using this project in another directory:
+```python
+from MainCore import runcorefp as c #calling main core
+c.initialize_core() #initialing core
+# to use you need this two component
+
+print(c.Main_Core_FP_Function('HELLOWWW'))
+#to get the input
+
+```
+as you can see it is easy, no? and just that everything will run perfectly
+
+    NOTE 
+
+    PLEASE make sure you run the prograrm with LAPAI-env by using **'nd'** in command
+
+### Explanation
+
+Newest core added new statecore in MainCore, to seperate def function so it can work as template.
+and i added new simple cache function, you can use anywhere and any purpose so it can cache any information on **Settings/conf.json** you can edit it with GUI simple app "jsonEd" after intallation in LAPAI directory, one more after installation you will had quick shortcut to turn on LAPAI-env by run "nd" on console
+
+as example you add new variable on conf.json= "A1" : 10, and testing to another directory to test import module in LAPAI-env
 
 
-### You want to modify the core? No worry
-in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` and modify by yourself, but what the mean each function that have uniq name? aight i got you:
+<img width="900" height="528" alt="Screenshot_20260920_234632" src="https://github.com/user-attachments/assets/e50bdaa2-507d-4e15-a6f6-02bcab97ffbf" />
 
-## 📚 Function Reference
+
+and the test you can another directory and use simple python:
+```python
+from MainCore import statecore as c
+print(c.cache.conf.get('A1'))
+```
+the results:
+
+<img width="766" height="244" alt="Screenshot_20260920_234806" src="https://github.com/user-attachments/assets/d60ba2ca-adff-453d-9e0b-4ff4baa714bb" />
+
+easy to use, no?
+
+Quick Note: You need use LAPAI-env to use another directory!
+
+
+
+## You want to modify the core? No worry
+quick explanation on new 1.5.1 core:
+
+newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc, if you want to make your own, here simple guide:
+
+**YourOwnRunCore.py**
+```python
+from .statecore import *
+def yourFunctionName(user_input):
+    prompt = cache.prompt
+    csum = compact_old_memory(cache.client,cache.Sum_model,cache.session_id, cache.conf.get('comMinutes'))
+    ... #any function logic you want to build
+```
+and make sure you build it in **MainCore** directory
+
+
+### to use yourown core and function (with simple cache system) 1.5.1
+statecore.py added, when you need any function from MainCore in another directory (using LAPAI-env)
+```python
+from MainCore.statecore import * 
+```
+it will call any function or variable you want even it on conf.json work as cache. you can use or call simple cache function by  
+```python
+cache.conf.get('NameVariable')
+```
+
+--> (**example** to use yourown runcore)
+
+in case you had your own runcore as example "yourcosruncore.py" (Note make sure yourown runcore on MainCore directory), and want to use it in another directory: 
+``` python 
+from MainCore.yourcosruncore import * 
+```
+or
+``` python 
+from MainCore import yourcosuncore 
+```
+to run function just recall it by `yournamefunction()` or `yourcosruncore.yournamefunction()`
+
+in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, then here quick explanation any function available on this project:
+
+## to use Ollama API:
+by change basurl to ollama api listing in conf.json 
+
+### Function Reference
 
 Quick overview of all functions, grouped by module.
 
@@ -267,7 +350,7 @@ Quick overview of all functions, grouped by module.
 | 43 | `trim_prompt(...)` | prompt + memory | prompt | Emergency fallback that removes context when the token limit is exceeded. |
 | 44 | `load_persona()` | — | `str` / `None` | Loads the AI persona from `Settings/PersonaAI.txt`. |
 | 45 | `build_memory_prompt(...)` | summary, memory, knowledge, user msg | `list` | Combines all context sources into the API message format. |
-
+Main_Core_FP_Function
 ---
 
 ### 9. Main Pipelines

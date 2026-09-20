@@ -1,0 +1,21 @@
+{
+    "baseurl": "http://localhost:13305/api/v1",
+    "ollamaurl": "http://localhost:11434/v1",
+    "mainmodel": "llama3.1-8b-FLM",
+    "summodel": "",
+    "embedmodelpath": "MainCore/multilingual-e5-small/onnx/model.onnx",
+    "embedtokenizer": "MainCore/multilingual-e5-small",
+    "provider": "CPUExecutionProvider",
+    "personapath": "Settings/PersonaAI",
+    "EMBEDDIM": 334,
+    "limitrrm": 10,
+    "thresholdrrm": 0.6,
+    "fscrItemFTS": 0.35,
+    "fscrItemFAISS": 0.45,
+    "fscrItemImportance": 0.1,
+    "fscrRecency": 0.05,
+    "fscrRw": 0.05,
+    "comMaxSumToken": 500,
+    "comMinutes": 5,
+    "gqMaxToken": 150
+}

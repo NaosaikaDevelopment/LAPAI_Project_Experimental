@@ -175,7 +175,7 @@ as example you add new variable on conf.json= "A1" : 10, and testing to another 
 <img width="900" height="528" alt="Screenshot_20260920_234632" src="https://github.com/user-attachments/assets/e50bdaa2-507d-4e15-a6f6-02bcab97ffbf" />
 
 
-and the test you can another directory and use simple python:
+and for the test you can use another directory and test with simple python:
 ```python
 from MainCore import statecore as c
 print(c.cache.conf.get('A1'))

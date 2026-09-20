@@ -97,11 +97,10 @@ nd
 here it will automaticly turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
 
-### Directly use on LAPAI directory (1.5):
+### Directly use on LAPAI directory:
 ```py
-from MainCore.core import *
 from MainCore.runcorefp import *
-# import module
+# import runcore module
 
 initialize_core()
 # initial the core for all memory system DB

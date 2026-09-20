@@ -186,7 +186,7 @@ the results:
 
 easy to use, no?
 
-Quick Note: You need use LAPAI-env to use another directory!
+Quick Note: You need use LAPAI-env to use this project at  another directory!
 
 
 

@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
-  <img src="https://img.shields.io/badge/Version-1.4-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Version-1.5.1-brightgreen.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-blue.svg">
   <img src="https://img.shields.io/badge/license-MIT-green">

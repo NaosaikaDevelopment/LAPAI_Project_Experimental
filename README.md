@@ -228,7 +228,7 @@ from MainCore import yourcosuncore
 ```
 to run function just recall it by `yournamefunction()` or `yourcosruncore.yournamefunction()`
 
-in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, then here quick explanation any function available on this project:
+in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself.
 
 ## to use Ollama API and different endpoint:
 by change basurl to ollama api in conf.json

@@ -8,4 +8,4 @@ User Responsibility Any damage, data loss, or other issues arising from the use 
 
 Illegal Use Any use of this software for illegal purposes, in violation of the law, or causing harm to others is the sole responsibility of the user. The developer is not liable for any misuse of the software by third parties.
 
-By using this software, you acknowledge that you have read, understood, and agree to all of the above terms.
+By using this project, you acknowledge that you have read, understood, and agree to all of the above terms.

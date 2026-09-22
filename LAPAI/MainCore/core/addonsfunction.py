@@ -123,7 +123,7 @@ def trim_prompt(prompt,memory_prompt=None,chat_history=None,max_tokens=None):
     return prompt
 
 def load_persona():
-    persona_paths = (cache.pepath)
+    persona_paths = [cache.pepath]
 
     for path in persona_paths:
         if os.path.exists(path):

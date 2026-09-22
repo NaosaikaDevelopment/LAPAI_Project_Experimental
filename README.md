@@ -141,10 +141,8 @@ nd
 ```
 here it will automaticly turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
-
 ### --> Directly use on LAPAI directory (1.5):
-```py
-from MainCore.core import *
+```python
 from MainCore.runcorefp import *
 # import module
 
@@ -268,9 +266,29 @@ from MainCore import yourcosuncore
 ```
 to run function just recall it by `yourFunctionName()` or `yourcosruncore.yourFunctionName()`
 
-to add your own def function,
+--> (**to add your own def function**,)
 
-in core if you had specific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, then here quick explanation any function available on this project:
+in core if you had specific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, or you need somehow to make new core function, you need a little hardcoded, example:
+you had your own new function core as "NewCoreFunction.py" (Make sure add it to MainCore/core) . To add it so you can use it anywhere, Register it first in ``__init__.py``(in MainCore/core) and write:
+```python
+from .NewCoreFunction import *
+```
+and make sure every module you need example "import pathlib" or something like that(Make sure too it installed on env you use or install it on LAPAI-env) is state in ``state.py`` then last step in your "NewCoreFunction.py" import ``from state import *`` then add your function as you want, to use your function for example "def YourFunction()" in another directory or want to use it as your own run core is easy
+
+your run core case:
+```python
+from statecore import *
+YourFunction()
+```
+done your new function is called
+
+another directory case and want to use it directly
+```python
+from MainCore.core.NewCoreFunction import *
+YourFunction()
+```
+Done and your new function is called
+
 
 ### Function Reference
 

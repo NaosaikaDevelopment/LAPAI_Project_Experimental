@@ -1,66 +1,92 @@
-# LAPAI [Experimental]
+
+<img width="1000" height="200" alt="MainRdmeWRev" src="https://github.com/user-attachments/assets/88d2874c-7530-4fed-9af9-84b3794884fa" />
+
+
+
+
+<h1 align="center">LAPAI Experimental Project</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
   <img src="https://img.shields.io/badge/Version-1.5.1-brightgreen.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
-  <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-blue.svg">
-  <img src="https://img.shields.io/badge/license-MIT-green">
+  <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-orange.svg">
+  <img src="https://img.shields.io/badge/To-%20Framework-cyan.svg">
+  <img src="https://img.shields.io/badge/license-MIT-blue">
 </p>
 
-<img width="1920" height="1080" alt="Start" src="https://github.com/user-attachments/assets/a836bfa6-a69e-4053-8b0b-770c1a2c09ea" />
+<p align="center">
+  LAPAI (Local Agent Personal Artificial Intelligence) aims to make AI accessible, affordable, and locally owned. By combining local model execution, memory systems, and developer-friendly APIs, LAPAI enables AI applications that work with greater privacy, lower operational costs, and reduced cloud dependence.
+</p>
 
 
-
-### What is LAPAI?
-
-> Local Agent Personal Artificial Intellegence
-
-LAPAI Project is a project for Local AI Runtime, that build with complete feature and memory system, great way to start or learning about AI or just template of code for another project. This is work as Runtime to give AI Feature that can have memorial and experimental external learning system, it can use any backend provider (openAI API style), therefore this project develop under LemonadeServer(Ryzen) and slightly with Ollama(non-Ryzen) and basiclly it can run all backend that work with OpenAI-Style API.
-
-The reason this project exist.
-
-when i want to make project about AI i see all the starter so fricking complicated asf, so i want make a template that easy to use and modify for future usage, here with this project i hope we all can learn together.
-
-> **Note: this is not AI platformer, this is special for AI Integrator**.
-This project work for them seeking AI with API Open AI style and work for its own project sake,
-and for them who want mod, create, learn, project, game to using AI locally.
-Build simple as possible with enhance abilty for tiny model so that can work without using too much resources, yet still powerful.
-Every Memory and knowledge its save Externally, so even you change model, AI memory and knowledge will not deleted, feel free to experiment with it.
 
 <p align="center">
   --==-- -Development- --==--
 </p>
 
-## This system project equipped with:
-- Memorial System:
-  - FTS5
-  - FAISS integration
-  - recency scoring
-  - importance scoring
-  - role weighting
-  - semantic + keyword hybrid retrieval
-- recall pipeline
-- learning pipeline
-- session management
-- summarization
-- orchestration
-- local TTS runtime
-- OpenAI-compatible API layer
+#
 
+<h3 align="center">Overview:</h3>
+<p align="center">
+  <img width="400" height="250" alt="490056541-dc69ca07-ecb3-476d-947e-b610915ea08b" src="https://github.com/user-attachments/assets/6cfba3ea-270b-42ff-b796-d015703adf54" />
+  <img width="400" height="225" alt="ezgif-44e7581b10515873" src="https://github.com/user-attachments/assets/54968f22-1395-4ca2-af30-4336dc8e50e1" />
+</p>
+
+<h3> This project is equipped with:</h3>
+
+- Local AI execution
+- OpenAI-compatible API
+- Persistent memory system
+- Semantic memory retrieval
+- Learning-oriented memory architecture
+- Session management
+- Modular core design
+- Dynamic module registration
+- ONNX Runtime support
+- Cross-platform compatibility
+- Offline-first operation
+- Privacy-focused data handling
+- Consumer hardware optimization
+- Extensible developer integration
   
 
 
-## Contents
-
-- [Features](#features)
-- [Usage](HowToUseIt.md)
-- [Preview](Changelog&Preview.md)
-- [Installation](#getting-started)
-- [License](#license)
 
 
-# How this new modular system work and how can i use it? 1.5.1
+
+
+
+
+
+
+
+<h3>Hardware Development/Tested on:</h3> 
+
+Laptop Lenovo ideapad slim 5 gen 10
+
+Ram 24GB
+
+RyzenAI 7 350
+
+GPU : Radeon 860M
+
+OS:Windows and Linux
+
+<h3 align="center"> 🚀Getting Started </h3>
+
+
+before to installation make sure you have the Runtime Backend provider (LemonadeServer / Ollama / anything)
+   1. Install Pyton3.10 
+   
+   2. Run ```autod.bat``` **WINDOWS**
+   
+   2. Run ```autod.sh``` **LINUX**
+
+   3. Wait until done, and you all set
+
+<h3 align="center"> How this new modular system work and how can i use it? 1.5+ </h3> 
+
 
 > Please make sure you using **python 3.10** and set the settings in **folder Settings**, conf.json in 1.5.1 you can use jsonEd to edit json file, it is just simple Json Editor with simple GUI, then dont forget to set persona on settings folder too
 
@@ -68,11 +94,18 @@ Finally this update support linux and windows (fyi this version build on bazzite
 
 On new modular System you can navigate to LAPAIv1.5.1 and see `MainCore` there you would see 
 ```
-{MainCore}
-    |>>> core
-    |>>> runcorefp.py
-    |>>> runcoremain.py
-    |>>> ...(etc)
+MainCore/
+├── core/
+│   ├── __init__.py
+│   ├── learning.py
+│   ├── memory.py
+│   ├── rcore.py
+│   ├── state.py
+│   └── sum.py
+├── runcorefp.py
+├── runcoremain.py
+├── statecore.py
+└── ...(etc)
 ```
 Here as you can ` runcorefp.py` and `runcoremain.py` this core had 2 different purpose.
 
@@ -97,10 +130,11 @@ nd
 here it will automaticly turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
 
-### Directly use on LAPAI directory:
+### --> Directly use on LAPAI directory (1.5):
 ```py
+from MainCore.core import *
 from MainCore.runcorefp import *
-# import runcore module
+# import module
 
 initialize_core()
 # initial the core for all memory system DB
@@ -109,18 +143,18 @@ msg = "Hello Naove!"
 # Input
 
 reply = Main_Core_FP_Function(msg)
-print(replay)
+print(reply)
 #Output
 ```
 and just like that! you can made your own project. **but** this case is integrate LAPAI system directly and muss on LAPAI directory(1.5).
 
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere
 
-### API use
+### --> API use:
 Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
 
 in this case i will make it simple with using python as the receiver 
-```python
+```py
 #PYTHON
 from openai import OpenAI
 #Using OpenAI
@@ -128,8 +162,9 @@ from openai import OpenAI
 client = OpenAI(base_url="http://localhost:SEE_FROM_QAPI_GUIDER/v1", api_key="Dummy" )
 #get the url localhost
 
-msg = "hallo"
-#msg
+<p style="text-align:center; font-size:30px;"> 
+  <b>How this new modular system work and how can i use it? 1.5.1</b> 
+</p
 
 reply = client.chat.completions.create(
     model="",
@@ -144,8 +179,8 @@ print(reply.choices[0].message.content)
 
 And all you set. to another language program you can see the template and [How to use it?](HowToUseIt.md).
 
-## FINALLY on 1.5.1 simplifier Update
-### 1. To use
+<h3 align="center"> 1.5.1 simplifier Update </h3>
+
 this update simplified developer to using this project, after installation, no need copy LAPAI to every project, just one installation and can use it anywhere (still need LAPAI-env to useit)
 
 Simple using this project in another directory:
@@ -164,49 +199,30 @@ as you can see it is easy, no? and just that everything will run perfectly
 
     PLEASE make sure you run the prograrm with LAPAI-env by using **'nd'** in command
 
-### Explanation
+### --> Explanation:
 
 Newest core added new statecore in MainCore, to seperate def function so it can work as template.
 and i added new simple cache function, you can use anywhere and any purpose so it can cache any information on **Settings/conf.json** you can edit it with GUI simple app "jsonEd" after intallation in LAPAI directory, one more after installation you will had quick shortcut to turn on LAPAI-env by run "nd" on console
 
-as example you add new variable on conf.json= "A1" : 10, and testing to another directory to test import module in LAPAI-env
+as example you add new variable on conf.json= "A1" : 10
 
 
-<img width="900" height="528" alt="Screenshot_20260920_234632" src="https://github.com/user-attachments/assets/e50bdaa2-507d-4e15-a6f6-02bcab97ffbf" />
 
-
-and for the test you can use another directory and test with simple python:
+and the test you can another directory and use simple python:
 ```python
 from MainCore import statecore as c
 print(c.cache.conf.get('A1'))
 ```
 the results:
 
-<img width="766" height="244" alt="Screenshot_20260920_234806" src="https://github.com/user-attachments/assets/d60ba2ca-adff-453d-9e0b-4ff4baa714bb" />
+
+
+
 
 easy to use, no?
 
-Quick Note: You need use LAPAI-env to use this project at  another directory!
+<h3 align="center">to use yourown core and function (with simple cache system) 1.5.1</h3>
 
-
-
-## You want to modify the core? No worry
-quick explanation on new 1.5.1 core:
-
-newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc
-
-**YourOwnRunCore.py**
-```python
-from .statecore import *
-def yourFunctionName(user_input):
-    prompt = cache.prompt
-    csum = compact_old_memory(cache.client,cache.Sum_model,cache.session_id, cache.conf.get('comMinutes'))
-    ... #any function logic you want to build
-```
-and make sure you build it in **MainCore** directory
-
-
-### to use yourown core and function (with simple cache system) 1.5.1
 statecore.py added, when you need any function from MainCore in another directory (using LAPAI-env)
 ```python
 from MainCore.statecore import * 
@@ -218,6 +234,18 @@ cache.conf.get('NameVariable')
 
 --> (**example** to use yourown runcore)
 
+newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc, if you want to make your own, here simple guide:
+
+**YourOwnRunCore.py**
+```python
+from .statecore import *
+def yourFunctionName(user_input):
+    prompt = cache.prompt
+    csum = compact_old_memory(cache.client,cache.Sum_model,cache.session_id, cache.conf.get('comMinutes'))
+    ... #any function logic you want to build
+```
+and make sure you build it in **MainCore** directory
+
 in case you had your own runcore as example "yourcosruncore.py" (Note make sure yourown runcore on MainCore directory), and want to use it in another directory: 
 ``` python 
 from MainCore.yourcosruncore import * 
@@ -226,41 +254,11 @@ or
 ``` python 
 from MainCore import yourcosuncore 
 ```
-to run function just recall it by `yournamefunction()` or `yourcosruncore.yournamefunction()`
+to run function just recall it by `yourFunctionName()` or `yourcosruncore.yourFunctionName()`
 
-in core if you had spesific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself.
+to add your own def function,
 
-## to use Ollama API and different endpoint:
-by change basurl to ollama api in conf.json
-
-then for different endpoint case, it is easy, for example we had API work with another endpoint **http://localhost:13305/random/chat/v1/completion or something uniq** 
-
-1. add new variable with this url value on conf.json with jsonEd or manually add it, for example **"http://localhost:13305/random"** as newurl
-2. make program either directly or another directory, up to you
-you can use this:
-```python
-from MainCore.statecore import *
-reply = OpenAI(base_url=cache.conf.get('newurl'),api_key="dummy").chat.v1.completion.create(
-    
-    model=cache.model_name,
-    messages=[{"role":"user", "content":"Hello"}]
-)
-print(reply.choices[0].message.content)
-```
-done, it is possible because cache system. But at this point, I more recommend to apply change directly to runcore module or make your own core, so then you can use:
-
-(for example im useing default runcorefp)
-```python
-from MainCore import runcorefp as c
-c.initialize_core()
-print(c.Main_Core_FP_Function('Hello'))
-
-
-```
-
-so you decide to make your own core, and want to know the function can you use?
-
-then here quick explanation of any function available on this project:
+in core if you had specific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, then here quick explanation any function available on this project:
 
 ### Function Reference
 
@@ -455,30 +453,6 @@ By separating personal data into its own text file, it makes compliance with pri
 
 
 
-# ⚠️Hardware Tested on:
-NOTE: its based on your model parameter
-
-Ram 24gigs 
-
-RyzenAI 7 350
-
-GPU : Radeon 860M
-
-
-OS:Windows and Linux
-
-# 🚀Getting Started
-### To install
-before to installation make sure you have the Runtime Backend provider (LemonadeServer / Ollama)
-1. Install Pyton3.10
-   
-2.0 Run ```autod.bat``` **WINDOWS**
-   
-2.1 Run ```./autod.sh``` **LINUX** <--In console
-
-3. Wait until done, and you all set
-
-https://github.com/user-attachments/assets/a54b6656-634f-46b0-bbf0-0b579510f5da
 
 
 [Back to top](#LAPAI-[Experimental])
@@ -534,13 +508,6 @@ of all third-party components and models.
 
 Be advised, This project is still experimental.
 ### Keep in mind this project is Experimental and Worked Alone by me (ND)
-### Future plan:
-- Adding Learning from Online
-- Can gather information from online
+
 ### In case you want to contact me
 - Discord : Naosaika#9386
-
-### this project leading to AI integrator, for simplified project AI development 
-
-
-## Info: This project will be hiatus due I who created this project, don't have time to continue developing it for a while because I am in a language course for Ausbildung

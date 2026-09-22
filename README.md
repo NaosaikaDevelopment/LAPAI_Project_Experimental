@@ -343,140 +343,58 @@ print(response["choices"][0]["message"]["content"])
 
 Quick overview of all functions, grouped by module.
 
-**Contents**
-
-1. [Initialization & Sessions](#1-initialization--sessions)
-2. [Memory Management & Retrieval](#2-memory-management--retrieval)
-3. [Vector Search (FAISS)](#3-vector-search-faiss)
-4. [Learning System](#4-learning-system)
-5. [Memory Compaction](#5-memory-compaction)
-6. [Utilities & Scoring](#6-utilities--scoring)
-7. [Personal Data](#7-personal-data)
-8. [Context & Prompt Building](#8-context--prompt-building)
-9. [Main Pipelines](#9-main-pipelines)
-10. [Input Analysis](#10-input-analysis)
-
----
-
-### 1. Initialization & Sessions
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 1 | `init_faiss()` | — | `index`, `id_map` | Initializes FAISS: loads an existing index or creates a new one, and checks embedding dimensions and map consistency. |
-| 2 | `init_memory_state()` | — | — | Creates the `memory_state` table that stores summaries and the position of already-summarized memory. |
-| 3 | `init_db()` | — | — | Sets up the main `Raw_Memory.db` database, including the session table, the messages FTS5 table, and `memory_state`. |
-| 4 | `init_learning_db()` | — | — | Sets up the learning database: `knowledge`, `sessions`, and `messages`. |
-| 5 | `initialize_core()` | — | `faiss_index`, `id_map` | Orchestrator that initializes all storage, personal data, and FAISS. |
-| 6 | `create_session(title)` | `title` | `sid`, `json_file` | Creates a new chat session in SQLite along with a JSON history file. |
-
----
-
-### 2. Memory Management & Retrieval
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 7 | `get_memory_state(session_id)` | `session_id` | `dict` | Fetches the summary, checkpoint timestamp, and the `rowid` of the last processed memory. |
-| 8 | `save_memory_state(...)` | session + state | — | Saves or updates the memory state using `ON CONFLICT`. |
-| 9 | `search_memory(query, limit=5)` | `query` | rows | Lexical memory search using SQLite FTS5 + BM25. |
-| 10 | `recall_recent_memory(session_id, minutes=5)` | session, time window | `list` | Retrieves the most recent conversation within a given session. |
-| 11 | `should_recall(user_msg)` | `user_msg` | `bool` | Asks a small model whether the input requires older memory. |
-| 12 | `_sqlite_timestamp_to_epoch(timestamp_text)` | timestamp | epoch | Converts a SQLite timestamp to a Unix timestamp. |
-| 13 | `recall_relevant_memory(...)` | input, limit, threshold | `list` | Main retrieval system: FTS + FAISS + importance + recency + role weighting. |
-| 14 | `append_message(...)` | session, role, content | — | Saves a message to JSON and SQLite, then adds it to FAISS. |
-
----
-
-### 3. Vector Search (FAISS)
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 16 | `recall_from_faiss(...)` | vector | `list` | Finds the most similar vectors using FAISS and a similarity threshold. |
-| 17 | `generate_embedding(...)` | text, type | vector | Converts text into an embedding using the ONNX `multilingual-e5-small` model. |
-| 18 | `add_to_faiss(...)` | index, text, metadata | updated index/map | Creates an embedding, inserts it into FAISS, and stores the metadata in the JSON map. |
-| 19 | `normalize_embedding(vector)` | vector | vector | Normalizes a vector to unit length (1). |
-
----
-
-### 4. Learning System
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 20 | `create_session_Learning(title)` | `title` | `sid`, `json_file` | Creates a dedicated learning session. |
-| 21 | `load_knowledge(json_file)` | path | `list` | Loads knowledge from a JSON file. |
-| 22 | `search_knowledge(query, limit=5)` | `query` | rows | Searches knowledge using FTS5. |
-| 23 | `recall_knowledge(...)` | user input | `list` | Extracts keywords → searches knowledge → filters results by score. |
-| 24 | `append_Learning(...)` | session, role, content | — | Saves learning results to JSON and SQLite. |
-| 25 | `start_learning(...)` | client, model, input, context | text | Asks the model to generate learnable information from the user's input. |
-
----
-
-### 5. Memory Compaction
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 26 | `compact_old_memory(...)` | session + time | summary / `None` | Fetches old memory that has passed the time window and builds a persistent summary. |
-| 27 | `summarize_session(...)` | session | summary | Compatibility wrapper that now calls `compact_old_memory()`. |
-
----
-
-### 6. Utilities & Scoring
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 28 | `extract_keywords(text)` | text | `list[str]` | Extracts tokens/words from text. |
-| 29 | `parse_yesno(user_it)` | text | `"Yes"` / `"No"` | Extracts a yes/no decision from model output. |
-| 30 | `generate_question(client, model, text)` | client, model, text | question | Generates an investigative question from a piece of text. |
-| 31 | `add_question(question)` | `question` | — | Adds a question to `questions.json`, avoiding duplicates. |
-| 32 | `load_json(path, default=[])` | path | object | JSON reading utility. |
-| 33 | `save_json(path, data)` | path, data | — | JSON writing utility. |
-| 34 | `estimate_tokens(messages)` | `messages` | `int` | Counts tokens using the actual tokenizer. |
-| 35 | `compute_importance(text)` | text | `float` | Determines importance based on text length. |
-| 36 | `normalize_fts(bm25_score)` | BM25 score | `float` | Converts a BM25 score into a value that can be combined with other scores. |
-| 37 | `normalize_faiss(dist)` | distance | `float` | Converts a distance into a similarity-like value. |
-| 38 | `compute_recency(timestamp)` | timestamp | `float` | Computes a recency value with daily decay. |
-
----
-
-### 7. Personal Data
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 39 | `init_personal_DB()` | — | — | Creates `PersonalData.txt` if it doesn't exist. |
-| 40 | `append_txt(items)` | data | — | Appends personal information to the file. |
-| 41 | `read_txt()` | — | `list` | Reads all personal information from the file. |
-
----
-
-### 8. Context & Prompt Building
-
-| # | Function | Input | Output | Description |
-|--:|----------|-------|--------|-------------|
-| 42 | `calculate_context_budget(...)` | limit, reserved, used | `int` | Calculates how many tokens remain available for context. |
-| 43 | `trim_prompt(...)` | prompt + memory | prompt | Emergency fallback that removes context when the token limit is exceeded. |
-| 44 | `load_persona()` | — | `str` / `None` | Loads the AI persona from `Settings/PersonaAI.txt`. |
-| 45 | `build_memory_prompt(...)` | summary, memory, knowledge, user msg | `list` | Combines all context sources into the API message format. |
-Main_Core_FP_Function
----
-
-### 9. Main Pipelines
-
-| # | Function | Main Input | Output | Description |
-|--:|----------|------------|--------|-------------|
-| 46 | `Main_Core_Function(...)` | user message + session info | reply | Main pipeline: memory compaction, knowledge recall, relevant memory, persona, LLM response, and learning. |
-| 47 | `format_items(items)` | `list` | `str` | Formats memory results into a bullet-point string. |
-| 48 | `get_current_time_context()` | — | `str` | Builds the current date, time, and day-of-week context. |
-| 49 | `Main_Core_FP_Function(...)` | user message + session info | reply | Fast-processing version of the main pipeline, built on the memory + knowledge + persona principle. |
-
----
-
-### 10. Input Analysis
-
-| # | Function | Main Input | Output | Description |
-|--:|----------|------------|--------|-------------|
-| 50 | `decsn(user_msg)` | `user_msg` | — | Detects whether the input contains personal information and saves it if detected. |
-| 51 | `thoughtm(user_msg)` | `user_msg` | text | Asks a small model to explain the user's actual intent behind the input. |
-
-
+| # | Modul | Fungsi | Input | Output | Deskripsi |
+|--:|-------|--------|-------|--------|-----------|
+| 1 | Initialization & Sessions | `init_faiss()` | — | `index`, `id_map` | Initializes FAISS: loads an existing index or creates a new one, and checks embedding dimensions and map consistency. |
+| 2 | Initialization & Sessions | `init_memory_state()` | — | — | Creates the `memory_state` table that stores summaries and the position of already-summarized memory. |
+| 3 | Initialization & Sessions | `init_db()` | — | — | Sets up the main `Raw_Memory.db` database, including the session table, the messages FTS5 table, and `memory_state`. |
+| 4 | Initialization & Sessions | `init_learning_db()` | — | — | Sets up the learning database: `knowledge`, `sessions`, and `messages`. |
+| 5 | Initialization & Sessions | `initialize_core()` | — | `faiss_index`, `id_map` | Orchestrator that initializes all storage, personal data, and FAISS. |
+| 6 | Initialization & Sessions | `create_session(title)` | `title` | `sid`, `json_file` | Creates a new chat session in SQLite along with a JSON history file. |
+| 7 | Memory Management & Retrieval | `get_memory_state(session_id)` | `session_id` | `dict` | Fetches the summary, checkpoint timestamp, and the `rowid` of the last processed memory. |
+| 8 | Memory Management & Retrieval | `save_memory_state(...)` | session + state | — | Saves or updates the memory state using `ON CONFLICT`. |
+| 9 | Memory Management & Retrieval | `search_memory(query, limit=5)` | `query` | rows | Lexical memory search using SQLite FTS5 + BM25. |
+| 10 | Memory Management & Retrieval | `recall_recent_memory(session_id, minutes=5)` | session, time window | `list` | Retrieves the most recent conversation within a given session. |
+| 11 | Memory Management & Retrieval | `should_recall(user_msg)` | `user_msg` | `bool` | Asks a small model whether the input requires older memory. |
+| 12 | Memory Management & Retrieval | `_sqlite_timestamp_to_epoch(timestamp_text)` | timestamp | epoch | Converts a SQLite timestamp to a Unix timestamp. |
+| 13 | Memory Management & Retrieval | `recall_relevant_memory(...)` | input, limit, threshold | `list` | Main retrieval system: FTS + FAISS + importance + recency + role weighting. |
+| 14 | Memory Management & Retrieval | `append_message(...)` | session, role, content | — | Saves a message to JSON and SQLite, then adds it to FAISS. |
+| 16 | Vector Search (FAISS) | `recall_from_faiss(...)` | vector | `list` | Finds the most similar vectors using FAISS and a similarity threshold. |
+| 17 | Vector Search (FAISS) | `generate_embedding(...)` | text, type | vector | Converts text into an embedding using the ONNX `multilingual-e5-small` model. |
+| 18 | Vector Search (FAISS) | `add_to_faiss(...)` | index, text, metadata | updated index/map | Creates an embedding, inserts it into FAISS, and stores the metadata in the JSON map. |
+| 19 | Vector Search (FAISS) | `normalize_embedding(vector)` | vector | vector | Normalizes a vector to unit length (1). |
+| 20 | Learning System | `create_session_Learning(title)` | `title` | `sid`, `json_file` | Creates a dedicated learning session. |
+| 21 | Learning System | `load_knowledge(json_file)` | path | `list` | Loads knowledge from a JSON file. |
+| 22 | Learning System | `search_knowledge(query, limit=5)` | `query` | rows | Searches knowledge using FTS5. |
+| 23 | Learning System | `recall_knowledge(...)` | user input | `list` | Extracts keywords → searches knowledge → filters results by score. |
+| 24 | Learning System | `append_Learning(...)` | session, role, content | — | Saves learning results to JSON and SQLite. |
+| 25 | Learning System | `start_learning(...)` | client, model, input, context | text | Asks the model to generate learnable information from the user's input. |
+| 26 | Memory Compaction | `compact_old_memory(...)` | session + time | summary / `None` | Fetches old memory that has passed the time window and builds a persistent summary. |
+| 27 | Memory Compaction | `summarize_session(...)` | session | summary | Compatibility wrapper that now calls `compact_old_memory()`. |
+| 28 | Utilities & Scoring | `extract_keywords(text)` | text | `list[str]` | Extracts tokens/words from text. |
+| 29 | Utilities & Scoring | `parse_yesno(user_it)` | text | `"Yes"` / `"No"` | Extracts a yes/no decision from model output. |
+| 30 | Utilities & Scoring | `generate_question(client, model, text)` | client, model, text | question | Generates an investigative question from a piece of text. |
+| 31 | Utilities & Scoring | `add_question(question)` | `question` | — | Adds a question to `questions.json`, avoiding duplicates. |
+| 32 | Utilities & Scoring | `load_json(path, default=[])` | path | object | JSON reading utility. |
+| 33 | Utilities & Scoring | `save_json(path, data)` | path, data | — | JSON writing utility. |
+| 34 | Utilities & Scoring | `estimate_tokens(messages)` | `messages` | `int` | Counts tokens using the actual tokenizer. |
+| 35 | Utilities & Scoring | `compute_importance(text)` | text | `float` | Determines importance based on text length. |
+| 36 | Utilities & Scoring | `normalize_fts(bm25_score)` | BM25 score | `float` | Converts a BM25 score into a value that can be combined with other scores. |
+| 37 | Utilities & Scoring | `normalize_faiss(dist)` | distance | `float` | Converts a distance into a similarity-like value. |
+| 38 | Utilities & Scoring | `compute_recency(timestamp)` | timestamp | `float` | Computes a recency value with daily decay. |
+| 39 | Personal Data | `init_personal_DB()` | — | — | Creates `PersonalData.txt` if it doesn't exist. |
+| 40 | Personal Data | `append_txt(items)` | data | — | Appends personal information to the file. |
+| 41 | Personal Data | `read_txt()` | — | `list` | Reads all personal information from the file. |
+| 42 | Context & Prompt Building | `calculate_context_budget(...)` | limit, reserved, used | `int` | Calculates how many tokens remain available for context. |
+| 43 | Context & Prompt Building | `trim_prompt(...)` | prompt + memory | prompt | Emergency fallback that removes context when the token limit is exceeded. |
+| 44 | Context & Prompt Building | `load_persona()` | — | `str` / `None` | Loads the AI persona from `Settings/PersonaAI.txt`. |
+| 45 | Context & Prompt Building | `build_memory_prompt(...)` | summary, memory, knowledge, user msg | `list` | Combines all context sources into the API message format. |
+| 46 | Main Pipelines | `Main_Core_Function(...)` | user message + session info | reply | Main pipeline: memory compaction, knowledge recall, relevant memory, persona, LLM response, and learning. |
+| 47 | Main Pipelines | `format_items(items)` | `list` | `str` | Formats memory results into a bullet-point string. |
+| 48 | Main Pipelines | `get_current_time_context()` | — | `str` | Builds the current date, time, and day-of-week context. |
+| 49 | Main Pipelines | `Main_Core_FP_Function(...)` | user message + session info | reply | Fast-processing version of the main pipeline, built on the memory + knowledge + persona principle. |
+| 50 | Input Analysis | `decsn(user_msg)` | `user_msg` | — | Detects whether the input contains personal information and saves it if detected. |
+| 51 | Input Analysis | `thoughtm(user_msg)` | `user_msg` | text | Asks a small model to explain the user's actual intent behind the input. |
 
 
 <p align="center">

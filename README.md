@@ -158,36 +158,9 @@ print(reply)
 ```
 and just like that! you can made your own project. **but** this case is integrate LAPAI system directly and muss on LAPAI directory(1.5).
 
-how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere
+how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere.
+to another language program you can see the template and [How to use it?]((1.4)HowToUseIt.md).
 
-### --> API use:
-Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
-
-in this case i will make it simple with using python as the receiver 
-```py
-#PYTHON
-from openai import OpenAI
-#Using OpenAI
-
-client = OpenAI(base_url="http://localhost:SEE_FROM_QAPI_GUIDER/v1", api_key="Dummy" )
-#get the url localhost
-
-<p style="text-align:center; font-size:30px;"> 
-  <b>How this new modular system work and how can i use it? 1.5.1</b> 
-</p
-
-reply = client.chat.completions.create(
-    model="",
-    messages=[{"role":"user","content": msg}]
-)
-#Make sure output like this client.chat.completion.create(...same as on up there) because the API litening on V1/chat/completion
-
-print(reply.choices[0].message.content)
-#make sure the replay had the "choices[0].message.content" to get the content
-
-```
-
-And all you set. to another language program you can see the template and [How to use it?](HowToUseIt.md).
 
 <h3 align="center"> 1.5.1 simplifier Update </h3>
 
@@ -242,7 +215,7 @@ it will call any function or variable you want even it on conf.json work as cach
 cache.conf.get('NameVariable')
 ```
 
---> (**example** to use yourown runcore)
+### --> (**example** to use yourown runcore)
 
 newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc, if you want to make your own, here simple guide:
 
@@ -266,7 +239,7 @@ from MainCore import yourcosuncore
 ```
 to run function just recall it by `yourFunctionName()` or `yourcosruncore.yourFunctionName()`
 
---> (**to add your own def function**,)
+### --> (**to add your own def function**,)
 
 in core if you had specific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, or you need somehow to make new core function, you need a little hardcoded, example:
 you had your own new function core as "NewCoreFunction.py" (Make sure add it to MainCore/core) . To add it so you can use it anywhere, Register it first in ``__init__.py``(in MainCore/core) and write:
@@ -288,6 +261,82 @@ from MainCore.core.NewCoreFunction import *
 YourFunction()
 ```
 Done and your new function is called
+
+### --> API use:
+
+Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
+
+in this case i will make it simple with using python as the receiver 
+```py
+#PYTHON
+from openai import OpenAI
+#Using OpenAI
+
+client = OpenAI(base_url="http://localhost:SEE_FROM_QAPI_GUIDER/v1", api_key="Dummy" )
+#get the url localhost
+
+reply = client.chat.completions.create(
+    model="",
+    messages=[{"role":"user","content": msg}]
+)
+#Make sure output like this client.chat.completion.create(...same as on up there) because the API litening on V1/chat/completion
+
+print(reply.choices[0].message.content)
+#make sure the replay had the "choices[0].message.content" to get the content
+
+```
+
+
+
+### --> Uniq API endpoint case:
+
+Yeah maybe in rare case, or you want to pair in different project(AI backend endpoint) via OpenAI API style.
+for example we had custom endpoint "http://localhost:1234/random/endpoint/chat/v1/completion/" or something like that, need to remember the endpoint where data is send "random/endpoint/chat/v1/completion".
+then to use that endpoint, you can either directly hardcoded:
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:1234", 
+    api_key="dummy"
+)
+response = client.post(
+    "/random/endpoint/chat/v1/completion", 
+    body={
+        "model": "Model_name",
+        "messages": [{"role": "user", "content": "HOLLA!"}]
+    },
+    cast_to=dict 
+)
+
+print(response["choices"][0]["message"]["content"])
+
+```
+or using cache system from this project by add the variable to conf.json in LAPAI Settings folder as "
+```json
+{
+  "openai_config": {
+    "base_url": "http://localhost:1234",
+    "api_key": "dummy"
+  }
+}
+
+```
+then using LAPAI-env to call the variable:
+```python
+from MainCore.statecore import *
+client = OpenAI(**cache.conf["openai_config"])
+response = client.post("/random/endpoint/chat/v1/completion", 
+    body={
+        "model": "Model_name",
+        "messages": [{"role": "user", "content": "HOLLA!"}]
+    },
+    cast_to=dict 
+)
+
+print(response["choices"][0]["message"]["content"])
+```
+
 
 
 ### Function Reference

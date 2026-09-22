@@ -32,6 +32,18 @@
   <img width="400" height="250" alt="490056541-dc69ca07-ecb3-476d-947e-b610915ea08b" src="https://github.com/user-attachments/assets/6cfba3ea-270b-42ff-b796-d015703adf54" />
   <img width="400" height="225" alt="ezgif-44e7581b10515873" src="https://github.com/user-attachments/assets/54968f22-1395-4ca2-af30-4336dc8e50e1" />
 </p>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <h4>General purpose cache system</h4>
+      <img width="100%" alt="Screenshot 1" src="https://github.com/user-attachments/assets/f9946bdd-7f63-4583-bb4f-60f7c20507ea" />
+    </td>
+    <td align="center" width="50%">
+      <h4>Import it anywhere</h4>
+      <img width="735" height="222" alt="image" src="https://github.com/user-attachments/assets/dd09008c-90d8-430d-b557-c12d8aa87653" />
+    </td>
+  </tr>
+</table>
 
 <h3> This project is equipped with:</h3>
 
@@ -206,6 +218,7 @@ and i added new simple cache function, you can use anywhere and any purpose so i
 
 as example you add new variable on conf.json= "A1" : 10
 
+<img width="900" height="528" alt="Screenshot_20260920_234632" src="https://github.com/user-attachments/assets/6ac481c8-c30a-46b4-8187-567fd147a839" />
 
 
 and the test you can another directory and use simple python:
@@ -215,8 +228,7 @@ print(c.cache.conf.get('A1'))
 ```
 the results:
 
-
-
+<img width="766" height="244" alt="Screenshot_20260920_234806" src="https://github.com/user-attachments/assets/a8bac478-3553-4993-ad56-2cb36c7b9beb" />
 
 
 easy to use, no?

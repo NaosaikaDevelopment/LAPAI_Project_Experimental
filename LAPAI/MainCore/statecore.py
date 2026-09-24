@@ -185,12 +185,12 @@ def recall_relevant_memory(user_input, limit=10, threshold=cache.conf.get('thres
         reverse=True
     )
     for item in scored[:20]:
-        print(
-            f"score={item['score']:.3f}",
-            f"fts={item['fts_score']:.3f}",
-            f"faiss={item['faiss_score']:.3f}",
-            item['content'][:120]
-        )
+        #print(                                       #<---- Debuging ONLY
+        #    f"score={item['score']:.3f}",
+        #    f"fts={item['fts_score']:.3f}",
+        #    f"faiss={item['faiss_score']:.3f}",
+        #    item['content'][:120]
+        #)
     return [
         {
             "role": item["role"],

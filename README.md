@@ -44,6 +44,18 @@
     </td>
   </tr>
 </table>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <h4>Better Tracing</h4>
+       <img width="400" height="250" alt="untitled" src="https://github.com/user-attachments/assets/f8148b2d-8cdf-41e7-96d7-ab3f7d040f8f" />
+    </td>
+    <td align="center" width="50%">
+      <h4>Regression Test</h4>
+      <img width="1572" height="587" alt="image" src="https://github.com/user-attachments/assets/1ba4b21a-2538-4ab0-a7ef-cd42da22c42a" />
+    </td>
+  </tr>
+</table>
 
 <h3> This project is equipped with:</h3>
 
@@ -336,6 +348,29 @@ response = client.post("/random/endpoint/chat/v1/completion",
 
 print(response["choices"][0]["message"]["content"])
 ```
+
+### To use Regression test
+
+**After Installation** you can directly run ``trunstrict.py``
+
+```python
+python trunstrict.py --stress
+```
+<img width="1572" height="587" alt="image" src="https://github.com/user-attachments/assets/1ba4b21a-2538-4ab0-a7ef-cd42da22c42a" />
+
+
+### To use Tracing
+
+At MainCore you will found ``traceL.py`` that need to be running first to run Live Trace and it is muss be run before next step to tracing
+
+<img width="800" height="73" alt="image" src="https://github.com/user-attachments/assets/8cdf3656-7769-4b40-839d-2bb64463b59a" />
+
+next step is just run your core with tr.py, for example i using quick test run ai with fp function:
+```python
+python tr.py qtrunaicfp.py
+```
+
+https://github.com/user-attachments/assets/2c17b34e-a796-4991-8988-9dada8948d63
 
 
 

@@ -159,7 +159,7 @@ print(reply)
 and just like that! you can made your own project. **but** this case is integrate LAPAI system directly and muss on LAPAI directory(1.5).
 
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere.
-to another language program you can see the template and [How to use it?]((1.4)HowToUseIt.md).
+to another language program you can see the template and [How to use it?](#-->-API-use).
 
 
 <h3 align="center"> 1.5.1 simplifier Update </h3>
@@ -445,14 +445,6 @@ Since it integrates OpenAI-like APIs and local ONNX embeddings, it’s a good pl
 
 ### Privacy-aware applications:
 By separating personal data into its own text file, it makes compliance with privacy rules more manageable.
-
-
-
-
-
-
-
-[Back to top](#LAPAI-[Experimental])
 
 
 ## Contribute

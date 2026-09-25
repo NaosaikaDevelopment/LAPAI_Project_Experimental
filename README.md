@@ -86,7 +86,7 @@
 - Consumer hardware optimization
 - Extensible developer integration
 - Dynamic Calling Tools
-- New Memory System (Idk maybe i will call it LEMA(LAPAI Memory Evidence System))
+- New Memory System (Idk maybe i will call it LEMA(LAPAI Evidence Memory Architecture))
 
 
 

@@ -749,6 +749,16 @@ Here quick screenshot demonstration use it another directory:
 
 <img width="1196" height="616" alt="Screenshot_20260926_011002" src="https://github.com/user-attachments/assets/e3842f8a-bc2b-472a-8de4-f8a2adb3c830" />
 
+You can use like this
+```python
+from MainCore.runcorefp import *
+initialize_core()
+print(cache.conf.get('conditionLEDA'))
+Main_Core_FP_Function("can you turn on led A")
+print(cache.conf.get('conditionLEDA'))
+
+```
+
 and for example at tools i added function:
 ```python
 def turnleda() -> str:

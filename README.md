@@ -85,12 +85,8 @@
 - Privacy-focused data handling
 - Consumer hardware optimization
 - Extensible developer integration
-  
-# Hall of to use:
-
-[Base Use](#-how-this-new-modular-system-work-and-how-can-i-use-it-1.5)
-[Direct use](#---Directly-use-on-LAPAI-directory-1.5)
-[To use and make your own core](#to-use-yourown-core-and-function-with-simple-cache-system-1-5-1)
+- Dynamic Calling Tools
+- New Memory System (Idk maybe i will call it LEMA(LAPAI Memory Evidence System))
 
 
 

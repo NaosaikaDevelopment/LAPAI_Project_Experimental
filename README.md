@@ -8,7 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
-  <img src="https://img.shields.io/badge/Version-1.5.2-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Version-1.5.3-brightgreen.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-orange.svg">
   <img src="https://img.shields.io/badge/To-%20Framework-cyan.svg">
@@ -56,6 +56,18 @@
     </td>
   </tr>
 </table>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <h4>Dynamic calling tools</h4>
+        <img width="476" height="328" alt="image" src="https://github.com/user-attachments/assets/643a004a-06b5-4b9e-9b37-28fdd6a5386e" />
+    </td>
+    <td align="center" width="50%">
+      <h4>New Memory system</h4>
+        <img width="1306" height="914" alt="image" src="https://github.com/user-attachments/assets/e4a69cd5-2b2c-4ab1-9de5-b2d523c10b23" />
+    </td>
+  </tr>
+</table>
 
 <h3> This project is equipped with:</h3>
 
@@ -74,7 +86,11 @@
 - Consumer hardware optimization
 - Extensible developer integration
   
+# Hall of to use:
 
+[Base Use](#-how-this-new-modular-system-work-and-how-can-i-use-it-1.5)
+[Direct use](#---Directly-use-on-LAPAI-directory-1.5)
+[To use and make your own core](#to-use-yourown-core-and-function-with-simple-cache-system-1-5-1)
 
 
 
@@ -373,6 +389,379 @@ python tr.py qtrunaicfp.py
 https://github.com/user-attachments/assets/2c17b34e-a796-4991-8988-9dada8948d63
 
 
+### -> Dynamic Calling Tools
+
+Simplified user to use Calling Tools feature from AI:
+
+to add just by add your function calling tools at ```MainCore/core/tools```, then done the core will automaticly detect it and register it, no need hardcoded everything either add block of code or new file .py, all is work, example:
+```python
+def get_time() -> str:
+    #with this \/ AI can have the description of tools
+    """
+    Get the current system date and time.
+    """
+    #here you can have your function here
+    return datetime.now().astimezone().isoformat()
+```
+
+So i didn't add just that, you doesn't need to hardcoded everything as i say here some addons function hardcoded generic contract:
+
+### 1.
+
+```python
+@required_each_turn
+```
+example:
+
+```python
+def memory_commit(kind: str, category: str, confidence: float):
+    """
+    @required_each_turn
+    """
+```
+the engine will make:
+```python
+required_tools = {
+    "memory_commit"
+}
+```
+So even tool ranking give ```memory_commit score = 0.05``` The tool is still considered mandatory
+
+### 2. 
+```python
+@requires_state
+```
+example:
+```python
+def recallmemory():
+    """
+    @requires_state: memory_query
+    """
+```
+this tool doesn't mean it is mandatory to recall,
+it is just say "this tool can work if X function is available" , here the example with the tool up there:
+
+for example the state is:
+```python
+context_state = {}
+``` 
+then ```query memory is nothing```
+
+which is
+```python
+recallmemory
+    eligible = False
+```
+if the state become:
+```python
+context_state = {
+    "memory_query": True
+}
+```
+then
+```
+recallmemory
+    eligible = True
+```
+
+### 3.
+```python
+@provides_state
+```
+The tool is a state that can be produced by the tool.
+
+example:
+```python
+def memory_commit(...):
+    """
+    @provides_state: memory_query
+    """
+```
+then the tool return:
+```python
+{
+    "success": True,
+    "_state": {
+        "memory_query": True
+    }
+}
+```
+engine will see contract;
+```
+memory_commit
+    provides → memory_query
+```
+then take:
+```python
+context_state["memory_query"] = True
+```
+and now that state can be use for next tools.
+
+### 4.
+```python
+@required_when_state
+```
+If a particular state is active, this tool changes from simply being eligible to be mandatory to execute.
+
+example:
+``` python
+def recallmemory():
+    """
+    @requires_state: memory_query
+    @required_when_state: memory_query
+    """
+```
+when ```context_state = {}```
+
+the result
+```
+eligible = False
+required = False
+```
+then when:
+```python
+context_state = {
+    "memory_query": True
+}
+```
+the result :
+```
+eligible = True
+required = True
+```
+
+### -> new memory system
+next the most exhausted update, the memory system
+it is working directly at the core so, i will explain.
+
+This memory try to achive: reducing Noise information with catagory system working with new tools system, so firs it will classification the information and commit with tools calling then reinforcement/update the information and retrieval.
+
+it will detect the information that have same record, then in the future that information either got called or updated, the design took me a whole day to make it but so far:
+```
+existing memory
+    ↓
+support_count += 1
+last_seen = now
+```
+so support count will be added and that is called reinforcement
+
+But why is it important?
+
+example:
+
+data1:
+```
+Memory A
+support = 8
+confidence = 0.95
+```
+
+vs
+
+data2
+```
+Memory B
+support = 1
+confidence = 0.60
+```
+
+data1 will have more repetitions that supporting.
+Then when ranking:
+```
+retrieval
++
+relation
++
+confidence
++
+support
+```
+The memory that is constantly reinforcement can have a better position.
+
+But support_count does not mean that the fact is automatically true. It's just one of the signals.
+
+i think again what if the information is changed?
+
+example:
+
+```
+My favorite food is Burger.
+```
+then in future:
+```
+My favorite food is sushi now.
+```
+system should not thought ```Burger```  is wrong automaticly.
+
+it have evidence  with:
+```
+first_seen
+last_seen
+support_count
+confidence
+```
+Then the retrieval/resolution uses time and score to determine the candidate who is more relevant.
+
+This is important because the two of that information can be right at wrong time.
+so i really thinking very long time to design like what is making the information relevant, it is "time"
+
+So ```last_seen``` have big function, for example:
+```
+Burger
+first_seen = January
+last_seen  = March
+
+Sushi
+first_seen = August
+last_seen  = September
+```
+when query the retrieval will sort as time relation.
+
+new candidate got relation = 1.0 and next candidate relation = 0.995
+then: 0.990 0.985
+
+So memory updates not only update support_counts, but also update historical positions through last_seen.
+
+(Actually i think how exactly human to remember, like processing new information etc, more likely self reflection)
+
+then what is the different in between Update and decay
+
+**Long-term memory**
+example:
+```
+support_count = 5
+confidence = 0.95
+last_seen = ...
+```
+This memory is not lost just because time passes at the prompt.
+
+**Active Memory**
+
+If the memory or conversation goes to the active prompt relation = 1.0
+
+after >3min relation -= 0.005 (still hardcoded for compability issue, in case you want to change, you can change it by yourself)
+so:
+```
+PROMPT RELATION
+→ decay
+
+LONG-TERM MEMORY
+→ persistent
+```
+
+Question is keep noted too.
+it is classified the information as question.
+
+So the system still knows that the question has ever happened, but it doesn't make it a fact.
+This is what reduces noise.
+
+after memory updated, FTS is maintenance too
+
+New memory or updated memory goes to the long-term memory index:
+```
+long_term_memories
+        ↓
+FTS
+```
+When the user asks:
+```
+What is my favorite word?
+```
+retrieval search on:
+```
+Long_term memory
+```
+Not the entire chat history.
+
+The result can:
+```
+[1]
+Kind=preference
+category=favorite_word
+relationship = 0.0095
+confidence = 0.95
+Support = 1
+
+Evidence:
+My fav word is The fallen sky bring the truth of the lies
+
+```
+
+This is most important: the Update is not just by similiarity.
+Lexically/semantic, but not the same fact.
+
+thats why the plot is:
+```
+retrieval candidate
+    ↓
+kind
+    ↓
+category
+    ↓
+normalized evidence / duplicate check
+    ↓
+same memory?
+    ├── yes → reinforce existing
+    └── no  → create new
+```
+So, the lifecycle of a single memory looks like this:
+
+For example:
+```
+2026-09-01
+"I like Burger."
+```
+becomes:
+```
+support=1
+confidence=0.95
+first_seen=Sep 1
+last_seen=Sep 1
+```
+Then:
+```
+2026-09-15
+"I still like burger."
+```
+can reinforce the same evidence, depending on the classification/duplicate resolution result:
+```
+support=2
+last_seen=Sep 15
+```
+and:
+```
+2026-09-20
+"My favorite food is sushi now."
+```
+becomes a new candidate:
+```
+burger
+support=2
+last_seen=Sep 15
+
+sushi
+support=1
+last_seen=Sep 20
+```
+Retrieval then has access to historical information, not just the most recent string.
+
+### How to use this function like calling tools etc with other project?
+
+first you need model that compatible with calling tools feature
+
+Here quick screenshot demonstration use it another directory:
+
+<img width="1196" height="616" alt="Screenshot_20260926_011002" src="https://github.com/user-attachments/assets/e3842f8a-bc2b-472a-8de4-f8a2adb3c830" />
+
+and for example at tools i added function:
+```python
+def turnleda() -> str:
+    """
+    To turn LED A on
+    """
+    cache.conf['conditionLEDA'] = True
+```
+This all working because the general purpose cache system.
 
 ### Function Reference
 

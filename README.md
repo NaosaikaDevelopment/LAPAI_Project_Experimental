@@ -63,7 +63,7 @@
         <img width="476" height="328" alt="image" src="https://github.com/user-attachments/assets/643a004a-06b5-4b9e-9b37-28fdd6a5386e" />
     </td>
     <td align="center" width="50%">
-      <h4>New Memory system</h4>
+      <h4>New Memory system(LEMA)</h4>
         <img width="1306" height="914" alt="image" src="https://github.com/user-attachments/assets/e4a69cd5-2b2c-4ab1-9de5-b2d523c10b23" />
     </td>
   </tr>

@@ -8,7 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
-  <img src="https://img.shields.io/badge/Version-1.6-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Version-1.6.1-brightgreen.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-orange.svg">
   <img src="https://img.shields.io/badge/To-%20Framework-cyan.svg">
@@ -68,7 +68,19 @@
     </td>
   </tr>
 </table>
-
+</table>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <h4>Regression Test LEMAv1.1 (Tested with Qwen3.5 4B FLM)</h4>
+       <img width="233" height="64" alt="image" src="https://github.com/user-attachments/assets/da5e43b8-3bcc-4b58-aada-3c36fe996bd8" />
+    </td>
+    <td align="center" width="50%">
+      <h4>Efficient Active Memory system(prompt Management)</h4>
+        <img width="1885" height="1105" alt="image" src="https://github.com/user-attachments/assets/e7968ce1-e4b9-49a2-bcd4-25c8b4589e0e" />
+    </td>
+  </tr>
+</table>
 <h3> This project is equipped with:</h3>
 
 - Local AI execution

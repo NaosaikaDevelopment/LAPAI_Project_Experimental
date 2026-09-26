@@ -154,15 +154,31 @@ MainCore/
 │   ├── rcore.py
 │   ├── state.py
 │   └── sum.py
-├── TestRegression/
-├── Settings/
 ├── runcorefp.py
 ├── runcoremain.py
 ├── statecore.py
 └── ...(etc)
 ```
-This way i will explain the runcorefp.py cause i developing focused on it. 
 
+Why i separate everything? how the logic of the architecture and concept work?
+
+First I seperate this become the stage:
+
+### Stage 1. Function Core
+
+To run everything you need function right? so in ```MainCore/core``` there is the place of the function ready to be called, and in statecore.py case is the solution to call every function that the function is need one with other, make the core function need to be independent, with the root of the core is on state.py, from there you can import the modul you need. and in case you want to add new core file.py you need register it on ``__init__.py``.
+
+### Stage 2. Runner Core
+
+Now you have the function then you need the logic to run it. Here the place all Run Core is easy to add, simply by make the file and write the logic code, done. It will auto detect, even you call it on another directory. Please make sure the run core is just at ``MainCore`` and not in the core or somewhere else.
+
+### Stage 3. The Running
+
+yeah as you can see on Main directory LAPAI you will see ``qtrunaicfp.py`` there you can test any new feature directly at console, with full debugging like Prompt management and the Memory behavior.
+or you can make your own RunAI base with your Run Core, you can see ``qtrunaicfp.py`` as example.
+
+
+### Explain of the runcorefp.py
 
 So when you open it you will found:
 ```py
@@ -261,7 +277,7 @@ to run function just recall it by `yourFunctionName()` or `yourcosruncore.yourFu
 
 ### --> (**to add your own def function**,) FUNCTION WORK AS CORE NOT TOOLS
 
-in core if you had specific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, or you need somehow to make new core function, you need a little hardcoded, example:
+in core if you had specific purpose you can add by yourself in `addonsfunction.py` and in case you want to build a run core, you can copy `runcorefp.py` as template and modify by yourself, or you need somehow to make new core function, you need a little hardcoded, example:
 you had your own new function core as "NewCoreFunction.py" (Make sure add it to MainCore/core) . To add it so you can use it anywhere, Register it first in ``__init__.py``(in MainCore/core) and write:
 ```python
 from .NewCoreFunction import *

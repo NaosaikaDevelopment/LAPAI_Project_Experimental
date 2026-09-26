@@ -51,7 +51,7 @@
        <img width="400" height="250" alt="untitled" src="https://github.com/user-attachments/assets/f8148b2d-8cdf-41e7-96d7-ab3f7d040f8f" />
     </td>
     <td align="center" width="50%">
-      <h4>Regression Test</h4>
+      <h4>Regression Test(1.5.2)</h4>
       <img width="1572" height="587" alt="image" src="https://github.com/user-attachments/assets/1ba4b21a-2538-4ab0-a7ef-cd42da22c42a" />
     </td>
   </tr>
@@ -72,7 +72,7 @@
 <table>
   <tr>
     <td align="center" width="50%">
-      <h4>Regression Test LEMAv1.1 (Tested with Qwen3.5 4B FLM)</h4>
+      <h4>(1.6.1) Memory regression Test LEMAv1.1 (Tested with Qwen3.5 4B FLM)</h4>
        <img width="233" height="64" alt="image" src="https://github.com/user-attachments/assets/da5e43b8-3bcc-4b58-aada-3c36fe996bd8" />
     </td>
     <td align="center" width="50%">

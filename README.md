@@ -639,7 +639,7 @@ This memory is not lost just because time passes at the prompt.
 
 If the memory or conversation goes to the active prompt relation = 1.0
 
-after >3min relation -= 0.005 (still hardcoded for compability issue, in case you want to change, you can change it by yourself)
+after >3min relation -= 0.005 (still hardcoded for compability issue, in case you want to change, you can change it by yourself) (MainCore/core/promptmanager.py : 115 _relation())
 so:
 ```
 PROMPT RELATION

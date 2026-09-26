@@ -86,7 +86,7 @@
 - Consumer hardware optimization
 - Extensible developer integration
 - Dynamic Calling Tools
-- New Memory System (Idk maybe i will call it LEMA(LAPAI Evidence Memory Architecture))
+- New Memory System (Idk maybe i will call it LEMA(LAPAI Evidence Memory Architecture))v1.0
 
 
 
@@ -529,7 +529,9 @@ required = True
 ```
 so how the ranking system work with this, not to worry in this case all the contract will keep work with any condition so yeah, the ranking system will work as choosing the relevant tools not as some tool must be choosed by model, this happened when i working on new memory design, because the development under 4B model to make good quality output even tiny model understand, so it is working this way.
 
-### -> new memory system
+### -> new memory system (LEMA v1.0)
+
+> This new memory system is under testing and benchmarking, but so far it give the consistent answers with persistence memory
 
 next the most exhausted update, the memory system
 it is working directly at the core so, i will explain.

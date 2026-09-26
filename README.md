@@ -136,11 +136,11 @@ before to installation make sure you have the Runtime Backend provider (Lemonade
 <h3 align="center"> How this new modular system work and how can i use it? 1.5+ </h3> 
 
 
-> Please make sure you using **python 3.10** and set the settings in **folder Settings**, conf.json in 1.5.1 you can use jsonEd to edit json file, it is just simple Json Editor with simple GUI, then dont forget to set persona on settings folder too
+> Please make sure you using **python 3.10** and set the settings in **folder Settings**, conf.json in you can use jsonEd to edit json file, it is just simple Json Editor with simple GUI, then dont forget to set persona on settings folder too
 
 Finally this update support linux and windows (fyi this version build on bazzite distro known as immutable distro)
 
-On new modular System you can navigate to LAPAIv1.5.1 and see `MainCore` there you would see 
+On new modular System you can navigate and see `MainCore` there you would see 
 ```
 MainCore/
 ├── core/
@@ -154,14 +154,14 @@ MainCore/
 │   ├── rcore.py
 │   ├── state.py
 │   └── sum.py
+├── TestRegression/
+├── Settings/
 ├── runcorefp.py
 ├── runcoremain.py
 ├── statecore.py
 └── ...(etc)
 ```
-Here as you can ` runcorefp.py` and `runcoremain.py` this core had 2 different purpose.
-
-the "FP" is work as FastResponse and "CoreMain" as full sweep search memory and AI Base Decision use as you like, in here i will explain the "FP" cause i developing focused on it. 
+This way i will explain the runcorefp.py cause i developing focused on it. 
 
 
 So when you open it you will found:

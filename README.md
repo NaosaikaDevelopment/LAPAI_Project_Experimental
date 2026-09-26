@@ -658,9 +658,6 @@ no need dealing with those complicated thing, Start your project with ease
 ### Personal AI assistant:
 Tracks conversations, remembers context, and adapts responses over time.
 
-### Learning system:
-Extracts “thoughts” and knowledge points from conversations, building a personalized knowledge base.
-
 ### Experiment platform:
 Since it integrates OpenAI-like APIs and local ONNX embeddings, it’s a good playground for experimenting with hybrid AI systems (local + remote inference).
 

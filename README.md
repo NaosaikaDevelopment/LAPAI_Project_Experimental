@@ -8,7 +8,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
-  <img src="https://img.shields.io/badge/Version-1.5.3-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Version-1.6-brightgreen.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-orange.svg">
   <img src="https://img.shields.io/badge/To-%20Framework-cyan.svg">

@@ -144,6 +144,10 @@ On new modular System you can navigate to LAPAIv1.5.1 and see `MainCore` there y
 ```
 MainCore/
 ├── core/
+│   ├── tools/
+│   │   ├── function A.py
+│   │   ├── function B.py  
+│   │   └── ...(etc)  #you can add and no need registration to Core code
 │   ├── __init__.py
 │   ├── learning.py
 │   ├── memory.py
@@ -171,13 +175,13 @@ first of all this project will installed with its own env or known as ` LAPAI-en
 please make sure to use the env or you can add by yourself with install the `requirement.txt`
 
 
-to turn on the env you can simply run on console: 
+to turn on the LAPAI env you can simply run on console: 
 ```
 nd
 ```
-here it will automaticly turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
+this way it will auto turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
-### --> Directly use on LAPAI directory (1.5):
+### --> Directly use on LAPAI either in same directory or another directory:
 ```python
 from MainCore.runcorefp import *
 # import module
@@ -192,37 +196,17 @@ reply = Main_Core_FP_Function(msg)
 print(reply)
 #Output
 ```
-and just like that! you can made your own project. **but** this case is integrate LAPAI system directly and muss on LAPAI directory(1.5).
+and just like that! you just made your own project with LAPAI.
 
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere.
-to another language program you can see the template.
-
-
-<h3 align="center"> 1.5.1 simplifier Update </h3>
-
-this update simplified developer to using this project, after installation, no need copy LAPAI to every project, just one installation and can use it anywhere (still need LAPAI-env to useit)
-
-Simple using this project in another directory:
-```python
-from MainCore import runcorefp as c #calling main core
-c.initialize_core() #initialing core
-# to use you need this two component
-
-print(c.Main_Core_FP_Function('HELLOWWW'))
-#to get the input
-
-```
-as you can see it is easy, no? and just that everything will run perfectly
-
-    NOTE 
-
-    PLEASE make sure you run the prograrm with LAPAI-env by using **'nd'** in command
+to another language program. you can see the template at template folder in this project.
 
 ### --> Explanation:
 
 Newest core added new statecore in MainCore, to seperate def function so it can work as template.
-and i added new simple cache function, you can use anywhere and any purpose so it can cache any information on **Settings/conf.json** you can edit it with GUI simple app "jsonEd" after intallation in LAPAI directory, one more after installation you will had quick shortcut to turn on LAPAI-env by run "nd" on console
+and i added new simple cache function, you can use anywhere and any purpose so it can cache any information on **Settings/conf.json** you can edit it with GUI simple app "jsonEd" after intallation in LAPAI directory, one more after installation you will had quick shortcut to turn on LAPAI-env by run "nd" on console.
 
+to use the general purpose cache system,
 as example you add new variable on conf.json= "A1" : 10
 
 <img width="900" height="528" alt="Screenshot_20260920_234632" src="https://github.com/user-attachments/assets/6ac481c8-c30a-46b4-8187-567fd147a839" />
@@ -240,7 +224,7 @@ the results:
 
 easy to use, no?
 
-<h3 align="center">to use yourown core and function (with simple cache system) 1.5.1</h3>
+### Make your own Core or Run Core?
 
 statecore.py added, when you need any function from MainCore in another directory (using LAPAI-env)
 ```python
@@ -253,7 +237,7 @@ cache.conf.get('NameVariable')
 
 ### --> (**example** to use yourown runcore)
 
-newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc, if you want to make your own, here simple guide:
+newest **runcorefp.py** work as runcorefunction and not containing another independent function , to use it, you can call the def function on the any core you had, for this example i will use default module **"MainCore/runcorefp.py"** and had its own def fucntion **"Main_Core_FP_Function"** there how the script logic working, like memorial, summary, prompt trimming, etc, if you want to make your own, here simple example:
 
 **YourOwnRunCore.py**
 ```python
@@ -263,9 +247,9 @@ def yourFunctionName(user_input):
     csum = compact_old_memory(cache.client,cache.Sum_model,cache.session_id, cache.conf.get('comMinutes'))
     ... #any function logic you want to build
 ```
-and make sure you build it in **MainCore** directory
+and make sure you build it in **MainCore** directory.
 
-in case you had your own runcore as example "yourcosruncore.py" (Note make sure yourown runcore on MainCore directory), and want to use it in another directory: 
+in case you had your own runcore as example "yourcosruncore.py", and want to use it in another directory: 
 ``` python 
 from MainCore.yourcosruncore import * 
 ```
@@ -275,7 +259,7 @@ from MainCore import yourcosuncore
 ```
 to run function just recall it by `yourFunctionName()` or `yourcosruncore.yourFunctionName()`
 
-### --> (**to add your own def function**,)
+### --> (**to add your own def function**,) FUNCTION WORK AS CORE NOT TOOLS
 
 in core if you had specific purpose you can add by yourself in `addonsfunction.py` and make your own core just copy `runcorefp.py` as template and modify by yourself, or you need somehow to make new core function, you need a little hardcoded, example:
 you had your own new function core as "NewCoreFunction.py" (Make sure add it to MainCore/core) . To add it so you can use it anywhere, Register it first in ``__init__.py``(in MainCore/core) and write:
@@ -298,110 +282,11 @@ YourFunction()
 ```
 Done and your new function is called
 
-### API use:
-
-Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
-
-in this case i will make it simple with using python as the receiver 
-```py
-#PYTHON
-from openai import OpenAI
-#Using OpenAI
-
-client = OpenAI(base_url="http://localhost:SEE_FROM_QAPI_GUIDER/v1", api_key="Dummy" )
-#get the url localhost
-
-reply = client.chat.completions.create(
-    model="",
-    messages=[{"role":"user","content": msg}]
-)
-#Make sure output like this client.chat.completion.create(...same as on up there) because the API litening on V1/chat/completion
-
-print(reply.choices[0].message.content)
-#make sure the replay had the "choices[0].message.content" to get the content
-
-```
-
-
-
-### --> Uniq API endpoint case:
-
-Yeah maybe in rare case, or you want to pair in different project(AI backend endpoint) via OpenAI API style.
-for example we had custom endpoint "http://localhost:1234/random/endpoint/chat/v1/completion/" or something like that, need to remember the endpoint where data is send "random/endpoint/chat/v1/completion".
-then to use that endpoint, you can either directly hardcoded:
-```python
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="http://localhost:1234", 
-    api_key="dummy"
-)
-response = client.post(
-    "/random/endpoint/chat/v1/completion", 
-    body={
-        "model": "Model_name",
-        "messages": [{"role": "user", "content": "HOLLA!"}]
-    },
-    cast_to=dict 
-)
-
-print(response["choices"][0]["message"]["content"])
-
-```
-or using cache system from this project by add the variable to conf.json in LAPAI Settings folder as "
-```json
-{
-  "openai_config": {
-    "base_url": "http://localhost:1234",
-    "api_key": "dummy"
-  }
-}
-
-```
-then using LAPAI-env to call the variable:
-```python
-from MainCore.statecore import *
-client = OpenAI(**cache.conf["openai_config"])
-response = client.post("/random/endpoint/chat/v1/completion", 
-    body={
-        "model": "Model_name",
-        "messages": [{"role": "user", "content": "HOLLA!"}]
-    },
-    cast_to=dict 
-)
-
-print(response["choices"][0]["message"]["content"])
-```
-
-### To use Regression test
-
-**After Installation** you can directly run ``trunstrict.py``
-
-```python
-python trunstrict.py --stress
-```
-<img width="1572" height="587" alt="image" src="https://github.com/user-attachments/assets/1ba4b21a-2538-4ab0-a7ef-cd42da22c42a" />
-
-
-### To use Tracing
-
-At MainCore you will found ``traceL.py`` that need to be running first to run Live Trace and it is muss be run before next step to tracing
-
-<img width="800" height="73" alt="image" src="https://github.com/user-attachments/assets/8cdf3656-7769-4b40-839d-2bb64463b59a" />
-
-next step is just run your core with tr.py, for example i using quick test run ai with fp function:
-```python
-python tr.py qtrunaicfp.py
-```
-
-https://github.com/user-attachments/assets/2c17b34e-a796-4991-8988-9dada8948d63
-
-
 ### -> Dynamic Calling Tools
 
 Simplified user to use Calling Tools feature from AI:
 
-to add just by add your function calling tools at ```MainCore/core/tools```, then done the core will automaticly detect it and register it, no need hardcoded everything either add block of code or new file .py, all is work, example:
+to add just by add your function calling tools at ```MainCore/core/tools```, then done the core will automaticly detect it and register it, no need hardcoded everything, you can either add block of code or new file.py to tools directory, example:
 ```python
 def get_time() -> str:
     #with this \/ AI can have the description of tools
@@ -412,7 +297,7 @@ def get_time() -> str:
     return datetime.now().astimezone().isoformat()
 ```
 
-in case like you had plenty of tooks you make, not too wory it is have the ranking system(this possible because the tools information is easy to control the noise) so the tool will not directly add to model, just top 5 of the ranking system
+in case like you had plenty of tools you make, not too worry it is have the ranking system, so the tool will not directly add to model, just top 5 of the ranking system of the user needed.
 
 So i didn't add just that, you doesn't need to hardcoded everything as i say here some addons function hardcoded generic contract:
 
@@ -541,6 +426,81 @@ required = True
 ```
 so how the ranking system work with this, not to worry in this case all the contract will keep work with any condition so yeah, the ranking system will work as choosing the relevant tools not as some tool must be choosed by model, this happened when i working on new memory design, because the development under 4B model to make good quality output even tiny model understand, so it is working this way.
 
+### API use:
+
+Require OpenAI library to accsess the API and make sure your project or another program Language is installed OpenAI Library and know how to use it, in case you want to learn i had the template in this repo in folder `Template`
+
+in this case i will make it simple with using python as the receiver 
+```py
+#PYTHON
+from openai import OpenAI
+#Using OpenAI
+
+client = OpenAI(base_url="http://localhost:SEE_FROM_QAPI_GUIDER/v1", api_key="Dummy" )
+#get the url localhost
+
+reply = client.chat.completions.create(
+    model="",
+    messages=[{"role":"user","content": msg}]
+)
+#Make sure output like this client.chat.completion.create(...same as on up there) because the API litening on V1/chat/completion
+
+print(reply.choices[0].message.content)
+#make sure the replay had the "choices[0].message.content" to get the content
+
+```
+
+
+
+### --> Uniq API endpoint case:
+
+Yeah maybe in rare case, or you want to pair in different project(AI backend endpoint) via OpenAI API style.
+for example we had custom endpoint "http://localhost:1234/random/endpoint/chat/v1/completion/" or something like that, need to remember the endpoint where data is send "random/endpoint/chat/v1/completion".
+then to use that endpoint, you can either directly hardcoded:
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:1234", 
+    api_key="dummy"
+)
+response = client.post(
+    "/random/endpoint/chat/v1/completion", 
+    body={
+        "model": "Model_name",
+        "messages": [{"role": "user", "content": "HOLLA!"}]
+    },
+    cast_to=dict 
+)
+
+print(response["choices"][0]["message"]["content"])
+
+```
+or using cache system from this project by add the variable to conf.json in LAPAI Settings folder as "
+```json
+{
+  "openai_config": {
+    "base_url": "http://localhost:1234",
+    "api_key": "dummy"
+  }
+}
+
+```
+then using LAPAI-env to call the variable:
+```python
+from MainCore.statecore import *
+client = OpenAI(**cache.conf["openai_config"])
+response = client.post("/random/endpoint/chat/v1/completion", 
+    body={
+        "model": "Model_name",
+        "messages": [{"role": "user", "content": "HOLLA!"}]
+    },
+    cast_to=dict 
+)
+
+print(response["choices"][0]["message"]["content"])
+```
+
 ### How to use this function like calling tools etc with other project?
 
 first you need model that compatible with calling tools feature
@@ -568,6 +528,18 @@ def turnleda() -> str:
     cache.conf['conditionLEDA'] = True
 ```
 This all working because the general purpose cache system.
+
+
+### To run memory Regression test of this project
+
+At TestRegression folder you will found DIT (Direct Injection Test) and RDT (Recall Direct Test).
+To run as you see at the folder just follow the number, 
+
+first run the DIT
+
+then RDT
+
+done you will see the result at the end, you can add the regression dataset as you like.
 
 ### Function Reference
 

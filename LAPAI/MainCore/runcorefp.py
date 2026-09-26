@@ -9,6 +9,7 @@ def Main_Core_FP_Function(user_msg):
     cache.msgt.append({"role": "user", "content": user_msg})
     try:
         reply = run_agent_turn(cache.msgt, current_user=user_msg)
+        cache.msgt.append({"role": "assistant","content": reply})
         print(cache.msgt)
     
     except Exception as e:

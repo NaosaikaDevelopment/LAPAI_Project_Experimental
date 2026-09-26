@@ -181,7 +181,7 @@ nd
 ```
 this way it will auto turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
-### --> Directly use on LAPAI either in same directory or another directory:
+### --> Directly use with LAPAI either in same directory or another directory:
 ```python
 from MainCore.runcorefp import *
 # import module

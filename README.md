@@ -400,6 +400,8 @@ def get_time() -> str:
     return datetime.now().astimezone().isoformat()
 ```
 
+in case like you had plenty of tooks you make, not too wory it is have the ranking system(this possible because the tools information is easy to control the noise) so the tool will not directly add to model, just top 5 of the ranking system
+
 So i didn't add just that, you doesn't need to hardcoded everything as i say here some addons function hardcoded generic contract:
 
 ### 1.
@@ -525,8 +527,10 @@ the result :
 eligible = True
 required = True
 ```
+so how the ranking system work with this, not to worry in this case all the contract will keep work with any condition so yeah, the ranking system will work as choosing the relevant tools not as some tool must be choosed by model, this happened when i working on new memory design, because the development under 4B model to make good quality output even tiny model understand, so it is working this way.
 
 ### -> new memory system
+
 next the most exhausted update, the memory system
 it is working directly at the core so, i will explain.
 

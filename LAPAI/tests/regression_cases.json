@@ -1,0 +1,20 @@
+[
+  {
+    "id": "memory_exact_phrase",
+    "goal": "A remembered user phrase must survive later retrieval.",
+    "text": "The falling sky bring the truth of the lies",
+    "query": "falling sky truth lies"
+  },
+  {
+    "id": "unicode_memory",
+    "goal": "Unicode content must survive persistence.",
+    "text": "LAPAI 日本語 ✅ äöü",
+    "query": "日本語"
+  },
+  {
+    "id": "long_memory",
+    "goal": "Long messages must survive persistence without corruption.",
+    "text": "LAPAI LONG important context important context important context important context important context",
+    "query": "important context"
+  }
+]

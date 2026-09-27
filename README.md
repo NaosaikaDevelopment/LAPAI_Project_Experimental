@@ -174,7 +174,7 @@ Now you have the function then you need the logic to run it. Here the place all 
 
 ### Stage 3. The Running
 
-yeah as you can see on Main directory LAPAI you will see ``qtrunaicfp.py`` there you can test any new feature directly at console, with full debugging like Prompt management and the Memory behavior.
+As you can see on Main directory LAPAI you will see ``qtrunaicfp.py`` there you can do quick test to the system directly at console, with full debugging like Prompt management and the Memory behavior.
 or you can make your own RunAI base with your Run Core, you can see ``qtrunaicfp.py`` as example.
 
 
@@ -212,7 +212,15 @@ reply = Main_Core_FP_Function(msg)
 print(reply)
 #Output
 ```
-and just like that! you just made your own project with LAPAI. Make sure run it with LAPAI env so the package work
+and just like that! you just made your own project with LAPAI. Make sure run it with LAPAI env so the package work.
+
+in case you don't know how to run it. (make sure the installation is done)
+1. open console
+2. write nd and enter
+3. then write "python yourcode.py"
+
+Done it will run perfectly.
+if you use Vs code, and want to use LAPAI env to get rid of pylance issue, simply by "ctrl + shift + p" then choose select interpreter, then choose "Select interpreter path" and navigate it to (For linux) "LAPAI/Directory/LAPAI-env/bin/activate", and (for Windows) "LAPAI\directory\LAPAI-env\scripts\activate" done.
 
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere.
 to another language program. you can see the template at template folder in this project.

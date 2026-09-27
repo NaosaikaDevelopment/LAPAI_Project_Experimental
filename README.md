@@ -212,7 +212,7 @@ reply = Main_Core_FP_Function(msg)
 print(reply)
 #Output
 ```
-and just like that! you just made your own project with LAPAI.
+and just like that! you just made your own project with LAPAI. Make sure run it with LAPAI env so the package work
 
 how can i use it on another language prograrm or different project? with Quick API `qapi.py` in this project has OpenAI Style you can add this system almost anywhere.
 to another language program. you can see the template at template folder in this project.

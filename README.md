@@ -5,10 +5,11 @@
 
 
 <h1 align="center">LAPAI Experimental Project</h1>
-
+ 
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
-  <img src="https://img.shields.io/badge/Version-1.6.1-brightgreen.svg">
+  <img src="https://img.shields.io/badge/Version-1.6.2-brightgreen.svg">
+  <img src="https://img.shields.io/badge/LEMA-1.2-turquoise.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-orange.svg">
   <img src="https://img.shields.io/badge/To-%20Framework-cyan.svg">

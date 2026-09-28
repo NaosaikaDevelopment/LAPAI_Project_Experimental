@@ -24,7 +24,7 @@ print("Startup The system...\n")
 user_msg = "[INFO] User is Online"
 personaai = load_persona()
 if personaai:
-    cache.persona.append({
+    cache.msgt.append({
         "role": "system",
         "content": personaai
     })

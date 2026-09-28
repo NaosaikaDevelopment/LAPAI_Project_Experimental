@@ -701,6 +701,7 @@ under their own respective licenses:
 - Coqui XTTS-v2 (CPML)
 - all-mpnet-base-v2 (Apache 2.0)
 - intfloat/multilingual-e5-small(MIT)
+- cross-encoder/mmarco-mMiniLMv2-L12-H384-v1 (Apache 2.0)
 - SentenceTransformers (Apache 2.0)
 - HuggingFace Transformers (Apache 2.0)
 - Every Component in this project with its own license

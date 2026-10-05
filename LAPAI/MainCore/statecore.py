@@ -115,6 +115,11 @@ def initialize_core():
     cache.session_id, cache.session_file = create_session(title_hint)
     initialize_tools()
 
+def build_messages(messages):
+    prepared = list(get_prompt_manager().prepare_for_model(messages))
+    out = list(cache.persona) + prepared
+    print("[DEBUG] persona_len =", len(cache.persona), "| first_role =", out[0]["role"])
+    return out
 
 def run_agent_turn(messages, top_k=cache.conf.get('Tool_Topk'), threshold=cache.conf.get('ToolThrCalling'), max_tool_iters=6, current_user=None):
     if cache.tool_registry is None or cache.tool_ranker is None:
@@ -305,7 +310,7 @@ def run_agent_turn(messages, top_k=cache.conf.get('Tool_Topk'), threshold=cache.
                 request_kwargs["tools"] = tools
                 request_kwargs["tool_choice"] = "auto"
 
-        request_kwargs["messages"] = get_prompt_manager().prepare_for_model(messages)
+        request_kwargs["messages"] = build_messages(messages)
         completion = cache.client.chat.completions.create(**request_kwargs)
         message = completion.choices[0].message
         tool_calls = getattr(message, "tool_calls", None) or []
@@ -406,7 +411,7 @@ def run_agent_turn(messages, top_k=cache.conf.get('Tool_Topk'), threshold=cache.
 
     final_completion = cache.client.chat.completions.create(
         model=cache.model_name,
-        messages=get_prompt_manager().prepare_for_model(messages),
+        messages=build_messages(messages),
     )
     return final_completion.choices[0].message.content or ""
 

@@ -134,9 +134,24 @@ before to installation make sure you have the Runtime Backend provider (Lemonade
 
    3. Wait until done, and you all set
 
+
+### Current Project Status: On working for robust system, fix the calling tool, and memory improvement
+> [!Important]
+> Project progress currently is slow, because i am in progress for Ausbildung, so mostly in language course.
+
+>[!Note]
+>  In progress next project known as AIC (AI Companion) project [still not release yet]:
+> 
+>   The project to make AI Agent assistant local that work with tiny model and customizable tool, that you can add by your own for any condition.
+>   The project is under build with Voicevox(Kasukabe Tsumugi) for tts,
+>   and auto translate to japan for get dub japan. soon i will working on the 3D model (got the idea from Desktop Mate: I had Kasukabe Tsumugi dlc! and Desktop Engine)
+>     The result so far: it keep the low latency and working memory system that developed under tiny model as gemma4-it-e2b-FLM, gemma4-it-e4b-FLM, qwen3.5-4b-FLM.
+
+
 <h3 align="center"> How this new modular system work and how can i use it? 1.5+ </h3> 
 
 
+>[!Warning]
 > Please make sure you using **python 3.10** and set the settings in **folder Settings**, conf.json in you can use jsonEd to edit json file, it is just simple Json Editor with simple GUI, then dont forget to set persona on settings folder too
 
 Finally this update support linux and windows (fyi this version build on bazzite distro known as immutable distro)

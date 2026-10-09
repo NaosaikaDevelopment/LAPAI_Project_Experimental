@@ -134,6 +134,47 @@ before to installation make sure you have the Runtime Backend provider (Lemonade
 
    3. Wait until done, and you all set
 
+### Quick Test & Use
+
+first of all this project will installed with its own env or known as ` LAPAI-env `
+please make sure to use the env or you can add by yourself with install the `requirement.txt`
+
+to turn on the LAPAI env you can simply run on console: 
+```
+nd
+```
+this way it will auto turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
+
+
+then `cd` in console to LAPAI project directory, and run it:
+```bash
+python qtrunaicfp.py
+```
+to run "quick test run AI core fast response", it will run the `runcorefp.py` as default.
+
+or you can add direct to project:
+```python
+#TestRun.py
+
+from MainCore import *
+# import module
+
+initialize_core()
+# initial the core for all memory system DB
+
+msg = "Hello Naove!"
+# Input
+
+reply = Main_Core_FP_Function(msg)
+print(reply)
+```
+
+to run this project system you need turn on the env by nd in console:
+```bash
+nd
+python TestRun.py
+```
+
 
 ### Current Project Status: On working for robust system, fix the calling tool, and memory improvement
 > [!Important]
@@ -193,25 +234,6 @@ Now you have the function then you need the logic to run it. Here the place all 
 As you can see on Main directory LAPAI you will see ``qtrunaicfp.py`` there you can do quick test to the system directly at console, with full debugging like Prompt management and the Memory behavior.
 or you can make your own RunAI base with your Run Core, you can see ``qtrunaicfp.py`` as example.
 
-
-### Explain of the runcorefp.py
-
-So when you open it you will found:
-```py
-from .core import *
-```
-that is the main core of LAPAI, and some function migrate to this fpcore while for compability reason. So now how can you use it? it is very simple actually.
-
-
-first of all this project will installed with its own env or known as ` LAPAI-env `
-please make sure to use the env or you can add by yourself with install the `requirement.txt`
-
-
-to turn on the LAPAI env you can simply run on console: 
-```
-nd
-```
-this way it will auto turn on the *LAPAI-env* in case you had problem with directory after change directory, simply run the autod.sh/bat again, or want to delete the old shortcut by run uinsShortcut.sh/bat
 
 ### --> Directly use with LAPAI either in same directory or another directory:
 ```python

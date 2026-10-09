@@ -4,7 +4,7 @@
 
 
 
-<h1 align="center">LAPAI Experimental Project</h1>
+<h1 align="center">Local Agent Personal Artificial Intelligence</h1>
  
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">

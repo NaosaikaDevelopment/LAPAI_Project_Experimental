@@ -10,6 +10,5 @@ Contributions to LAPAI are welcome and appreciated! If you'd like to improve thi
     
   ## Idea
     Documenting your own project that work with LAPAI
-    Interesting movement like breakthrough from this projek
-    modify LAPAI
+    Interesting movement like breakthrough from this Project
     make your own Idea/core/function/main/addons with LAPAI

@@ -188,7 +188,7 @@ python TestRun.py
 >   and auto translate to japan for get dub japan. soon i will working on the 3D model (got the idea from Desktop Mate: I had Kasukabe Tsumugi dlc! and Desktop Engine)
 >     The result so far: it keep the low latency and working memory system that developed under tiny model as gemma4-it-e2b-FLM, gemma4-it-e4b-FLM, qwen3.5-4b-FLM.
 
->[!Warning]
+>[!Caution]
 > Known issue: Dynamic Call tooling @Require_each_turn broken the memory calling when it have more than 2, (status: Fixed, not published yet, under testing)
 >
 >    Solution: Make require each turn become completion from sum_model.

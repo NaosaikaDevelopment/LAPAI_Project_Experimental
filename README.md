@@ -200,7 +200,7 @@ python TestRun.py
 >     The result so far: it keep the low latency and working memory system that developed under tiny model as gemma4-it-e2b-FLM, gemma4-it-e4b-FLM, qwen3.5-4b-FLM.
 
 >[!Caution]
-> -
+> 1.7Version no known issue so far
 
 
 <h3 align="center"> How this new modular system work and how can i use it? 1.5+ </h3> 

@@ -5,8 +5,8 @@
  
 <p align="center">
   <img src="https://img.shields.io/badge/By-NaosaikaDevelopment-red.svg">
-  <img src="https://img.shields.io/badge/Version-1.6.2-brightgreen.svg">
-  <img src="https://img.shields.io/badge/LEMA-1.2-turquoise.svg">
+  <img src="https://img.shields.io/badge/Version-1.7-brightgreen.svg">
+  <img src="https://img.shields.io/badge/LEMA-2.0-turquoise.svg">
   <img src="https://img.shields.io/badge/Solo-%20Developer-brightgreen.svg">
   <img src="https://img.shields.io/badge/AI-%20RuntimeLocal-orange.svg">
   <img src="https://img.shields.io/badge/To-%20Framework-cyan.svg">
@@ -110,14 +110,14 @@
 | :--- | :---: |
 | `███████████████████░░░` | **94%** |
 
-| LEMA2.0 | 49/50 | Note |
-| :--- | :---: | :---: |
-| `█████████████████████░` | **98%** | (Not Release yet, under review and test)
+| LEMA2.0 | 49/50 |
+| :--- | :---: |
+| `█████████████████████░` | **98%** |
 
 
-| LEMA2.0 (Test2)| 141/150 | Note |
-| :--- | :---: | :---: |
-| `███████████████████░░░` | **94%** | (Not Release yet, under review and test)
+| LEMA2.0 (Test2)| 141/150 |
+| :--- | :---: | 
+| `███████████████████░░░` | **94%** | 
 
 
 
@@ -399,6 +399,8 @@ required_tools = {
 }
 ```
 So even tool ranking give ```memory_commit score = 0.05``` The tool is still considered mandatory
+
+To use make sure the return tell the core that the calling is success by `return{"success":True} if error or wont called by model, it have auto fallback to sum model.
 
 ### 2. 
 ```python

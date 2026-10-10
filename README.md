@@ -187,7 +187,7 @@ python TestRun.py
 ```
 
 
-### Current Project Status: On working for robust system, fix the calling tool, and memory improvement
+### Current Project Status: Update to 1.7 LEMA 2.0
 > [!Important]
 > Project progress currently is slow, because i am in progress for Ausbildung, so mostly in language course.
 

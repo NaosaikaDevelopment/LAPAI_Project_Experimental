@@ -1,4 +1,0 @@
-pytest>=8.0
-hypothesis>=6.100
-numpy>=1.24
-faiss-cpu>=1.8.0; platform_system != "Windows" or platform_machine != "ARM64"

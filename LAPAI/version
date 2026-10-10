@@ -1,5 +1,0 @@
-version = "1.6.2"
-LEMA = "1.2"
-
-adding using Ranking model, and fix some bug commit memory issue (that's happened because AI can sometimes give the confident score in argument, and that's bad) less commit memory issue and had been tested got scored 47/50 (3 recall succeeded but the tested not accept the sum answer, i check it and the answer is still relevant and i score it for relevant context 50/50) in the LEMAv1.1 it got 2 failed because memory commit issue, now the recall memory become more active and active memory become more efficient, yet this still experimental, if there any issue, please let me know
-ranking model using ``cross-encoder/mmarco-mMiniLMv2-L12-H384-v1``

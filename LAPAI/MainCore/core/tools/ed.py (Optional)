@@ -1,0 +1,51 @@
+#from ...statecore import *
+#def _emotion_options():
+#    value = cache.conf.get("emotionlist")
+#
+#    if isinstance(value, str):
+#        value = value.split(",")
+#
+#    if not value:
+#        return ["neutral"]
+#
+#    result = [
+#        item.strip().casefold()
+#        for item in value
+#        if isinstance(item, str) and item.strip()
+#    ]
+#
+#    return result or ["neutral"]
+#def emotion_commit(emotion: str) -> dict[str, Any]:
+#
+#    options = _emotion_options()
+#    raw = str(emotion).strip().casefold()
+#    print("[EMOTION DEBUG] options  =", repr(options))
+#    print("[EMOTION DEBUG] raw      =", repr(raw))
+#    print("[EMOTION DEBUG] input    =", repr(emotion))
+#    if raw not in options:
+#
+#        found = [
+#            (m.start(), e)
+#            for e in options
+#            if (m := re.search(rf"\b{re.escape(e)}\b", raw))
+#        ]
+#
+#        print("[EMOTION DEBUG] found    =", repr(found))
+#
+#        raw = min(found)[1] if found else "neutral"
+#
+#    print("[EMOTION DEBUG] selected =", repr(raw))
+#
+#    return apply_emotion_state(raw)
+#
+#emotion_commit.__doc__ = f"""Pick the emotion the assistant should express in its reply.
+#
+#    @required_each_turn
+#    @provides_state: emotionstate
+#
+#    Do NOT copy the message or write any explanation into the arguments.
+#
+#    Args:
+#        emotion: Exactly one value from {_emotion_options()}.
+#    """
+#

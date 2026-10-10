@@ -1,9 +1,6 @@
 
 <img width="1000" height="200" alt="MainRdmeWRev" src="https://github.com/user-attachments/assets/88d2874c-7530-4fed-9af9-84b3794884fa" />
 
-
-
-
 <h1 align="center">Local Agent Personal Artificial Intelligence</h1>
  
 <p align="center">
@@ -103,10 +100,24 @@
 
 
 
+### Simple memory regression test
+
+| LEMA1.1 | 48/50 |
+| :--- | :---: |
+| `████████████████████░░` | **96%** |
+
+| LEMA1.2 | 47/50 |
+| :--- | :---: |
+| `███████████████████░░░` | **94%** |
+
+| LEMA2.0 | 49/50 |
+| :--- | :---: |
+| `█████████████████████░` | **98%** | (Not Release yet, under review and test)
 
 
-
-
+| LEMA2.0 (Test2)| 141/150 |
+| :--- | :---: |
+| `███████████████████░░░` | **94%** | (Not Release yet, under review and test)
 
 
 
